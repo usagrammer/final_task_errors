@@ -15,42 +15,49 @@
 |last_name_kana|string|null: false|
 ### Association
 - has_many :items
-- belongs_to :address
 
-## addressテーブル
-|Column|Type|Options|
-|------|----|-------|
-|post_number|integer|null: false|
-|prefecture_id|string|null: false|
-|city|string|null: false|
-|address_number|string|null: false|
-|building|string|null: false|
-|phone_number|integer|null: false|
-|user_id|integer|null: false, foreign_key: true|
-### Association
-- belongs_to :user
+
+<!-- ## addressesテーブル -->
+<!-- |Column|Type|Options| -->
+<!-- |------|----|-------| -->
+<!-- |postal_code|integer|null: false| -->
+<!-- |prefecture|intger|null: false| <!-- 都道府県 -enum> 
+<!-- |city|string|null: false| 市区町村 -->
+<!-- |address|string|null: false|　住所 -->
+<!-- |building|string| 建物名 -->
+<!-- |user_id|integer|null: false, foreign_key: true| -->
+<!-- ### Association -->
+<!-- - belongs_to :user -->
 
 ## itemsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|image|string|null: false|
 |name|string|null: false|
 |info|text|null: false|
-|category|string|null: false|
+|category|intger|null: false|  <!-- enum -->
 |status|string|null: false|
 |price|integer|null: false|
 |user_id|integer|null: false, foreign_key: true|
-|seller|integer|null: false|
-|buyer|integer|null: false|
 ### Association
 - belongs_to :user
+
+## transactions
+|Column|Type|Options|
+|------|----|-------|
+transaction_state_id|integer|null: false, foreign_key: true
+user_id	|integer	|null: false, foreign_key: true
+item_id	|integer	|null: false, foreign_key: true
+buyer_id	|integer	|null: false, foreign_key: true
+### Association
+- belongs_to :item
+- has_many :users
 
 ## cardsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|card_id|integer|null: false|
-|customer_id|integer|null: false|
+|card_id|string|null: false|
+|customer_id|string|null: false|
 |user_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
-- belongs_to :address
+
