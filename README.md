@@ -57,6 +57,7 @@
 - belongs_to :item
 - has_many :users
 
+
 ## cardsテーブル
 |Column|Type|Options|
 |------|----|-------|
