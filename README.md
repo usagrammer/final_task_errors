@@ -16,7 +16,7 @@
 ### Association
 - has_many :items
 - has_many :transactions
-- has_one :card
+- has_many :card
 
 ## addressesテーブル
 |Column|Type|Options|
@@ -38,7 +38,7 @@
 |category|intger|null: false|  <!-- enum -->
 |status|intger|null: false|
 |price|integer|null: false|
-|seller|integer|null: false| <!-- <売り手> -->
+|user_id|integer|null: false, foreign_key: true| <!-- <売り手> -->
 ### Association
 - belongs_to :user
 - belongs_to :transaction
@@ -47,12 +47,11 @@
 ## transactions  
 |Column|Type|Options|
 |------|----|-------|
-|item_id	|integer|null: false, foreign_key: true|
+|item_id|integer|null: false, foreign_key: true|
 |buyer|integer| <!-- <買い手> -->
 ### Association
-- has_one :item
-- has_many :users
-
+- belongs_to :item
+- belongs_to :user
 
 ## cardsテーブル
 |Column|Type|Options|
@@ -61,5 +60,5 @@
 |customer_id|string|null: false|
 |user_id|integer|null: false, foreign_key: true|
 ### Association
-- belongs_to :user
+- belongs_to :item
 
