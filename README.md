@@ -41,7 +41,7 @@
 |user_id|integer|null: false, foreign_key: true| <!-- <売り手> -->
 ### Association
 - belongs_to :user
-- belongs_to :transaction
+- has_one :transaction
 - has_one :address
 
 ## transactions  
@@ -61,4 +61,4 @@
 |user_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :item
-
+- belongs_to :user
