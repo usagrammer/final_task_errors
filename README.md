@@ -22,11 +22,11 @@
 |Column|Type|Options|
 |------|----|-------|
 |postal_code|integer|null: false| <!-- 郵便番号 -->
-|prefecture|intger|null: false| <!-- 都道府県 -enum> 
+|prefecture|integer|null: false| <!-- 都道府県 -enum> 
 |city|string|null: false| <!-- 市区町村 -->
 |address|string|null: false|　<!-- 住所 -->
 |building|string| <!-- 建物名 -->
-|user_id|integer|null: false, foreign_key: true|
+|item_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :item
 
@@ -38,23 +38,19 @@
 |category|intger|null: false|  <!-- enum -->
 |status|intger|null: false|
 |price|integer|null: false|
-|user_id|integer|null: false, foreign_key: true|
-|seller|integer|null: false|
-|buyer|integer|
+|seller|integer|null: false| <!-- <売り手> -->
 ### Association
 - belongs_to :user
 - belongs_to :transaction
-- belongs_to :address
+- has_one :address
 
-## transactions
+## transactions  
 |Column|Type|Options|
 |------|----|-------|
-|transaction_state|integer|null: false|
-|user_id	|integer|null: false, foreign_key: true|
 |item_id	|integer|null: false, foreign_key: true|
-|buyer_id	|integer|foreign_key: true|
+|buyer|integer| <!-- <買い手> -->
 ### Association
-- belongs_to :item
+- has_one :item
 - has_many :users
 
 
