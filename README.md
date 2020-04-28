@@ -48,7 +48,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |item_id|integer|null: false, foreign_key: true|
-|buyer|integer| <!-- <買い手> -->
+|user_id|integer|null: false, foreign_key: true|<!-- <買い手> -->
 ### Association
 - belongs_to :item
 - belongs_to :user
