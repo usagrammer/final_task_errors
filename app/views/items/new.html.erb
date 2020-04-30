@@ -1,0 +1,81 @@
+<div class="items-new">
+  <div class="items-header">
+    <a href="/"><img class="items-header__img" src="/assets/logo.png" width="185" height="49"></a>
+  </div>
+  <div class="items-main">
+    <section class="items-main__single-container">
+      <div id="items-main__sell-container">
+        <div class="items-main__sell-container-inner">
+          <div class="items-single">
+            <h2 class="items-single__head">商品の情報を入力</h2>
+
+<%# // 出品画像 %>
+            <div class="items-single__sell-upload-box">
+              <h3 class="items-single__sell-upload-head">
+                出品画像
+              <div class="items-single__form-require">必須</div>
+              </h3>
+              <div class="post__drop__box__container">
+
+                <div class="label-content">
+                  <label class="label-box">
+                    <div class="label-box__text-visible">クリックしてファイルをアップロード</div>
+                  </label>
+              </div>
+                <div id="image-box">
+                </div>
+                  <div class="js-file_group" data-index="0">
+                    <input class="js-file" type="file">
+                    <div class="js-remove">
+                      削除
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+
+<%# 商品名 %>
+<div class="items-name">
+  <div class="items-name__sell-content">
+    <div class="items-name__form-name">
+      <label class="items-name__label">
+        商品名
+      <div class="items-name__form-require">必須</div>
+      </label>
+      <div>
+        <textarea class="items-name__input-default" placeholder="商品名（必須 40文字まで)" id="item_name"></textarea>
+      </div>
+    </div>
+
+<%# 商品の説明 %>
+    <div class="items-name__form-info">
+      <label class="items-name__label">
+        商品の説明
+      <div class="items-name__form-require">必須</div>
+      </label>
+      <textarea class="items-name__textarea-default" placeholder="商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。" rows="5" id="item_info"></textarea>
+    </div>
+  </div>
+
+<%# 商品の詳細 %>
+  <div class="detaile">
+    <div class="detaile__sell-content clearfix">
+      <h3 class="detaile__sell-sub-head">商品の詳細</h3>
+    <div class="detaile__sell-form-box">
+      <div class="detaile__form-category">
+        <label class="detaile__label">
+          カテゴリー
+        <div class="detaile__form-require">必須</div>
+        </label>
+      
+      <div class="detaile__select-wrap">
+        <i class="detaile__icon-arrow-bottom">
+          <i class="fas fa-chevron-down"></i>
+        </i>
+        <select  id="item_category">
+          <option value="1">---</option>
+          <option value="2">レディース</option>
+        </select>
+      </div>
+    </div>
+
