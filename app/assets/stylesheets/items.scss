@@ -39,10 +39,14 @@
   margin-bottom: 5px;
 }
 
-input{
+.search-form > input{
   width: calc(100% - 26px);
   height: 36px;
-  padding: 0 0 0 5px;
+  padding-left: 10px;
+}
+
+.searchbox-input{
+  font-size: 15px;
 }
 
 .search-button{
@@ -109,7 +113,7 @@ input{
   top: 40px;
 }
 
-.displayNone{
+.displaynone{
   display: none;
 }
 
@@ -134,19 +138,19 @@ input{
   padding-right: 30px;
 }
 
-.listsRight{
+.lists-right{
   margin-left: auto;
   display: flex;
   list-style: none;
 }
 
-.listsRight-item{
+.lists-right-item{
   color: #333;
   line-height: 38px;
   padding: 0 0 0 16px;
 }
 
-.listsRight-item>a{
+.lists-right-item > a{
   display: flex;
   align-items: center;
   color: #333;
@@ -160,7 +164,7 @@ input{
 
 .main-visual{
   height: 560px;
-  background-image: url(/assets/bg-mainVisual-pict_pc.jpg);
+  background-image: url(/assets/bg-main-visual-pict_pc.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: top center;
@@ -206,11 +210,20 @@ input{
   margin-right: 10px;
 }
 
-.app-btn{
+.apple-btn{
   width: 180px;
 }
 
-.app-btn > img{
+.apple-btn > img{
+  width: 100%;
+  vertical-align: bottom;
+}
+
+.google-btn{
+  width: 180px;
+}
+
+.google-btn > img{
   width: 100%;
   vertical-align: bottom;
 }
@@ -309,7 +322,7 @@ input{
 }
 
 .top-middle{
-  background-image: url(/assets/bg-topMiddleDl-pict.jpg);
+  background-image: url(/assets/bg-top-middledl-pict.jpg);
   background-position: bottom right;
   height: 400px;
   background-size: cover;
@@ -346,7 +359,12 @@ input{
   margin-right: 10px;
 }
 
-.middle-app-btn{
+.middle-apple-btn{
+  width: 180px;
+  vertical-align: bottom;
+}
+
+.middle-google-btn{
   width: 180px;
   vertical-align: bottom;
 }
@@ -522,7 +540,7 @@ input{
 }
 
 .app-banner{
-  background-image: url(/assets/bg-appBanner-pict.jpg);
+  background-image: url(/assets/bg-app-banner-pict.jpg);
   padding: 100px 40px;
   position: relative;
   background-size: cover;
@@ -557,24 +575,28 @@ input{
   margin-right: 10px;
 }
 
-.banner-app-btn{
+.banner-apple-btn{
   width: 180px; 
 }
 
-.top-footer{
+.banner-google-btn{
+  width: 180px; 
+}
+
+.footer{
   padding: 60px 0;
   color: #fff;
   background-color: #272727;
   text-align: center; 
 }
 
-.top-footer-contents{
+.footer-contents{
   max-width: 840px;
   margin: 0 auto;
   display: flex; 
 }
 
-.top-footer-content{
+.footer-content{
   display: flex;
   flex-direction: column;
   width: calc(1 / 3 * 100%);
@@ -609,12 +631,12 @@ input{
   vertical-align: bottom;  
 }
 
-.top-footer > p{
+.footer > p{
   font-size: 14px; 
 }
 
 .purchase-btn{
-  width: 120px;
+  width: 90px;
   background: #3CCACE;
   text-align: center;
   border-radius: 4%;

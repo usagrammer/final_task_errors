@@ -1,16 +1,16 @@
 <header class='header'>
   <div class='main-header'>
     <h1 class='icon'>
-      <a href="/"><img class="top-icon"src="/assets/logo.png"></a>
+      <a href="/"><img class="top-icon"src="/assets/top-icon.png"></a>
     </h1>
     <div class='search-box'>
       <form class= "search-form" action="#" accept-charset="UTF-8" method="get">
         <input name="utf8" type="hidden" value="&#x2713;" />
-        <input class='searchbox-input' id='searchInput' name='key' placeholder='  キーワードから探す'>
+        <input class='searchbox-input' id='searchInput' name='key' placeholder='キーワードから探す'>
         <form class="button" method="post" action="/?type=submit">
           <button class= "search-button"type="submit">
           <div class='searchbox-icon'>
-            <img class= "search-icon"src="/assets/icon-search 1.png" />
+            <img class= "search-icon"src="/assets/icon-search.png" />
           </div>
           </button>
           <input type="hidden" name="authenticity_token" value="0GWWy5U/yCU+s18d08x96dqbeGgRrX52reYpvYFjDoj/oDgr1ddCKz8Z0NNs+7H8og82pMhugSaDCMS2io+ddQ==" />
@@ -23,7 +23,7 @@
     <ul class='lists-left'>
       <li class='lists-left-item lists-left-item-first'>
         <a id="catBtn" href="#">カテゴリー</a>
-          <div class='tree displayNone'>
+          <div class='tree displaynone'>
             <ul class='category-tree'>
               <li class='category-tree-item'><a id="1" href="#">レディース</a></li>
               <li class='category-tree-item'><a id="2" href="#">メンズ</a></li>
@@ -42,16 +42,16 @@
           </div>
       </li>
       <li class='lists-left-item'>
-        <a id="brandBtn" href="#">ブランド</a>
-        <ul class='brandsPulldown displayNone'>
+        <a id="brand-btn" href="#">ブランド</a>
+        <ul class='brands-pulldown displaynone'>
         </ul>
       </li>
     </ul>
-    <ul class='listsRight'>
-      <li class='listsRight-item listsRight-item-login'>
+    <ul class='lists-right'>
+      <li class='lists-right-item lists-right-item-login'>
         <a href="#">ログイン</a>
       </li>
-      <li class='listsRight-item listsRight-item-new'>
+      <li class='lists-right-item lists-right-item-new'>
         <a href="#">新規会員登録</a>
       </li>
     </ul>
@@ -59,7 +59,7 @@
 </header>
 
 <div class='main'>
-  <section class='main-visual'>
+  <div class='main-visual'>
     <div class='content'>
       <h2 class='content-subtitle'>
         <br>
@@ -71,15 +71,15 @@
             フリマアプリです
       </p>
       <div class='content-btn'>
-        <a class="app-btn" href="#"><img src="/assets/app-store-9c5e28e8f81bd9912e0ded2f78821e04778a1356c05dc7c7bf1e88614be37c34.svg"></a>
-        <a class="app-btn" href="#"><img src="/assets/google-play.png" /></a>
+        <a class="apple-btn" href="#"><img src="/assets/app-store-9c5e28e8f81bd9912e0ded2f78821e04778a1356c05dc7c7bf1e88614be37c34.svg"></a>
+        <a class="google-btn" href="#"><img src="/assets/google-play.png"></a>
       </div>
     </div>
     <div class='picture'>
     </div>
-  </section>
+  </div>
 
-  <section class='top-introduction'>
+  <div class='top-introduction'>
     <h2 class='sub-title'>
       FURIMAが選ばれる3つの理由
     </h2>
@@ -124,9 +124,9 @@
       </p>
       </li>
     </ul>
-  </section>
+  </div>
 
-  <section class='top-middle'>
+  <div class='top-middle'>
     <div class='top-middle-inner'>
       <h2 class='sub-title'>会員数日本一位</h2>
       <p class='top-middle-text'>
@@ -137,13 +137,13 @@
           ほしかったあの商品に出会えるかもしれません。
       </p>
       <div class='top-middle-btn'>
-        <a href="#"><img class="middle-app-btn" src="/assets/app-store.png" /></a>
-        <a href="#"><img class="middle-app-btn" src="/assets/google-play.png" /></a>
+        <a href="#"><img class="middle-apple-btn" src="/assets/app-store-9c5e28e8f81bd9912e0ded2f78821e04778a1356c05dc7c7bf1e88614be37c34.svg" /></a>
+        <a href="#"><img class="middle-google-btn" src="/assets/google-play.png" /></a>
       </div>
     </div>
-  </section>
+  </div>
 
-  <section class='top-key-features'>
+  <div class='top-key-features'>
     <h2 class='top-key-head'>FURIMAの特徴</h2>
     <div class='top-items'>
       <section class='top-item'>
@@ -174,9 +174,9 @@
         </p>
       </section>
     </div>
-  </section>
+  </div>
 
-  <section class='pickup-container'>
+  <div class='pickup-container'>
     <h2 class='pickup-container-head'>ピックアップカテゴリー</h2>
     <div class='product-box'>
       <div class='product-head'>
@@ -250,8 +250,8 @@
           </div>
       </div>
     </div>
-  </section>
-  <section class='pickup-container'>
+  </div>
+  <div class='pickup-container'>
     <h2 class='pickup-container-head'>ピックアップカテゴリー</h2>
     <div class='product-box'>
       <div class='product-head'>
@@ -325,22 +325,22 @@
           </div>
       </div>
     </div>
-  </section>
+  </div>
 </div>
 <aside class='app-banner'>
   <div class='app-banner-inner'>
     <h2 class='banner-inner-title'>だれでもかんたん、人生を変えるフリマアプリ</h2>
     <p class='banner-inner-text'>今すぐ無料ダウンロード！</p>
     <div class='banner-inner-icon'>
-      <a href="#"><img class="banner-app-btn" src="/assets/app-store.png" /></a>
-      <a href="#"><img class="banner-app-btn" src="/assets/google-play.png" /></a>
+      <a href="#"><img class="banner-apple-btn" src="/assets/app-store-9c5e28e8f81bd9912e0ded2f78821e04778a1356c05dc7c7bf1e88614be37c34.svg" /></a>
+      <a href="#"><img class="banner-google-btn" src="/assets/google-play.png" /></a>
     </div>
   </div>
 </aside>
 
-<div class='top-footer'>
-  <ul class='top-footer-contents'>
-    <li class='top-footer-content'>
+<div class='footer'>
+  <ul class='footer-contents'>
+    <li class='footer-content'>
       <h2 class='footer-content-head'>FURIMAについて</h2>
       <ul>
         <li>
@@ -357,7 +357,7 @@
         </li>
       </ul>
     </li>
-    <li class='top-footer-content'>
+    <li class='footer-content'>
       <h2 class='footer-content-head'>FURIMAを見る</h2>
       <ul>
         <li>
@@ -368,7 +368,7 @@
         </li>
       </ul>
     </li>
-    <li class='top-footer-content'>
+    <li class='footer-content'>
       <h2 class='footer-content-head'>ヘルプ＆ガイド</h2>
         <ul>
           <li>
