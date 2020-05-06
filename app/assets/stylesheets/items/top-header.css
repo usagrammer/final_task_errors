@@ -9,11 +9,10 @@
 .main-header {
   position: relative;
   display: flex;
-  max-width: 1040px;
-  width: 100%;
+  width: 80%;
   min-height: 50px;
   margin: 0 auto;
-  padding: 15px 0 0;
+  padding-top: 15px;
 }
 
 .icon {
@@ -78,8 +77,7 @@
   font-size: 14px;
   display: flex;
   padding-bottom: 10px;
-  max-width: 1040px;
-  width: 100%;
+  width: 80%;
   margin: 0 auto;
 }
 
@@ -109,7 +107,7 @@
 .brand-list {
   display: flex;
   line-height: 38px;
-  padding: 0 0 0 16px;
+  padding-left: 16px;
 }
 
 .brand-list > a {
