@@ -4,14 +4,17 @@
 
 .header {
   padding: 0 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .main-header {
   position: relative;
   display: flex;
-  width: 80%;
+  max-width: 1040px;
+  width: 100%;
   min-height: 50px;
-  margin: 0 auto;
   padding-top: 15px;
 }
 
@@ -76,9 +79,10 @@
 .nav {
   font-size: 14px;
   display: flex;
-  padding-bottom: 10px;
-  width: 80%;
-  margin: 0 auto;
+  margin-bottom: 10px;
+  max-width: 1040px;
+  width: 100%;
+  max-height: 40px;
 }
 
 .lists-left {
@@ -89,7 +93,6 @@
 .category-list {
   display: flex;
   line-height: 38px;
-  padding: 0 0 0 16px;
   text-decoration: none;
   padding: 0;
 }
@@ -98,9 +101,6 @@
   color: #333;
   text-decoration: none;
   line-height: 32px;
-  background-position: center right;
-  background-repeat: no-repeat;
-  background-size: 18px;
   padding-right: 30px;
 }
 
@@ -159,7 +159,7 @@
 .login {
   color: #333;
   line-height: 38px;
-  padding: 0 0 0 16px;
+  padding-left: 16px;
 }
 
 .login > a {
@@ -173,7 +173,7 @@
 .sign-up {
   color: #333;
   line-height: 38px;
-  padding: 0 0 0 16px;
+  padding-left: 16px;
 }
 
 .sign-up > a {
