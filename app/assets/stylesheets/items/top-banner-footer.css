@@ -1,0 +1,96 @@
+.app-banner {
+  background-image: url(/assets/bg-app-banner-pict.jpg);
+  padding: 100px 40px;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+}
+
+.app-banner-inner {
+  color: #fff;
+  text-align: center;
+}
+
+.banner-inner-title {
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+.banner-inner-text {
+  font-size: 35px;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+}
+
+.banner-inner-icon {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 20px auto 0;
+}
+
+.banner-inner-icon > a:first-child {
+  margin-right: 10px;
+}
+
+.banner-apple-btn {
+  width: 180px;
+  height: 90%;
+}
+
+.banner-google-btn {
+  width: 180px;
+}
+
+.footer {
+  padding: 60px 0;
+  color: #fff;
+  background-color: #272727;
+  text-align: center;
+}
+
+.footer-contents {
+  max-width: 840px;
+  margin: 0 auto;
+  display: flex;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  width: calc(1 / 3 * 100%);
+  margin: 0 2% 0 0;
+}
+
+.footer-content-head {
+  margin: 0 0 20px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.footer-content-head > ul {
+  list-style: none;
+}
+
+.footer-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 12px;
+  line-height: 32px;
+}
+
+.footer-logo {
+  max-width: 160px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.footer-logo > a > img {
+  width: 100%;
+  vertical-align: bottom;
+}
+
+.footer > p {
+  font-size: 14px;
+}
