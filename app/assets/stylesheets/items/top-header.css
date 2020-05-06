@@ -12,10 +12,14 @@
 .main-header {
   position: relative;
   display: flex;
-  max-width: 1040px;
-  width: 100%;
+  width: 1040px;
   min-height: 50px;
   padding-top: 15px;
+}
+@media (max-width: 1040px) {
+  .main-header {
+    width: 100%;
+  }
 }
 
 .icon {
@@ -80,9 +84,13 @@
   font-size: 14px;
   display: flex;
   margin-bottom: 10px;
-  max-width: 1040px;
-  width: 100%;
+  width: 1040px;
   max-height: 40px;
+}
+@media (max-width: 1040px) {
+  .nav {
+    width: 100%;
+  }
 }
 
 .lists-left {

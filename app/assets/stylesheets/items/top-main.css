@@ -319,20 +319,22 @@
   margin: 26px auto;
   display: flex;
   justify-content: space-around;
-  @media (max-width: 760px) {
+}
+
+@media (max-width: 760px) {
+  .product-lists {
     width: 100%;
-    display: flex;
     flex-direction: column;
     align-items: center;
+  }
+  .product-list {
+    margin-bottom: 10px;
   }
 }
 
 .product-list {
   width: 220px;
   display: inline-block;
-  @media (max-width: 760px) {
-    margin-bottom: 10px;
-  }
 }
 
 .product-list > a {
