@@ -1,65 +1,65 @@
 <div class="items-sell">
-  <header class="items-header">
-    <a href="/"><img class="items-header-img" src="/assets/logo.png" width="185" height="50"></a>
+  <header class="header">
+    <a href="/"><img src="/assets/logo.png" width="185" height="50"></a>
   </header>
-
-  <div class="items-main">
-    <section class="items-main-container">
-      <h2 class="items-main-head">商品の情報を入力</h2>
-      <div class="items-upload-box">
-        <h3 class="items-upload-head">
+  
+  <div class="main">
+    <section class="items-sell-container">
+      <h2 class="items-info-input">商品の情報を入力</h2>
+      <div class="img-upload">
+        <h3 class="text">
           出品画像
         <span class="require">必須</span>
         </h3>
-          <div class="items-upload-text">
+        <div>
+          <p class="click-upload">
             クリックしてファイルをアップロード
+          </p>
+          <div>
+            <input type="file">
+              <p>削除</p>
           </div>
-        <div class="items-file">
-          <input class="items-file-img" type="file">
-            <div class="items-file-img-remove">
-              削除
-            </div>
         </div>
       </div>
-      <div class="items-new">
-        <div class="items-name-box">
+      <div class="new-items">
+        <div>
           <h3 class="items-name">
             商品名
           <span class="require">必須</span>
           </h3>
-          <textarea class="items-name-text" placeholder="商品名（必須 40文字まで)"></textarea>
+          <textarea class="items-text" placeholder="商品名（必須 40文字まで)"></textarea>
         </div>
-        <div class="items-explain-box">
-          <h3 class="items-explain">
+        <div class="items-explain">
+          <h3 class="items-name">
             商品の説明
           <span class="require">必須</span>
           </h3>
-          <textarea class="items-name-text" placeholder="商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。" rows="7"></textarea>
+          <textarea class="items-text" placeholder="商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。" rows="7"></textarea>
         </div>
       </div>
       <div class="items-detaile">
-        <div class="items-detaile-content">
-          <h3 class="items-detaile-head">商品の詳細</h3>
-          <div class="items-detaile-form">
-            <div class="items-category-box">
-              <h4 class="items-category">
+        <div class="contents">
+          <h3 class="text">商品の詳細</h3>
+          <div class="form">
+            <div>
+              <h4 class="text">
                 カテゴリー
               <span class="require">必須</span>
               </h4>
-              <div class="items-detaile-select">
-                <select  class="items-select">
+              <div class="items-select">
+                <select  class="form">
                   <option value="1">---</option>
                   <option value="2">レディース</option>
                 </select>
               </div>
             </div>
             <div class="items-status-box">
-              <h4 class="items-status">
+              <h4 class="text">
                 商品の状態
               <span class="require">必須</span>
               </h4>
-              <div class="items-detaile-select">
-                <select class="items-select">
+              <div class="items-select">
+                <select class="form">
                   <option value="1">---</option>
                   <option value="2">新品、未使用</option>
                   <option value="3">未使用に近い</option>
@@ -74,45 +74,45 @@
         </div>
       </div>
       <div class="delivery">
-        <div class="delivery-content">
-          <div class="delivery-info">
-            <h3 class="delivery-head">配送について</h3>
+        <div class="contents">
+          <div class="info">
+            <h3 class="text">配送について</h3>
             <a class="question" href="/">?</a>
           </div>
-          <div class="delivery-box">
-            <div class="delivery-burden-box">
-              <h4 class="delivery-burden">
+          <div class="form">
+            <div>
+              <h4 class="text">
                 配送料の負担
               <span class="require">必須</span>
               </h4>
-              <div class="delivery-select">
-                <select class="items-select">
+              <div class="items-select">
+                <select class="form">
                   <option value="1">---</option>
                   <option value="2">着払い(購入者負担)</option>
                   <option value="3">送料込み(出品者負担)</option>
                 </select>
               </div>
             </div>
-            <div class="delivery-form">
-              <h4 class="delivery-area"> 
+            <div class="delivery-select-form">
+              <h4 class="text"> 
                 発送元の地域
               <span class="require">必須</span>
               </h4>
-              <div class="delivery-select">
-                <select class="items-select">
+              <div class="items-select">
+                <select class="form">
                   <option value="0">---</option>
                   <option value="1">北海道</option>
                   <option value="2">青森県</option>
                 </select>
               </div>
             </div>
-            <div class="delivery-form">
-              <h4 class="delivery-date">
+            <div class="delivery-select-form">
+              <h4 class="text">
                 発送までの日数
               <span class="require">必須</span>
               </h4>
-              <div class="delivery-select">
-                <select class="items-select">
+              <div class="items-select">
+                <select class="form">
                   <option value="0">---</option>
                   <option value="1">1~2日で発送</option>
                   <option value="2">2~3日で発送</option>
@@ -124,59 +124,57 @@
         </div>
       </div>
       <div class="price">
-        <div class="price-content">
-          <div class="price-sell-box">
-            <h3 class="price-sell">販売価格(¥300〜9,999,999)</h3>
+        <div class="contents">
+          <div class="info">
+            <h3 class="text">販売価格(¥300〜9,999,999)</h3>
             <a class="question" href="/">?</a>
           </div>
-          <div class="price-box">
-            <ul class="price-form">
-              <li class="price-form-right">
-                  <label class="price-label">
-                    価格
-                  <span class="require">必須</span>
-                  </label>
-                  <label class="price-mark">¥</label>
-                  <div class="price-form-sell-right ">
-                    <textarea class="price-input" placeholder="例）300" id="item-price"></textarea>
-                  </div>
+            <ul class="price-box">
+              <li class="right">
+                <p class="label">
+                  価格
+                <span class="require">必須</span>
+                </p>
+                <p class="mark">¥</p>
+                <div>
+                  <textarea class="price-input" placeholder="例）300"></textarea>
+                </div>
               </li>
-              <li class="price-form-box-right">
+              <li class="right-box">
                 <p>
                   販売手数料 (10%)
                 </p>
               </li>
-              <li class="price-form-box-right">
+              <li class="right-box">
                 <p>
                   販売利益
                 </p>
               </li>
             </ul>
-          </div>
         </div>
       </div>
       <div class="caution">
-        <div class="caution-content ">
-          <div class="caution-box">
-            <p class="caution-text">
-              <a class="caution-link" href="/">禁止されている出品、</a>
-              <a class="caution-link" href="/">行為</a>
+        <div class="contents">
+          <div class="box">
+            <p class ="sentence">
+              <a href="/">禁止されている出品、</a>
+              <a href="/">行為</a>
               を必ずご確認ください。
             </p>
-            <p class="caution-text">
+            <p class ="sentence">
               またブランド品でシリアルナンバー等がある場合はご記載ください。
-              <a class="caution-link" href="/">偽ブランドの販売</a>
+              <a href="/">偽ブランドの販売</a>
               は犯罪であり処罰される可能性があります。
             </p>
-            <p class="caution-text">
+            <p class ="sentence">
               また、出品をもちまして
-              <a class="caution-link" href="/">加盟店規約</a>
+              <a href="/">加盟店規約</a>
               に同意したことになります。
             </p>
           </div>
-          <input type="submit" value="出品する" class="items-input-btn">
+          <input type="submit" value="出品する" class="sell-btn">
           <div class="return-btn">
-            <a class="btn-gray" href="/">もどる</a>
+            <a class="gray" href="/">もどる</a>
           </div>
         </div>
       </div>
@@ -185,22 +183,20 @@
 </div>
 
 <footer class="items-footer">
-  <div class="items-footer-center">
-    <nav>
-      <ul class="items-footer-menu">
-        <li>
-          <a href="#">プライバシーポリシー</a>
-        </li>
-        <li>
-          <a href="#">フリマ利用規約</a>
-        </li>
-        <li>
-          <a href="#">特定商取引に関する表記</a>
-        </li>
-      </ul>
-    </nav>
-    <div class="items-footer-logo">
-      <a href="#"><img width="185" height="50" src="/assets/logo.png"></a>
+  <div class="center">
+    <ul class="menu">
+      <li>
+        <a href="#">プライバシーポリシー</a>
+      </li>
+      <li>
+        <a href="#">フリマ利用規約</a>
+      </li>
+      <li>
+        <a href="#">特定商取引に関する表記</a>
+      </li>
+    </ul>
+    <div class="logo">
+      <a href="#"><img src="/assets/logo.png" width="185" height="50"></a>
     </div>
     <p class="inc">
       ©︎Furima,Inc.
