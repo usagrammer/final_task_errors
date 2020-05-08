@@ -52,20 +52,13 @@
 
 .apple-btn {
   width: 180px;
-}
-
-.apple-btn > img {
-  width: 100%;
   height: 100%;
   vertical-align: bottom;
 }
 
 .google-btn {
-  width: 180px;
-}
-
-.google-btn > img {
-  width: 100%;
+  width: 185px;
+  height: 100%;
   vertical-align: bottom;
 }
 
@@ -94,52 +87,41 @@
   transform: translateX(-50%);
 }
 
-.lists {
-  text-align: center;
+.introduction-lists {
   display: flex;
-  max-width: 1020px;
+  justify-content: center;
   width: 100%;
-  margin: 0 auto;
+  flex-wrap: wrap;
 }
 
-.list {
-  width: 30%;
-  margin: 16px 5% 0 0;
-  text-align: left;
+.introduction-list {
+  width: 250px;
+  margin: 0 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 }
 
 .list-pict {
-  position: relative;
   margin-bottom: 20px;
+  width: 100%;
+  vertical-align: bottom;
 }
 
 .number {
-  display: inline-block;
   position: absolute;
-  top: 0;
   left: 0;
-  border-radius: 4%;
   font-size: 30px;
-  text-align: center;
-  margin: 0 5px 0 0;
   padding: 10px 20px;
   background-color: #3ccace;
   color: #fff;
-}
-
-.list-pict > img {
-  width: 100%;
-  vertical-align: bottom;
 }
 
 .list-text {
   font-weight: bold;
   font-size: 24px;
   line-height: 50px;
-  margin: 0 0 0 2px;
 }
 
 .text-blue {
@@ -148,17 +130,6 @@
 
 .list-description {
   font-size: 18px;
-  line-height: 1.5;
-  margin: 16px 0 0;
-}
-
-.list-last {
-  width: 30%;
-  margin: 16px 5% 0 0;
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   margin: 16px 0 0;
 }
 
@@ -174,35 +145,28 @@
 .top-middle-inner {
   color: #fff;
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
-  text-align: left;
-  max-width: 1040px;
   width: 100%;
-  margin: 0 auto;
+  margin-left: 200px;
 }
 
 .top-middle-inner > .sub-title {
   font-size: 27px;
   font-weight: bold;
-  line-height: 1.4;
 }
 
 .top-middle-text {
   font-size: 18px;
   margin: 20px 0 30px;
-  line-height: 1.5;
 }
 
 .top-middle-btn {
   display: flex;
 }
 
-.top-middle-btn > a {
-  margin-right: 10px;
-}
-
 .middle-apple-btn {
   width: 180px;
   height: 100%;
+  margin-right: 10px;
   vertical-align: bottom;
 }
 
@@ -219,9 +183,7 @@
 .top-key-head {
   font-size: 27px;
   text-align: center;
-  margin: 0 0 40px;
   font-weight: bold;
-  margin-bottom: 25px;
   padding-bottom: 15px;
   position: relative;
 }
@@ -238,30 +200,23 @@
 }
 
 .top-items {
-  max-width: calc(1040px + 20px);
-  width: 100%;
-  margin: 0 auto;
   display: flex;
+  justify-content: center;
+  width: 100%;
   flex-wrap: wrap;
 }
 
 .top-item {
+  width: 300px;
+  margin: 0 15px;
   display: flex;
   flex-direction: column;
-  width: calc(1 / 3 * 100%);
-  text-align: center;
-  padding: 0 20px;
+  align-items: center;
 }
 
 .top-item-img {
   width: 70%;
-  margin: 0 auto;
-  line-height: 120px;
-}
-
-.top-item-img > img {
-  width: 100%;
-  vertical-align: bottom;
+  height: 350px;
 }
 
 .top-item-subtitle {
@@ -271,10 +226,9 @@
 }
 
 .top-item-detail {
-  margin: 0 0 40px;
+  margin-bottom: 40px;
   font-size: 17px;
   font-weight: 200;
-  text-align: left;
 }
 
 .pickup-container {
@@ -288,17 +242,11 @@
 }
 
 .pickup-container-head {
-  /* text-align: center; */
   font-size: 28px;
   line-height: 1.4;
   font-weight: bold;
 }
 
-/* .product-box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;s
-} */
 .product-head {
   text-align: center;
   margin-bottom: 26px;
@@ -321,41 +269,15 @@
   justify-content: center;
 }
 
-/* @media (max-width: 760px) {
-  .product-lists {
-    width: 100%;
-    justify-content: center;
-    flex-direction: column;
-  }
-} */
-
 .product-list {
-  width: 200px;
-  margin: 5px 40px;
-  display: inline-block;
-}
-
-.product-list > a {
+  width: 230px;
+  margin: 5px 20px;
   background-color: #fff;
-  display: inline-block;
-  text-decoration: none;
-  width: 100%;
 }
 
 .product-list-img {
   width: 100%;
-  height: 60%;
-  position: relative;
-  overflow: hidden;
-  margin: 0;
-  z-index: auto;
-}
-
-.product-list-img > img {
-  width: 100%;
-  height: 60%;
-  z-index: auto;
-  object-fit: contain;
+  height: 200px;
 }
 
 .product-list-body {
@@ -365,10 +287,7 @@
 }
 
 .product-name {
-  overflow: hidden;
-  line-height: 1.5;
   font-size: 16px;
-  text-align: left;
 }
 
 .product-details {
@@ -381,14 +300,14 @@
   justify-content: space-between;
 }
 
+.good-btn{
+  display: flex;
+  align-items: center;
+}
+
 .star-icon {
   height: 15px;
   width: 15px;
-}
-
-.star-icon > img {
-  width: 15px;
-  height: 15px;
 }
 
 .product-details > p {
