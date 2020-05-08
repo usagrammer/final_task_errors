@@ -26,6 +26,7 @@
   font-size: 60px;
   line-height: 1.2;
   color: #fff;
+  margin-bottom: 20px;
 }
 
 .content-subtitle > br {
@@ -38,12 +39,11 @@
   font-size: 18px;
   color: #fff;
   line-height: 1.77778;
-  margin: 16px 0 0 0;
 }
 
 .content-btn {
   display: flex;
-  margin: 24px 0 0 0;
+  margin-top: 24px;
 }
 
 .content-btn > a:first-child {
@@ -152,15 +152,16 @@
 .top-middle-inner > .sub-title {
   font-size: 27px;
   font-weight: bold;
+  margin-bottom: 20px;
 }
 
 .top-middle-text {
   font-size: 18px;
-  margin: 20px 0 30px;
 }
 
 .top-middle-btn {
   display: flex;
+  margin-top: 20px;
 }
 
 .middle-apple-btn {
