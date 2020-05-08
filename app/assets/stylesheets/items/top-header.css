@@ -10,17 +10,11 @@
 }
 
 .main-header {
-  position: relative;
-  display: flex;
   width: 100%;
-  padding: 0 140px;
+  display: flex;
+  justify-content: center;
   min-height: 50px;
-  margin-top: 15px;
-}
-@media (max-width: 1040px) {
-  .main-header {
-    padding: 0;
-  }
+  padding-top: 15px;
 }
 
 .icon {
@@ -40,8 +34,7 @@
 }
 
 .search-box {
-  margin-left: auto;
-  width: 100%;
+  width: 65%;
 }
 
 .search-form {
@@ -84,15 +77,10 @@
 .nav {
   font-size: 14px;
   display: flex;
+  justify-content: space-between;
   margin-bottom: 10px;
-  width: 100%;
-  padding: 0 140px;
+  width: 78%;
   max-height: 40px;
-}
-@media (max-width: 1040px) {
-  .nav {
-    padding: 0;
-  }
 }
 
 .lists-left {
@@ -103,7 +91,7 @@
 .category-list {
   display: flex;
   line-height: 38px;
-  text-decoration: none;
+  min-width: 100px;
   padding: 0;
 }
 
@@ -116,6 +104,7 @@
 
 .brand-list {
   display: flex;
+  min-width: 80px;
   line-height: 38px;
   padding-left: 16px;
 }
@@ -124,10 +113,6 @@
   color: #333;
   text-decoration: none;
   line-height: 32px;
-  background-position: center right;
-  background-repeat: no-repeat;
-  background-size: 18px;
-  padding-right: 30px;
 }
 
 .tree {
@@ -161,7 +146,6 @@
 }
 
 .lists-right {
-  margin-left: auto;
   display: flex;
   list-style: none;
 }
@@ -170,6 +154,7 @@
   color: #333;
   line-height: 38px;
   padding-left: 16px;
+  min-width: 75px;
 }
 
 .login > a {
@@ -184,6 +169,7 @@
   color: #333;
   line-height: 38px;
   padding-left: 16px;
+  min-width: 100px;
 }
 
 .sign-up > a {
