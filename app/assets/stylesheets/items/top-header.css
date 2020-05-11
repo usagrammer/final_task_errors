@@ -1,0 +1,150 @@
+* {
+  box-sizing: border-box;
+}
+
+.header {
+  padding: 0 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main-header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  min-height: 50px;
+  padding-top: 15px;
+}
+
+.icon {
+  padding-bottom: 10px;
+  margin-right: 30px;
+  border-radius: 4px;
+}
+
+.icon > a {
+  width: 140px;
+  display: block;
+}
+
+.top-icon {
+  width: 100%;
+  vertical-align: bottom;
+}
+
+.search-box {
+  width: 65%;
+}
+
+.search-form {
+  width: 100%;
+  display: flex;
+  margin-bottom: 5px;
+}
+
+.search-form > input {
+  width: calc(100% - 26px);
+  height: 36px;
+  padding-left: 10px;
+}
+
+.search-box-input {
+  font-size: 15px;
+}
+
+.search-button {
+  width: 36px;
+  border: 0;
+  cursor: pointer;
+  background-color: #3ccace;
+  padding: 8px;
+}
+
+.search-icon {
+  width: 100%;
+  vertical-align: bottom;
+}
+
+.nav {
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  width: 78%;
+  max-height: 40px;
+}
+
+.lists-left {
+  display: flex;
+}
+
+.category-list {
+  min-width: 100px;
+  color: #333;
+  text-decoration: none;
+  line-height: 32px;
+  padding-right: 30px;
+}
+
+.brand-list {
+  min-width: 80px;
+  padding-left: 16px;
+  color: #333;
+  text-decoration: none;
+  line-height: 32px;
+}
+
+.tree {
+  z-index: 2;
+  position: absolute;
+  background-color: #fff;
+  width: 240px;
+  top: 40px;
+  display: none;
+}
+
+.category-tree {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.category-tree-item {
+  position: relative;
+}
+
+.category-tree-item > a {
+  color: #333;
+  text-decoration: none;
+  line-height: 32px;
+  background-position: center right;
+  background-repeat: no-repeat;
+  background-size: 18px;
+  padding-right: 30px;
+}
+
+.lists-right {
+  display: flex;
+  list-style: none;
+  align-items: flex-end;
+}
+
+.login {
+  color: #333;
+  line-height: 38px;
+  padding-left: 16px;
+  min-width: 75px;
+  text-decoration: none;
+  line-height: 32px;
+}
+
+.sign-up {
+  color: #333;
+  text-align: right;
+  padding-left: 16px;
+  min-width: 80px;
+  text-decoration: none;
+  line-height: 32px;
+}
