@@ -55,7 +55,7 @@
           <span class="require">必須</span>
           </div>
           <div class="items-select">
-            <%= f.collection_select(:status_id, Status.all, :id, :name, {}, {class:"form"}) %>
+            <%= f.collection_select(:status_id, Status.all, :id, :example, {}, {class:"form"}) %>
           </div>
         </div>
       </div>
@@ -72,7 +72,7 @@
           <span class="require">必須</span>
           </div>
           <div class="items-select">
-            <%= f.collection_select(:burden_id, Burden.all, :id, :name, {}, {class:"form"}) %>
+            <%= f.collection_select(:shipping_fee_id, ShippingFee.all, :id, :fee, {}, {class:"form"}) %>
           </div>
         </div>
         <div class="delivery-select-form">
@@ -90,7 +90,7 @@
           <span class="require">必須</span>
           </div>
           <div class="items-select">
-            <%= f.collection_select(:delivery_date_id, DeliveryDate.all, :id, :name, {}, {class:"form"}) %>
+            <%= f.collection_select(:delivery_date_id, DeliveryDate.all, :id, :date, {}, {class:"form"}) %>
           </div>
         </div>
       </div>
@@ -102,10 +102,10 @@
       </div>
       <ul class="price-box">
         <li class="right">
-          <p class="label">
+          <div class="label">
             価格
           <span class="require">必須</span>
-          </p>
+          </div>
           <p class="mark">¥</p>
           <div>
             <%= f.text_area :price, class:"price-input", placeholder:"例）300" %>

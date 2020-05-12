@@ -21,27 +21,27 @@
 ## addressesテーブル
 | Column      | Type    | Options                        |
 | ----------- | ------- | ------------------------------ |
-| postal_code | integer | null: false                    | <!-- 郵便番号 -->    |
-| prefecture  | integer | null: false                    | <!-- 都道府県 -enum> |
-| city        | string  | null: false                    | <!-- 市区町村 -->    |
-| address     | string  | null: false                    | <!-- 住所 -->        |
-| building    | string  | <!-- 建物名 -->                |
+| postal_code | integer | null: false                    |
+| prefecture  | integer | null: false                    |
+| city        | string  | null: false                    |
+| address     | string  | null: false                    |
+| building    | string  |                                |
 | item_id     | integer | null: false, foreign_key: true |
 ### Association
 - belongs_to :item
 
 ## itemsテーブル
-| Column   | Type    | Options                        |
-| -------- | ------- | ------------------------------ |
-| name     | string  | null: false                    |
-| info     | text    | null: false                    |
-| category | integer | null: false                    |
-| status   | integer | null: false                    |
-| burden   | integer | null: false                    |
-| area     | integer | null: false                    |
-| date     | integer | null: false                    |
-| price    | integer | null: false                    |
-| user_id  | integer | null: false, foreign_key: true | <!-- <売り手> --> |
+| Column        | Type    | Options                        |
+| ------------- | ------- | ------------------------------ |
+| name          | string  | null: false                    |
+| info          | text    | null: false                    |
+| category      | integer | null: false                    |
+| status        | integer | null: false                    |
+| shipping_fee  | integer | null: false                    |
+| prefecture    | integer | null: false                    |
+| delivery_date | integer | null: false                    |
+| price         | integer | null: false                    |
+| user_id       | integer | null: false, foreign_key: true | <!-- <売り手> --> |
 ### Association
 - belongs_to :user
 - has_one :transaction

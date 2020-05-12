@@ -153,11 +153,13 @@
 .price-box > .right > .label {
   line-height: 50px;
   font-size: 15px;
+  width: 15vw;
 }
 
 .price-box > .right > .mark{
-  margin: 14px 10px 0 150px;
+  margin: 14px 10px;
   font-size: 18px;
+  
 }
 
 .price-input {

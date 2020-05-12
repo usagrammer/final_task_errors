@@ -12,11 +12,11 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    if @item.save
-      redirect_to root_path
-    else
-      redirect_to new_item_path
+    if @item.valid?
+      @item.save
+      return redirect_to root_path
     end
+    redirect_to new_item_path
   end
 
   private
@@ -28,7 +28,7 @@ class ItemsController < ApplicationController
       :info,
       :category_id,
       :status_id,
-      :burden_id,
+      :shipping_fee_id,
       :prefecture_id,
       :delivery_date_id,
       :price
