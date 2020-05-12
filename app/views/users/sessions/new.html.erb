@@ -18,12 +18,15 @@
     </div>
   <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-<div class="field">
+  <div class="field">
     <%= f.label :description %><br />
     <%= f.text_area :description, autofocus: true, autocomplete: "description" %>
   </div>
+
+  <div class="actions">
+    <%= f.submit "Log in" %>
+  </div>
+
+<% end %>
+
 <%= render "users/shared/links" %>
