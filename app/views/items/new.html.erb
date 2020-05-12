@@ -5,6 +5,7 @@
 
   <div class="main">
     <h2 class="items-info-title">商品の情報を入力</h2>
+  <%= form_with model: @item, url: items_path, local: true do |f| %>
     <div class="img-upload">
       <div class="text">
         出品画像
@@ -15,7 +16,7 @@
           クリックしてファイルをアップロード
         </p>
         <div>
-          <input type="file">
+          <%= f.file_field :image %>
             <p>削除</p>
         </div>
       </div>
@@ -26,14 +27,14 @@
           商品名
         <span class="require">必須</span>
         </div>
-        <textarea class="items-text" placeholder="商品名（必須 40文字まで)" maxlength="40"></textarea>
+        <%= f.text_area :name, class:"items-text", placeholder:"商品名（必須 40文字まで)", maxlength:"40" %>
       </div>
       <div class="items-explain">
         <div class="items-name">
           商品の説明
         <span class="require">必須</span>
         </div>
-        <textarea class="items-text" placeholder="商品の説明（必須 1,000文字まで）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。" rows="7" maxlength="1000"></textarea>
+        <%= f.text_area :info, class:"items-text", placeholder:"商品の説明（必須 1,000文字まで）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。" ,rows:"7" ,maxlength:"1000" %>
       </div>
     </div>
     <div class="items-detail">
@@ -45,10 +46,7 @@
           <span class="require">必須</span>
           </div>
           <div class="items-select">
-            <select  class="form">
-              <option value="1">---</option>
-              <option value="2">レディース</option>
-            </select>
+            <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"form"}) %>
           </div>
         </div>
         <div class="items-status-box">
@@ -57,15 +55,7 @@
           <span class="require">必須</span>
           </div>
           <div class="items-select">
-            <select class="form">
-              <option value="1">---</option>
-              <option value="2">新品、未使用</option>
-              <option value="3">未使用に近い</option>
-              <option value="4">目立った傷や汚れなし</option>
-              <option value="5">やや傷や汚れあり</option>
-              <option value="6">傷や汚れあり</option>
-              <option value="7">全体的に状態が悪い</option>
-            </select>
+            <%= f.collection_select(:status_id, Status.all, :id, :name, {}, {class:"form"}) %>
           </div>
         </div>
       </div>
@@ -82,11 +72,7 @@
           <span class="require">必須</span>
           </div>
           <div class="items-select">
-            <select class="form">
-              <option value="1">---</option>
-              <option value="2">着払い(購入者負担)</option>
-              <option value="3">送料込み(出品者負担)</option>
-            </select>
+            <%= f.collection_select(:burden_id, Burden.all, :id, :name, {}, {class:"form"}) %>
           </div>
         </div>
         <div class="delivery-select-form">
@@ -95,11 +81,7 @@
           <span class="require">必須</span>
           </div>
           <div class="items-select">
-            <select class="form">
-              <option value="0">---</option>
-              <option value="1">北海道</option>
-              <option value="2">青森県</option>
-            </select>
+            <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"form"}) %>
           </div>
         </div>
         <div class="delivery-select-form">
@@ -108,12 +90,7 @@
           <span class="require">必須</span>
           </div>
           <div class="items-select">
-            <select class="form">
-              <option value="0">---</option>
-              <option value="1">1~2日で発送</option>
-              <option value="2">2~3日で発送</option>
-              <option value="3">4~7日で発送</option>
-            </select>
+            <%= f.collection_select(:delivery_date_id, DeliveryDate.all, :id, :name, {}, {class:"form"}) %>
           </div>
         </div>
       </div>
@@ -131,7 +108,7 @@
           </p>
           <p class="mark">¥</p>
           <div>
-            <textarea class="price-input" placeholder="例）300"></textarea>
+            <%= f.text_area :price, class:"price-input", placeholder:"例）300" %>
           </div>
         </li>
         <li class="right-box">
@@ -164,12 +141,13 @@
           に同意したことになります。
         </p>
       </div>
-      <input type="submit" value="出品する" class="sell-btn">
+      <%= f.submit "出品する" ,class:"sell-btn" %>
       <div class="return-btn">
         <a class="gray" href="/">もどる</a>
       </div>
     </div>
   </div>
+  <% end %>
 </div>
 
 <footer class="items-footer">
@@ -186,7 +164,7 @@
       </li>
     </ul>
     <div class="logo">
-      <a href="#"><img src="/assets/logo.png" width="185" height="50"></a>
+      <a href="/"><img src="/assets/logo.png" width="185" height="50"></a>
     </div>
     <p class="inc">
       ©︎Furima,Inc.
