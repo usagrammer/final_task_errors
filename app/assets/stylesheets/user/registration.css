@@ -117,7 +117,7 @@
   display: flex;
 }
 
-.select-birth{
+.input-birth-wrap > select{
   width: 20%;
   margin-top: 5px;
   height: 48px;
