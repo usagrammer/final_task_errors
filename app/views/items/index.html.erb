@@ -156,13 +156,17 @@
       <%= link_to '新規投稿商品', "#", class: "product-head-title" %>
     </div>
     <div class='product-lists'>
+    <% @items.each do |item|%>
       <div class='product-list'>
-        <%= link_to image_tag("https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png", class:"product-list-img"), "#" %>
+        <%# <%= link_to item_path(item) do %> <%# 残しておく 詳細表示で使うかも %>
+          <%= image_tag item.image, width:"230", height:"230" %>
           <div class='product-list-body'>
-            <h3 class='product-name'>product3</h3>
+            <h3 class='product-name'>
+              <%= item.name %>
+            </h3>
             <div class='product-details'>
               <ul>
-                <li>30000円</li>
+                <li><%= item.price %></li>
                 <div class ='good-btn'>
                   <%= image_tag "star-icon.png", class:"star-icon" %>
                     0
@@ -171,8 +175,11 @@
               <p>(税込)</p>
             </div>
           </div>
-        </a>
+        <%# </a> %>
+        <%# <% end %>
       </div>
+    <% end %>
+
       <div class='product-list'>
         <%= link_to image_tag("https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png", class:"product-list-img"), "#" %>
           <div class='product-list-body'>
