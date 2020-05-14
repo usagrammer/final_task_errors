@@ -1,3 +1,17 @@
+# rubocop
+
+checkのみ
+
+```
+bundle ex rubocop
+```
+
+check内容を自動修正
+
+```
+bundle ex rubocop -a
+```
+
 # DB設計
 
 ## usersテーブル
