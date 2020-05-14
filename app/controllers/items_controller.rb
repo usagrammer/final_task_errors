@@ -1,5 +1,4 @@
 class ItemsController < ApplicationController
-
   before_action :item_params, only: :create
 
   def index
@@ -34,5 +33,4 @@ class ItemsController < ApplicationController
       :price
     )
   end
-
 end
