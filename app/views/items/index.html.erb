@@ -162,118 +162,45 @@
       <h2 class='pickup-container-head'>ピックアップカテゴリー</h2>
       <%= link_to '新規投稿商品', "#", class: "product-head-title" %>
     </div>
-    <div class='product-lists'>
-      <div class='product-list'>
-        <%= link_to image_tag("https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png", class:"product-list-img"), "#" %>
-          <div class='product-list-body'>
-            <h3 class='product-name'>product3</h3>
-            <div class='product-details'>
-              <ul>
-                <li>30000円</li>
+    <ul class='product-lists'>
+      <% @items.each do |item|%>
+        <li class='product-list'>
+          <%= link_to "#" do %>
+            <%= image_tag item.image, class: "product-list-img" %>
+            <div class='product-list-body'>
+              <h3 class='product-name'>
+                <%= item.name %>
+              </h3>
+              <div class='product-details'>
+                <span><%= item.price %></span>
                 <div class ='good-btn'>
                   <%= image_tag "star-icon.png", class:"star-icon" %>
                     0
                 </div>
-              </ul>
               <p>(税込)</p>
             </div>
           </div>
-        </a>
-      </div>
-      <div class='product-list'>
-        <%= link_to image_tag("https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png", class:"product-list-img"), "#" %>
-          <div class='product-list-body'>
-            <h3 class='product-name'>product2</h3>
-            <div class='product-details'>
-              <ul>
-                <li>20000円</li>
+          <% end %>
+        </li >
+      <% end %>
+      <% if @items.length == 0%>
+        <li class='product-list'>
+          <%= link_to "#" do %>
+            <%= image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png", class: "product-list-img" %>
+            <div class='product-list-body'>
+              <h3 class='product-name'>sample name</h3>
+              <div class='product-details'>
+                <span>20000円</span>
                 <div class ='good-btn'>
                   <%= image_tag "star-icon.png", class:"star-icon" %>
                     0
                 </div>
-              </ul>
               <p>(税込)</p>
             </div>
-          </div>
-        </a>
-      </div>
-      <div class='product-list'>
-        <%= link_to image_tag("https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/7/a001.png", class:"product-list-img"), "#" %>
-          <div class='product-list-body'>
-            <h3 class='product-name'>product2</h3>
-            <div class='product-details'>
-              <ul>
-                <li>20000円</li>
-                <div class ='good-btn'>
-                  <%= image_tag "star-icon.png", class:"star-icon" %>
-                    0
-                </div>
-              </ul>
-              <p>(税込)</p>
-            </div>
-          </div>
-        </a>
-      </div>
-    </div>
-  </div>
-  <div class='pickup-container'>
-    <div class='product-head'>
-      <h2 class='pickup-container-head'>ピックアップブランド</h2>
-      <%= link_to 'アーカイブ', "#", class: "product-head-title" %>
-    </div>
-    <div class='product-lists'>
-      <div class='product-list'>
-        <%= link_to image_tag("https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png", class:"product-list-img"), "#" %>
-          <div class='product-list-body'>
-            <h3 class='product-name'>product3</h3>
-            <div class='product-details'>
-              <ul>
-                <li>30000円</li>
-                <div class ='good-btn'>
-                  <%= image_tag "star-icon.png", class:"star-icon" %>
-                    0
-                </div>
-              </ul>
-              <p>(税込)</p>
-            </div>
-          </div>
-        </a>
-      </div>
-      <div class='product-list'>
-        <%= link_to image_tag("https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png", class:"product-list-img"), "#" %>
-          <div class='product-list-body'>
-            <h3 class='product-name'>product2</h3>
-            <div class='product-details'>
-              <ul>
-                <li>20000円</li>
-                <div class ='good-btn'>
-                  <%= image_tag "star-icon.png", class:"star-icon" %>
-                    0
-                </div>
-              </ul>
-              <p>(税込)</p>
-            </div>
-          </div>
-        </a>
-      </div>
-      <div class='product-list'>
-        <%= link_to image_tag("https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/7/a001.png", class:"product-list-img"), "#" %>
-          <div class='product-list-body'>
-            <h3 class='product-name'>product2</h3>
-            <div class='product-details'>
-              <ul>
-                <li>20000円</li>
-                <div class ='good-btn'>
-                  <%= image_tag "star-icon.png", class:"star-icon" %>
-                    0
-                </div>
-              </ul>
-              <p>(税込)</p>
-            </div>
-          </div>
-        </a>
-      </div>
-    </div>
+          <% end %>
+        </li >
+      <% end %>
+    </ul>
   </div>
 </div>
 
