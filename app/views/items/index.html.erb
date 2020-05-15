@@ -158,7 +158,7 @@
     <ul class='product-lists'>
       <% @items.each do |item|%>
         <li class='product-list'>
-          <%= link_to "#" do %>
+          <%= link_to "items/show" do %>
             <%= image_tag item.image, class: "product-list-img" %>
             <div class='product-list-body'>
               <h3 class='product-name'>
