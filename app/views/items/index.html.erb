@@ -155,14 +155,6 @@
       <h2 class='pickup-container-head'>ピックアップカテゴリー</h2>
       <%= link_to '新規投稿商品', "#", class: "product-head-title" %>
     </div>
-    <div class='product-lists'>
-      <div class='product-list'>
-        <%= link_to image_tag("https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png", class:"product-list-img"), "items/show" %>
-          <div class='product-list-body'>
-            <h3 class='product-name'>product3</h3>
-            <div class='product-details'>
-              <ul>
-                <li>30000円</li>
     <ul class='product-lists'>
       <% @items.each do |item|%>
         <li class='product-list'>
