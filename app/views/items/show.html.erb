@@ -4,13 +4,15 @@
   <div class="main">
     <div class="container">
       <div class="item-box">
-        <h2 class="name">餃子の王将のぎょーざ</h2>
+        <h2 class="name">
+          <%= @item.name %>
+        </h2>
         <div class="item-img-box">
-          <%= image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png" ,class:"item-img" %>
+          <%= image_tag @item.image ,class:"item-img" %>
         </div>
         <div class="item-price-box">
           <p class="item-price">
-            ¥10000
+            ¥ <%= @item.price %>
           </p>
           <p class="item-postage">
             (税込) 送料込み
@@ -20,37 +22,34 @@
           <a href="#">購入画面に進む</a>
         </div>
         <div class="item-explain-box">
-          餃子の王将のぎょーざ、餃子の王将のぎょーざ、餃子の王将のぎょーざ、餃子の王将のぎょーざ、餃子の王将のぎょーざ、
-          餃子の王将のぎょーざ、餃子の王将のぎょーざ、餃子の王将のぎょーざ、餃子の王将のぎょーざ、餃子の王将のぎょーざ、
-          餃子の王将のぎょーざ、餃子の王将のぎょーざ、餃子の王将のぎょーざ、餃子の王将のぎょーざ、餃子の王将のぎょーざ、
-          餃子の王将のぎょーざ、餃子の王将のぎょーざ、餃子の王将のぎょーざ、餃子の王将のぎょーざ、餃子の王将のぎょーざ、
+          <%= @item.info %>
         </div>
         <div class="detail-table-box">
           <table class="detail-table">
             <tbody>
               <tr>
                 <th class="detail">出品者</th>
-                <td class="seller">hoge</td>
+                <td class="seller"><%= current_user.nickname %></td>
               </tr>
               <tr>
                 <th class="detail">カテゴリー</th>
-                <td class="seller">ハンドメイド</td>
+                <td class="seller"><%= @item.category.name %></td>
               </tr>
               <tr>
                 <th class="detail">商品の状態</th>
-                <td class="seller">未使用に近い</td>
+                <td class="seller"><%= @item.status.example %></td>
               </tr>
               <tr>
                 <th class="detail">配送料の負担</th>
-                <td class="seller">送料込み（出品者負担）</td>
+                <td class="seller"><%= @item.shipping_fee.fee %></td>
               </tr>
               <tr>
                 <th class="detail">発送元の地域</th>
-                <td class="seller">○○県</td>
+                <td class="seller"><%= @item.prefecture.name %></td>
               </tr>
               <tr>
                 <th class="detail">発送日の目安</th>
-                <td class="seller">4-7日で発送</td>
+                <td class="seller"><%= @item.delivery_date.date %></td>
               </tr>
             </tbody>
           </table>
