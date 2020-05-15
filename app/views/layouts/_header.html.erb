@@ -1,0 +1,45 @@
+<header class='header'>
+  <div class='main-header'>
+    <div class='icon'>
+      <%= link_to image_tag("top-icon.png", class:"top-icon"), "#" %>
+    </div>
+    <div class='search-box'>
+      <form class="search-form" action="#" >
+        <input class='search-box-input'  placeholder='キーワードから探す'>
+        <button class="search-button" >
+          <div class='searchbox-icon'>
+            <%= image_tag "icon-search.png", class:"search-icon" %>
+          </div>
+        </button>
+      </form>
+    </div>
+  </div>
+  <div class='nav'>
+    <ul class='lists-left'>
+      <%= link_to 'カテゴリー', "#", class: "category-list" %>
+        <div class='tree'>
+          <ul class='category-tree'>
+            <li class='category-tree-item'><a id="1" href="#">レディース</a></li>
+            <li class='category-tree-item'><a id="2" href="#">メンズ</a></li>
+            <li class='category-tree-item'><a id="3" href="#">ベビー・キッズ</a></li>
+            <li class='category-tree-item'><a id="4" href="#">インテリア・住まい・小物</a></li>
+            <li class='category-tree-item'><a id="5" href="#">本・音楽・ゲーム</a></li>
+            <li class='category-tree-item'><a id="6" href="#">おもちゃ・ホビー・グッズ</a></li>
+            <li class='category-tree-item'><a id="7" href="#">コスメ・香水・美容</a></li>
+            <li class='category-tree-item'><a id="8" href="#">家電・スマホ・カメラ</a></li>
+            <li class='category-tree-item'><a id="9" href="#">スポーツ・レジャー</a></li>
+            <li class='category-tree-item'><a id="10" href="#">ハンドメイド</a></li>
+            <li class='category-tree-item'><a id="11" href="#">チケット</a></li>
+            <li class='category-tree-item'><a id="12" href="#">自動車・オートバイ</a></li>
+            <li class='category-tree-item'><a id="13" href="#">その他</a></li>
+          </ul>
+        </div>
+      </li>
+      <%= link_to 'ブランド', "#", class: "brand-list" %>
+    </ul>
+    <ul class='lists-right'>
+      <%= link_to 'ログイン', "#", class: "login" %>
+      <%= link_to '新規登録', "#", class: "sign-up" %>
+    </ul>
+  </div>
+</header>

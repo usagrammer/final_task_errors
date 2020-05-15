@@ -18,6 +18,9 @@ class ItemsController < ApplicationController
     redirect_to new_item_path
   end
 
+  def show
+  end
+
   private
 
   def item_params

@@ -1,0 +1,106 @@
+<%= render "layouts/header" %>
+
+<div class="item-show">
+  <div class="main">
+    <div class="container">
+      <div class="item-box">
+        <h2 class="name">餃子の王将のぎょーざ</h2>
+        <div class="item-img-box">
+          <%= image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png" ,class:"item-img" %>
+        </div>
+        <div class="item-price-box">
+          <p class="item-price">
+            ¥10000
+          </p>
+          <p class="item-postage">
+            (税込) 送料込み
+          </p>
+        </div>
+        <div class="item-purchase">
+          <a href="#">購入画面に進む</a>
+        </div>
+        <div class="item-explain-box">
+          餃子の王将のぎょーざ、餃子の王将のぎょーざ、餃子の王将のぎょーざ、餃子の王将のぎょーざ、餃子の王将のぎょーざ、
+          餃子の王将のぎょーざ、餃子の王将のぎょーざ、餃子の王将のぎょーざ、餃子の王将のぎょーざ、餃子の王将のぎょーざ、
+          餃子の王将のぎょーざ、餃子の王将のぎょーざ、餃子の王将のぎょーざ、餃子の王将のぎょーざ、餃子の王将のぎょーざ、
+          餃子の王将のぎょーざ、餃子の王将のぎょーざ、餃子の王将のぎょーざ、餃子の王将のぎょーざ、餃子の王将のぎょーざ、
+        </div>
+        <div class="detail-table-box">
+          <table class="detail-table">
+            <tbody>
+              <tr>
+                <th class="detail">出品者</th>
+                <td class="seller">hoge</td>
+              </tr>
+              <tr>
+                <th class="detail">カテゴリー</th>
+                <td class="seller">ハンドメイド</td>
+              </tr>
+              <tr>
+                <th class="detail">商品の状態</th>
+                <td class="seller">未使用に近い</td>
+              </tr>
+              <tr>
+                <th class="detail">配送料の負担</th>
+                <td class="seller">送料込み（出品者負担）</td>
+              </tr>
+              <tr>
+                <th class="detail">発送元の地域</th>
+                <td class="seller">○○県</td>
+              </tr>
+              <tr>
+                <th class="detail">発送日の目安</th>
+                <td class="seller">4-7日で発送</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="option">
+          <div class="favorite-btn">
+            <%= image_tag "star-icon.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
+            <span>お気に入り 0</span>
+          </div>
+          <div class="report-btn">
+            <a href="#">
+            <%= image_tag "flag.png" ,class:"report-flag-icon" ,width:"20",height:"20"%>
+              <span>不適切な商品の通報</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="comment-box">
+        <form>
+          <textarea class="comment-text"></textarea>
+          <p class="comment-warn">
+            相手のことを考え丁寧なコメントを心がけましょう。
+            <br>
+            不快な言葉遣いなどは利用制限や退会処分となることがあります。
+          </p>
+          <button type="submit" class="comment-btn">
+            <div class="comment-flag">
+              <%= image_tag "comment.png" ,class:"comment-flag-icon" ,width:"20",height:"25"%>
+              <span>コメントする<span>
+            <div>
+          </button>
+        </form>
+      </div>
+      <div class="links">
+        <div class="next-item">
+          <a href="#">
+            ＜ 前の商品
+          </a>
+        </div>
+        <div class="next-item">
+          <a href="#">
+            後ろの商品 ＞
+          </a>
+        </div>
+      </div>
+      <div class="another-item">
+        <a href="#">ハンドメイドをもっと見る</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= render "layouts/footer" %>
