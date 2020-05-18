@@ -42,7 +42,7 @@ bundle ex rubocop -a
 | building    | string  |                                |
 | item_id     | integer | null: false, foreign_key: true |
 ### Association
-- belongs_to :item
+
 
 ## itemsテーブル
 | Column        | Type    | Options                        |
@@ -59,7 +59,7 @@ bundle ex rubocop -a
 ### Association
 - belongs_to :user
 - has_one :transaction
-- has_one :address
+
 
 ## transactions  
 | Column  | Type    | Options                        |
@@ -70,12 +70,3 @@ bundle ex rubocop -a
 - belongs_to :item
 - belongs_to :user
 
-## cardsテーブル
-| Column      | Type    | Options                        |
-| ----------- | ------- | ------------------------------ |
-| card_id     | string  | null: false                    |
-| customer_id | string  | null: false                    |
-| user_id     | integer | null: false, foreign_key: true |
-### Association
-- belongs_to :item
-- belongs_to :user

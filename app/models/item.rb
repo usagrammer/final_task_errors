@@ -8,7 +8,6 @@ class Item < ApplicationRecord
 
   has_one_attached :image
 
-  # belongs_to :user, optional:true
-  # has_one :transaction
-  # has_one :address
+  belongs_to :user, optional:true
+  # belongs_to :transaction
 end
