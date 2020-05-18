@@ -18,9 +18,21 @@
             (税込) 送料込み
           </p>
         </div>
-        <div class="item-purchase">
-          <a href="#">購入画面に進む</a>
+      <% if user_signed_in? && current_user.id == @item.user_id %>
+        <div class="item-edit">
+          <%= link_to '商品の編集', edit_item_path(@item.id), method: :get %>
         </div>
+        <div class="item-or">
+          or
+        </div>
+        <div class="item-destroy">
+          <%= link_to '削除', item_path(@item.id), method: :delete %>
+        </div>
+      <% else %>
+        <div class="item-purchase">
+          <%= link_to '購入画面に進む', transactions_path %>
+        </div>
+      <% end %>
         <div class="item-explain-box">
           <%= @item.info %>
         </div>
@@ -96,7 +108,7 @@
         </div>
       </div>
       <div class="another-item">
-        <a href="#">ハンドメイドをもっと見る</a>
+        <a href="#"><%= @item.category.name %>をもっと見る</a>
       </div>
     </div>
   </div>
