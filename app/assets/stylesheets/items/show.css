@@ -64,6 +64,41 @@
   text-decoration: none;
 }
 
+.item-edit{
+  text-align: center;
+  background-color: #ea352d;
+  line-height: 60px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffffff;
+  margin: 20px 0px;
+}
+
+.item-edit a{
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.item-or{
+  text-align: center;
+  font-size: 20px;
+}
+
+.item-destroy{
+  text-align: center;
+  background-color: lightgray;
+  line-height: 60px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffffff;
+  margin: 20px 0px;
+}
+
+.item-destroy a{
+  color: black;
+  text-decoration: none;
+}
+
 .item-explain-box{
   font-size: 18px;
   margin: 40px 0px;
