@@ -6,10 +6,17 @@ class TransactionsController < ApplicationController
   end
 
 
+  def new
+    @transaction = Transaction.new
+  end
+
+
   def create
     @item = Item.find(params[:item_id])
     pay_item
     @transaction = Transaction.new(transaction_params)
+    @transaction.save
+    redirect_to root_path
   end
 
   private

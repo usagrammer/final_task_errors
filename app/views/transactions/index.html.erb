@@ -27,7 +27,7 @@
         ¥<%= @item.price %>
       </p>
     </div>
-    <%= form_with url: item_transactions_path, id: 'charge-form', class: 'transaction-form-wrap' do |f| %>
+    <%= form_with  url: item_transactions_url, id: 'charge-form', class: 'transaction-form-wrap',local: true do |f| %>
       <div class='credit-card-form'>
         <h1 class='info-input-haedline'>
           クレジットカード情報入力
@@ -50,11 +50,11 @@
             <label class="form-text">有効期限</label>
             <span class="form-require">必須</span>
           </div>
-          <div class='input-name-wrap'>
-            
-            <%= f.text_area 'exp_month', class:"input-name", placeholder:"" %>
-            <%= f.text_area 'exp_year', class:"input-name", placeholder:"" %>
-      
+          <div class='input-expiration-date-wrap'>
+            <%= f.text_area 'exp_month', class:"input-expiration-date", placeholder:"例)3" %>
+            <p>月</p>
+            <%= f.text_area 'exp_year', class:"input-expiration-date", placeholder:"例)23" %>
+            <p>年</p>
           </div>
         </div>
         <div class="form-group">

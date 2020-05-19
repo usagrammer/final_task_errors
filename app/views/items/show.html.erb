@@ -30,7 +30,7 @@
         </div>
       <% else %>
         <div class="item-purchase">
-          <%= link_to '購入画面に進む', item_transactions_path(@item.id) %>
+          <%= link_to '購入画面に進む', item_transactions_path(item_id: @item.id) %>
         </div>
       <% end %>
         <div class="item-explain-box">
