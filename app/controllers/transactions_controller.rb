@@ -16,7 +16,6 @@ class TransactionsController < ApplicationController
 
 
   private
-  # binding.pry
   def transaction_params
     params.require(:transaction).permit(:item_id, :token).merge(user_id: current_user.id)
   end

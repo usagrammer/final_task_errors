@@ -45,15 +45,6 @@ ActiveRecord::Schema.define(version: 2020_05_14_142341) do
     t.index ["item_id"], name: "index_addresses_on_item_id"
   end
 
-  create_table "cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "card_id", null: false
-    t.string "customer_id", null: false
-    t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_cards_on_user_id"
-  end
-
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.text "info", null: false
@@ -63,8 +54,10 @@ ActiveRecord::Schema.define(version: 2020_05_14_142341) do
     t.integer "prefecture_id", null: false
     t.integer "delivery_date_id", null: false
     t.integer "price", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_items_on_user_id"
   end
 
   create_table "transactions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -97,7 +90,7 @@ ActiveRecord::Schema.define(version: 2020_05_14_142341) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "addresses", "items"
-  add_foreign_key "cards", "users"
+  add_foreign_key "items", "users"
   add_foreign_key "transactions", "items"
   add_foreign_key "transactions", "users"
 end

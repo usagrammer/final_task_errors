@@ -1,0 +1,41 @@
+<div class='app-banner'>
+  <h2 class='banner-inner-title'>だれでもかんたん、人生を変えるフリマアプリ</h2>
+  <p class='banner-inner-text'>今すぐ無料ダウンロード！</p>
+  <div class='banner-inner-icon'>
+    <%= link_to image_tag("https://linkmaker.itunes.apple.com/ja-jp/badge-lrg.svg?releaseDate=2011-09-21&kind=iossoftware&bubble=ios_apps", class:"banner-apple-btn"), "#" %>
+    <%= link_to image_tag("google-play.png", class:"banner-google-btn"), "#" %>
+  </div>
+</div>
+
+<div class='footer'>
+  <ul class='footer-contents'>
+    <li class='footer-content'>
+      <h2 class='footer-content-head'>FURIMAについて</h2>
+      <div class='link-wrap'>
+        <%= link_to '会社概要（運営会社)', "#", class: "footer-link" %>
+        <%= link_to 'プライバシーポリシー', "#", class: "footer-link" %>
+        <%= link_to 'FURIMA利用規約', "#", class: "footer-link" %>
+        <%= link_to 'ポイントに関する特約', "#", class: "footer-link" %>
+      </div>
+    </li>
+    <li class='footer-content'>
+      <h2 class='footer-content-head'>FURIMAを見る</h2>
+      <div class='link-wrap'>
+        <%= link_to 'カテゴリー一覧', "#", class: "footer-link" %>
+        <%= link_to 'ブランド一覧', "#", class: "footer-link" %>
+      </div>
+    </li>
+    <li class='footer-content'>
+      <h2 class='footer-content-head'>ヘルプ＆ガイド</h2>
+      <div class='link-wrap'>
+        <%= link_to 'FURIMAガイド', "#", class: "footer-link" %>
+        <%= link_to 'FURIMAロゴ利用ガイドライン', "#", class: "footer-link" %>
+        <%= link_to 'お知らせ', "#", class: "footer-link" %>
+      </div>
+    </li>
+  </ul>
+  <div class='footer-logo'>
+    <%= link_to image_tag("logo-white.png", class:"logo-white"), "#" %>
+    <p>© FURIMA</p>
+  </div>
+</div>
