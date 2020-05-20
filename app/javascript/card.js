@@ -1,8 +1,8 @@
-function pay() {
+const pay = () => {
   Payjp.setPublicKey("pk_test_530d79abed1768b5d8674052");
-  let form = document.getElementById("charge-form");
+  const form = document.getElementById("charge-form");
   form.addEventListener("submit", () => {
-    let formResult = document.getElementById("charge-form");
+    const formResult = document.getElementById("charge-form");
     const formData = new FormData(formResult);
 
     const card = {
@@ -11,29 +11,20 @@ function pay() {
       exp_month: formData.get("exp_month"),
       exp_year: `20${formData.get("exp_year")}`,
     };
-    // cardのなかみ
-    // {number: "424242424242", exp_month: "21", exp_year: "2042", cvc: "123"}
 
-    console.log("card情報");
-    console.log(card);
-
-    Payjp.createToken(card, function (status, response) {
+    Payjp.createToken(card, (status, response) => {
       if (status === 200) {
-        console.log("成功のresponse");
-        console.log(response);
+        const token = response.id;
+        // 描画先の要素を取得
+        const renderDom = document.getElementById("<取得先>");
+        // 描画するそのものを定義
+        const tokenObj = `<input value=${token}>`;
+        // 描画する
+        renderDom.insertAdjacentHTML("afterend", tokenObj);
       } else {
-        console.log("失敗のresponse");
-        console.log(response);
       }
     });
   });
-}
+};
 
 window.addEventListener("load", pay);
-
-// apitunnel.html:150 POST https://api.pay.jp/v1/tokens 402
-// load @ apitunnel.html:150
-// i.handleMessage @ apitunnel.html:202
-// attachedCallback @ apitunnel.html:61
-// card.js:25 失敗のresponse
-// card.js:26 {error: {…}}
