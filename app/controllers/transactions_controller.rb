@@ -3,10 +3,6 @@ class TransactionsController < ApplicationController
     @item = Item.find(params[:item_id])
   end
 
-  def new
-    @transaction = Transaction.new
-  end
-
   def create
     @item = Item.find(params[:item_id])
     pay_item
