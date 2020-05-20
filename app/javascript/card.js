@@ -6,7 +6,7 @@ function pay() {
     const card = {
       number: formData.get("number"),
       exp_month: formData.get("exp_month"),
-      exp_year: formData.get("exp_year"),
+      exp_year: `20${formData.get("exp_year")}`,
       cvc: formData.get("cvc"),
     };
 
@@ -26,5 +26,25 @@ function pay() {
     });
   });
 }
+
+// card = {
+//   card: {
+//     number: params[:number],
+//     cvc: params[:cvc],
+//     exp_month: params[:exp_month],
+//     exp_year: '20' + params[:exp_year]
+//   }
+// }
+
+// result = Payjp::Token.create(
+//   card,
+//   {
+//     # テスト目的のトークン作成
+//     # テスト等の目的でトークンの作成処理をサーバーサイドで完結させたい場合、HTTPヘッダーに X-Payjp-Direct-Token-Generate: true を指定して本APIをリクエストすることで、カード情報を直接指定してトークンを作成することができます。この機能はテストモードでのみ利用可能です。
+//     'X-Payjp-Direct-Token-Generate': 'true'
+//   }
+// )
+
+token = result.id
 
 window.addEventListener("load", pay);
