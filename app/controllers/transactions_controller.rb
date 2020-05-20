@@ -4,18 +4,22 @@ class TransactionsController < ApplicationController
   end
 
   def create
+    binding.pry
     @item = Item.find(params[:item_id])
-    pay_item
+    
     @transaction = Transaction.new(transaction_params)
     @transaction.save
     redirect_to root_path
   end
 
+
+
   private
 
   def transaction_params
-    params.permit(:item_id).merge(user_id: current_user.id)
+    params.require(:transaction).permit(:item_id, :token).merge(user_id: current_user.id)
   end
+
 
   def pay_item
     Payjp.api_key = 'sk_test_a309a0a09c01fc5695e76319'
@@ -50,4 +54,5 @@ class TransactionsController < ApplicationController
       currency: 'jpy'
     )
   end
+
 end
