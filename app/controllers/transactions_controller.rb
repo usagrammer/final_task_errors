@@ -4,9 +4,8 @@ class TransactionsController < ApplicationController
   end
 
   def create
-    binding.pry
     @item = Item.find(params[:item_id])
-    
+    binding.pry
     @transaction = Transaction.new(transaction_params)
     @transaction.save
     redirect_to root_path

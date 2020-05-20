@@ -1,50 +1,39 @@
 function pay() {
+  Payjp.setPublicKey("pk_test_530d79abed1768b5d8674052");
   let form = document.getElementById("charge-form");
   form.addEventListener("submit", () => {
     let formResult = document.getElementById("charge-form");
     const formData = new FormData(formResult);
+
     const card = {
       number: formData.get("number"),
+      cvc: formData.get("cvc"),
       exp_month: formData.get("exp_month"),
       exp_year: `20${formData.get("exp_year")}`,
-      cvc: formData.get("cvc"),
     };
+    // cardのなかみ
+    // {number: "424242424242", exp_month: "21", exp_year: "2042", cvc: "123"}
 
-    Payjp.createToken(card, (response) => {
-      if (response.error) {
-        form.find(".payment-errors").text(response.error.message);
-        form.find("button").prop("disabled", false);
-      } else {
-        // document.getElementById("number").removeAttr("name");
-        // document.getElementById("exp_month").removeAttr("name");
-        // document.getElementById("exp_year").removeAttr("name");
-        // document.getElementById("cvc").removeAttr("name");
+    console.log("card情報");
+    console.log(card);
+
+    Payjp.createToken(card, function (status, response) {
+      if (status === 200) {
+        console.log("成功のresponse");
         console.log(response);
-        // let token = response.id;
-        // form.append($('<input type="hidden" name="payjpToken" />').val(token));
+      } else {
+        console.log("失敗のresponse");
+        console.log(response);
       }
     });
   });
 }
 
-// card = {
-//   card: {
-//     number: params[:number],
-//     cvc: params[:cvc],
-//     exp_month: params[:exp_month],
-//     exp_year: '20' + params[:exp_year]
-//   }
-// }
-
-// result = Payjp::Token.create(
-//   card,
-//   {
-//     # テスト目的のトークン作成
-//     # テスト等の目的でトークンの作成処理をサーバーサイドで完結させたい場合、HTTPヘッダーに X-Payjp-Direct-Token-Generate: true を指定して本APIをリクエストすることで、カード情報を直接指定してトークンを作成することができます。この機能はテストモードでのみ利用可能です。
-//     'X-Payjp-Direct-Token-Generate': 'true'
-//   }
-// )
-
-token = result.id
-
 window.addEventListener("load", pay);
+
+// apitunnel.html:150 POST https://api.pay.jp/v1/tokens 402
+// load @ apitunnel.html:150
+// i.handleMessage @ apitunnel.html:202
+// attachedCallback @ apitunnel.html:61
+// card.js:25 失敗のresponse
+// card.js:26 {error: {…}}
