@@ -1,15 +1,11 @@
 class TransactionsController < ApplicationController
-
-
   def index
     @item = Item.find(params[:item_id])
   end
 
-
   def new
     @transaction = Transaction.new
   end
-
 
   def create
     @item = Item.find(params[:item_id])
@@ -20,6 +16,7 @@ class TransactionsController < ApplicationController
   end
 
   private
+
   def transaction_params
     params.permit(:item_id).merge(user_id: current_user.id)
   end
@@ -31,11 +28,11 @@ class TransactionsController < ApplicationController
     # Payjp.read_timeout = 90 # optionally
 
     card = {
-      :card => {
-        :number => params[:number],
-        :cvc =>  params[:cvc],
-        :exp_month =>  params[:exp_month],
-        :exp_year =>  '20'+params[:exp_year]
+      card: {
+        number: params[:number],
+        cvc: params[:cvc],
+        exp_month: params[:exp_month],
+        exp_year: '20' + params[:exp_year]
       }
     }
 
@@ -52,9 +49,9 @@ class TransactionsController < ApplicationController
 
     # ex, create charge
     charge = Payjp::Charge.create(
-      :amount => @item.price,
-      :card => token,
-      :currency => 'jpy',
+      amount: @item.price,
+      card: token,
+      currency: 'jpy'
     )
   end
 end
