@@ -295,7 +295,7 @@
   font-size: 16px;
 }
 
-.product-details > ul {
+.product-details-upper {
   display: flex;
   align-items: center;
   justify-content: space-between;
