@@ -1,7 +1,9 @@
 const pay = () => {
   Payjp.setPublicKey("pk_test_530d79abed1768b5d8674052");
   const form = document.getElementById("charge-form");
-  form.addEventListener("submit", () => {
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    
     const formResult = document.getElementById("charge-form");
     const formData = new FormData(formResult);
 
@@ -14,13 +16,15 @@ const pay = () => {
 
     Payjp.createToken(card, (status, response) => {
       if (status === 200) {
+
         const token = response.id;
         // 描画先の要素を取得
-        const renderDom = document.getElementById("<取得先>");
+        const renderDom = document.getElementById("charge-form");
         // 描画するそのものを定義
-        const tokenObj = `<input value=${token}>`;
+        const tokenObj = `<input value=${token} type="hidden" name='token'>`;
         // 描画する
-        renderDom.insertAdjacentHTML("afterend", tokenObj);
+        renderDom.insertAdjacentHTML("beforeend", tokenObj);
+        document.getElementById("charge-form").submit();
       } else {
       }
     });

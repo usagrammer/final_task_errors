@@ -14,9 +14,14 @@ class TransactionsController < ApplicationController
   private
 
   def transaction_params
-    params.require(:transaction).permit(:item_id, :token).merge(user_id: current_user.id)
+    params.permit(:item_id).merge(user_id: current_user.id)
   end
 
+  # def token_params
+  #   params.permit(:token)
+  # end
+
+  
   def pay_item
     Payjp.api_key = 'sk_test_a309a0a09c01fc5695e76319'
     charge = Payjp::Charge.create(
