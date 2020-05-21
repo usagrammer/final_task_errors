@@ -148,3 +148,15 @@
   text-decoration: none;
   line-height: 32px;
 }
+
+.user-nickname{
+  color: #333;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: right;
+  padding-left: 16px;
+  min-width: 80px;
+  text-decoration: none;
+  line-height: 32px;
+  margin-right: 30px;
+}
