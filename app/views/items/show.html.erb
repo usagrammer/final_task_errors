@@ -18,7 +18,7 @@
             (税込) 送料込み
           </p>
         </div>
-      <% if user_signed_in? && current_user.id == @item.user_id %>
+        <% if user_signed_in? && current_user.id == @item.user_id %>
         <div class="item-edit">
           <%= link_to '商品の編集', edit_item_path(@item.id), method: :get %>
         </div>
@@ -28,11 +28,11 @@
         <div class="item-destroy">
           <%= link_to '削除', item_path(@item.id), method: :delete %>
         </div>
-      <% else %>
+        <% else %>
         <div class="item-purchase">
           <%= link_to '購入画面に進む', item_transactions_path(item_id: @item.id) %>
         </div>
-      <% end %>
+        <% end %>
         <div class="item-explain-box">
           <%= @item.info %>
         </div>
@@ -49,11 +49,11 @@
               </tr>
               <tr>
                 <th class="detail">商品の状態</th>
-                <td class="seller"><%= @item.status.example %></td>
+                <td class="seller"><%= @item.sales_status.example %></td>
               </tr>
               <tr>
                 <th class="detail">配送料の負担</th>
-                <td class="seller"><%= @item.shipping_fee.fee %></td>
+                <td class="seller"><%= @item.shipping_fee_status.fee %></td>
               </tr>
               <tr>
                 <th class="detail">発送元の地域</th>
@@ -61,7 +61,7 @@
               </tr>
               <tr>
                 <th class="detail">発送日の目安</th>
-                <td class="seller"><%= @item.delivery_date.date %></td>
+                <td class="seller"><%= @item.scheduled_delivery.date %></td>
               </tr>
             </tbody>
           </table>
@@ -73,7 +73,7 @@
           </div>
           <div class="report-btn">
             <a href="#">
-            <%= image_tag "flag.png" ,class:"report-flag-icon" ,width:"20",height:"20"%>
+              <%= image_tag "flag.png" ,class:"report-flag-icon" ,width:"20",height:"20"%>
               <span>不適切な商品の通報</span>
             </a>
           </div>
@@ -91,7 +91,7 @@
             <div class="comment-flag">
               <%= image_tag "comment.png" ,class:"comment-flag-icon" ,width:"20",height:"25"%>
               <span>コメントする<span>
-            <div>
+                  <div>
           </button>
         </form>
       </div>

@@ -109,7 +109,7 @@
   <div class='pickup-container'>
     <div class='product-head'>
       <h2 class='pickup-container-head'>ピックアップカテゴリー</h2>
-      <%= link_to '新規投稿商品', "#", class: "product-head-title" %>
+      <%= link_to '新規投稿商品', path: new_item_path, class: "product-head-title" %>
     </div>
     <ul class='product-lists'>
       <% if @items[0] != nil%>

@@ -12,11 +12,13 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
+
     if @item.valid?
       @item.save
       return redirect_to root_path
     end
-    redirect_to new_item_path
+
+    render "new"
   end
 
   def show
@@ -45,10 +47,10 @@ class ItemsController < ApplicationController
       :name,
       :info,
       :category_id,
-      :status_id,
-      :shipping_fee_id,
+      :sales_status_id,
+      :shipping_fee_status_id,
       :prefecture_id,
-      :delivery_date_id,
+      :scheduled_delivery_id,
       :price
     ).merge(user_id: current_user.id)
   end

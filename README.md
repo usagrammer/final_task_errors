@@ -51,18 +51,18 @@ bundle ex rubocop -a
 
 ## items table
 
-| Column                  | Type       | Options           |
-|-------------------------|------------|-------------------|
-| id(PK)                  | デフォルト | null: false       |
-| name                    | string     | null: false       |
-| price                   | integer    | null: false       |
-| info                    | text       | null: false       |
-| delivery_date           | date       | null: false       |
-| shipping_fee_status_key | integer    | null: false       |
-| prefecture_key          | integer    | null: false       |
-| sales_status_key        | integer    | null: false       |
-| category_key            | integer    | null: false       |
-| user_id(FK)             | integer    | foreign_key: true |
+| Column                              | Type       | Options           |
+|-------------------------------------|------------|-------------------|
+| id(PK)                              | デフォルト | null: false       |
+| name                                | string     | null: false       |
+| price                               | integer    | null: false       |
+| info                                | text       | null: false       |
+| scheduled_delivery_id(acitve_hash)  | integer    | null: false       |
+| shipping_fee_status_id(acitve_hash) | integer    | null: false       |
+| prefecture_id(acitve_hash)          | integer    | null: false       |
+| sales_status_id(acitve_hash)        | integer    | null: false       |
+| category_id(acitve_hash)            | integer    | null: false       |
+| user_id(FK)                         | integer    | foreign_key: true |
 
 
 ### Association

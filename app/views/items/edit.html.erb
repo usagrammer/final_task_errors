@@ -5,11 +5,11 @@
 
   <div class="main">
     <h2 class="items-info-title">商品の情報を入力</h2>
-  <%= form_with model: @item , local: true do |f| %>
+    <%= form_with model: @item , local: true do |f| %>
     <div class="img-upload">
       <div class="text">
         出品画像
-      <span class="require">必須</span>
+        <span class="require">必須</span>
       </div>
       <div>
         <p class="click-upload">
@@ -24,14 +24,14 @@
       <div>
         <div class="items-name">
           商品名
-        <span class="require">必須</span>
+          <span class="require">必須</span>
         </div>
         <%= f.text_area :name, class:"items-text", placeholder:"商品名（必須 40文字まで)", maxlength:"40" %>
       </div>
       <div class="items-explain">
         <div class="items-name">
           商品の説明
-        <span class="require">必須</span>
+          <span class="require">必須</span>
         </div>
         <%= f.text_area :info, class:"items-text", placeholder:"商品の説明（必須 1,000文字まで）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。" ,rows:"7" ,maxlength:"1000" %>
       </div>
@@ -42,7 +42,7 @@
         <div>
           <div class="text">
             カテゴリー
-          <span class="require">必須</span>
+            <span class="require">必須</span>
           </div>
           <div class="items-select">
             <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"form"}) %>
@@ -51,10 +51,10 @@
         <div class="items-status-box">
           <div class="text">
             商品の状態
-          <span class="require">必須</span>
+            <span class="require">必須</span>
           </div>
           <div class="items-select">
-            <%= f.collection_select(:status_id, Status.all, :id, :example, {}, {class:"form"}) %>
+            <%= f.collection_select(:sales_status_id, SalesStatus.all, :id, :example, {}, {class:"form"}) %>
           </div>
         </div>
       </div>
@@ -68,16 +68,16 @@
         <div>
           <div class="text">
             配送料の負担
-          <span class="require">必須</span>
+            <span class="require">必須</span>
           </div>
           <div class="items-select">
-            <%= f.collection_select(:shipping_fee_id, ShippingFee.all, :id, :fee, {}, {class:"form"}) %>
+            <%= f.collection_select(:shipping_fee_status_id, ShippingFeeStatus.all, :id, :fee, {}, {class:"form"}) %>
           </div>
         </div>
         <div class="delivery-select-form">
           <div class="text">
             発送元の地域
-          <span class="require">必須</span>
+            <span class="require">必須</span>
           </div>
           <div class="items-select">
             <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"form"}) %>
@@ -86,10 +86,10 @@
         <div class="delivery-select-form">
           <div class="text">
             発送までの日数
-          <span class="require">必須</span>
+            <span class="require">必須</span>
           </div>
           <div class="items-select">
-            <%= f.collection_select(:delivery_date_id, DeliveryDate.all, :id, :date, {}, {class:"form"}) %>
+            <%= f.collection_select(:scheduled_delivery_id, ScheduledDelivery.all, :id, :date, {}, {class:"form"}) %>
           </div>
         </div>
       </div>
@@ -103,7 +103,7 @@
         <li class="right">
           <div class="label">
             価格
-          <span class="require">必須</span>
+            <span class="require">必須</span>
           </div>
           <p class="mark">¥</p>
           <div>
@@ -124,17 +124,17 @@
     </div>
     <div class="caution">
       <div class="box">
-        <p class ="sentence">
+        <p class="sentence">
           <a href="#">禁止されている出品、</a>
           <a href="#">行為</a>
           を必ずご確認ください。
         </p>
-        <p class ="sentence">
+        <p class="sentence">
           またブランド品でシリアルナンバー等がある場合はご記載ください。
           <a href="#">偽ブランドの販売</a>
           は犯罪であり処罰される可能性があります。
         </p>
-        <p class ="sentence">
+        <p class="sentence">
           また、出品をもちまして
           <a href="#">加盟店規約</a>
           に同意したことになります。
