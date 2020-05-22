@@ -3,11 +3,15 @@ class User < ApplicationRecord
 
   # <<バリデーション>>
   validates :nickname, presence: true, uniqueness: true
+
   # パスワードの文字数制限:7〜50文字
   devise :validatable, password_length: 7..50
-  # format: { with: /\A[a-z0-9]+\z/, message: "ユーザー名は半角英数字です"}
-  # validates :legacy_code, format: { with: /\A[a-zA-Z]+\z/,
-  #   message: "英文字のみが使えます" }
+  with_options presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/, message: "全角文字を使用してください" } do
+    validates :first_name
+    validates :last_name
+    validates :first_name_kana
+    validates :last_name_kana
+  end
 
   #<<アソシエーション>>
   has_many :items
