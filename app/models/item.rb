@@ -11,7 +11,7 @@ class Item < ApplicationRecord
   has_one_attached :image
 
   #<<アソシエーション>>
-  belongs_to :user, optional: true
-  has_one :transaction
+  belongs_to :user
+  has_one :ItemTransaction
   has_one :address
 end

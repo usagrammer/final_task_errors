@@ -68,10 +68,10 @@ bundle ex rubocop -a
 ### Association
 
 * belongs_to :user
-* has_one :transaction
+* has_one :item_transaction
 * has_one :address
 
-## transactions table
+## item_transactions table
 
 | Column      | Type    | Options           |
 |-------------|---------|-------------------|
