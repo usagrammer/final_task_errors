@@ -1,10 +1,10 @@
 class TransactionsController < ApplicationController
+  before_action :select_item, only: [:index, :create]
+
   def index
-    @item = Item.find(params[:item_id])
   end
 
   def create
-    @item = Item.find(params[:item_id])
     pay_item
     @transaction = Transaction.new(transaction_params)
     @transaction.save
@@ -17,18 +17,11 @@ class TransactionsController < ApplicationController
     params.permit(:item_id).merge(user_id: current_user.id)
   end
 
-  # def token_params
-  #   params.permit(:token)
-  # end
-
-  
   def pay_item
-    Payjp.api_key = 'sk_test_a309a0a09c01fc5695e76319'
-    charge = Payjp::Charge.create(
-      amount: @item.price,
-      card: params[:token],
-      currency: 'jpy'
-    )
+    PayItemService.pay_item(@item.price, params[:token])
   end
 
+  def select_item
+    @item = Item.find(params[:id])
+  end
 end

@@ -136,30 +136,6 @@
       </li>
       <% end %>
       <% end %>
-      <% if @items[5] != nil%>
-      <% @items[5..9].each do |item|%>
-      <li class='product-list'>
-        <%= link_to item_path(item.id) do %>
-        <%= image_tag item.image, class: "product-list-img" %>
-        <div class='product-list-body'>
-          <h3 class='product-name'>
-            <%= item.name %>
-          </h3>
-          <div class='product-details'>
-            <div class='product-details-upper'>
-              <span><%= item.price %></span>
-              <div class='good-btn'>
-                <%= image_tag "star-icon.png", class:"star-icon" %>
-                0
-              </div>
-            </div>
-            <p>(税込)</p>
-          </div>
-        </div>
-        <% end %>
-      </li>
-      <% end %>
-      <% end %>
       <% if @items.length == 0%>
       <li class='product-list'>
         <%= link_to "#" do %>
