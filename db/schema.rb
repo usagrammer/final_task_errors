@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_14_072023) do
+ActiveRecord::Schema.define(version: 2020_05_22_025754) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -36,8 +36,8 @@ ActiveRecord::Schema.define(version: 2020_05_14_072023) do
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "postal_code", null: false
     t.integer "prefecture", null: false
-    t.string "city"
-    t.string "addresses"
+    t.string "city", null: false
+    t.string "addresses", null: false
     t.string "building"
     t.bigint "item_id"
     t.datetime "created_at", precision: 6, null: false
@@ -45,28 +45,28 @@ ActiveRecord::Schema.define(version: 2020_05_14_072023) do
     t.index ["item_id"], name: "index_addresses_on_item_id"
   end
 
-  create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", null: false
-    t.text "info", null: false
-    t.integer "category_id", null: false
-    t.integer "status_id", null: false
-    t.integer "shipping_fee_id", null: false
-    t.integer "prefecture_id", null: false
-    t.integer "delivery_date_id", null: false
-    t.integer "price", null: false
-    t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_items_on_user_id"
-  end
-
-  create_table "transactions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "item_transactions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "item_id"
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["item_id"], name: "index_transactions_on_item_id"
-    t.index ["user_id"], name: "index_transactions_on_user_id"
+    t.index ["item_id"], name: "index_item_transactions_on_item_id"
+    t.index ["user_id"], name: "index_item_transactions_on_user_id"
+  end
+
+  create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "info", null: false
+    t.integer "price", null: false
+    t.integer "category_id", null: false
+    t.integer "sales_status_id", null: false
+    t.integer "shipping_fee_status_id", null: false
+    t.integer "prefecture_id", null: false
+    t.integer "scheduled_delivery_id", null: false
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_items_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -77,19 +77,19 @@ ActiveRecord::Schema.define(version: 2020_05_14_072023) do
     t.string "last_name", null: false
     t.string "first_name_kana", null: false
     t.string "last_name_kana", null: false
+    t.date "birth_date", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.date "birth_date", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "addresses", "items"
+  add_foreign_key "item_transactions", "items"
+  add_foreign_key "item_transactions", "users"
   add_foreign_key "items", "users"
-  add_foreign_key "transactions", "items"
-  add_foreign_key "transactions", "users"
 end
