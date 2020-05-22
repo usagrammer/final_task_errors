@@ -36,8 +36,8 @@ ActiveRecord::Schema.define(version: 2020_05_14_072023) do
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "postal_code", null: false
     t.integer "prefecture", null: false
-    t.string "city"
-    t.string "addresses"
+    t.string "city", null: false
+    t.string "addresses", null: false
     t.string "building"
     t.bigint "item_id"
     t.datetime "created_at", precision: 6, null: false
@@ -48,13 +48,13 @@ ActiveRecord::Schema.define(version: 2020_05_14_072023) do
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.text "info", null: false
-    t.integer "category_id", null: false
-    t.integer "status_id", null: false
-    t.integer "shipping_fee_id", null: false
-    t.integer "prefecture_id", null: false
-    t.integer "delivery_date_id", null: false
     t.integer "price", null: false
-    t.bigint "user_id", null: false
+    t.integer "category_key", null: false
+    t.integer "sales_status_key", null: false
+    t.integer "shipping_fee_status_key", null: false
+    t.integer "prefecture_key", null: false
+    t.date "delivery_date", null: false
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_items_on_user_id"
@@ -77,12 +77,12 @@ ActiveRecord::Schema.define(version: 2020_05_14_072023) do
     t.string "last_name", null: false
     t.string "first_name_kana", null: false
     t.string "last_name_kana", null: false
+    t.date "birth_date", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.date "birth_date", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

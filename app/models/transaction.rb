@@ -1,4 +1,5 @@
 class Transaction < ApplicationRecord
+  #<<アソシエーション>>
   belongs_to :user
-  # has_one  :items
+  belongs_to :items
 end

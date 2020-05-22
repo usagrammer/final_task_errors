@@ -1,72 +1,84 @@
-# rubocop
+## rubocop
 
-checkのみ
+設定は`.rubocop.yml`を参照。
 
-```
+### チェック
+```bash
 bundle ex rubocop
 ```
 
-check内容を自動修正
-
-```
+### チェック＋自動修正
+```bash
 bundle ex rubocop -a
 ```
 
-# DB設計
+## DB設計
 
-## usersテーブル
-| Column          | Type    | Options                  |
-| --------------- | ------- | ------------------------ |
-| nickname        | string  | null: false              |
-| email           | string  | null: false,unique: true |
-| password        | string  | null: false              |
-| birth_year      | integer | null: false              |
-| birth_month     | integer | null: false              |
-| birth_day       | integer | null: false              |
-| first_name      | string  | null: false              |
-| last_name       | string  | null: false              |
-| first_name_kana | string  | null: false              |
-| last_name_kana  | string  | null: false              |
-### Association
-- has_many :items
-- has_many :transactions
-- has_many :card
+## users table
 
-## addressesテーブル
-| Column      | Type    | Options                        |
-| ----------- | ------- | ------------------------------ |
-| postal_code | integer | null: false                    |
-| prefecture  | integer | null: false                    |
-| city        | string  | null: false                    |
-| address     | string  | null: false                    |
-| building    | string  |                                |
-| item_id     | integer | null: false, foreign_key: true |
+| Column             | Type               | Options                 |
+|--------------------|--------------------|-------------------------|
+| id(PK)             | デフォルト         | null: false             |
+| nickname           | deviseのデフォルト | null: false,index: true |
+| email              | deviseのデフォルト | null: false             |
+| encrypted_password | integer            | null: false             |
+| first_name         | string             | null: false             |
+| last_name          | string             | null: false             |
+| first_name_kana    | string             | null: false             |
+| last_name_kana     | string             | null: false             |
+| birth_date         | integer            | null: false             |
+
 ### Association
 
+* has_many :items
+* has_many :transactions
+* has_many :card
 
-## itemsテーブル
-| Column        | Type    | Options                        |
-| ------------- | ------- | ------------------------------ |
-| name          | string  | null: false                    |
-| info          | text    | null: false                    |
-| category      | integer | null: false                    |
-| status        | integer | null: false                    |
-| shipping_fee  | integer | null: false                    |
-| prefecture    | integer | null: false                    |
-| delivery_date | integer | null: false                    |
-| price         | integer | null: false                    |
-| user_id       | integer | null: false, foreign_key: true | <!-- <売り手> --> |
+## addresses table
+
+| Column      | Type    | Options           |
+|-------------|---------|-------------------|
+| postal_code | integer | null: false       |
+| prefecture  | integer | null: false       |
+| city        | string  | null: false       |
+| address     | string  | null: false       |
+| building    | string  |                   |
+| item_id(FK) | integer | foreign_key: true |
+
 ### Association
-- belongs_to :user
-- has_one :transaction
+
+* belongs_to :items
+
+## items table
+
+| Column                  | Type       | Options           |
+|-------------------------|------------|-------------------|
+| id(PK)                  | デフォルト | null: false       |
+| name                    | string     | null: false       |
+| price                   | integer    | null: false       |
+| info                    | text       | null: false       |
+| delivery_date           | date       | null: false       |
+| shipping_fee_status_key | integer    | null: false       |
+| prefecture_key          | integer    | null: false       |
+| sales_status_key        | integer    | null: false       |
+| category_key            | integer    | null: false       |
+| user_id(FK)             | integer    | foreign_key: true |
 
 
-## transactions  
-| Column  | Type    | Options                        |
-| ------- | ------- | ------------------------------ |
-| item_id | integer | null: false, foreign_key: true |
-| user_id | integer | null: false, foreign_key: true | <!-- <買い手> --> |
 ### Association
-- belongs_to :item
-- belongs_to :user
 
+* belongs_to :user
+* has_one :transaction
+* has_one :address
+
+## transactions table
+
+| Column      | Type    | Options           |
+|-------------|---------|-------------------|
+| item_id(FK) | integer | foreign_key: true |
+| user_id(FK) | integer | foreign_key: true |
+
+### Association
+
+* belongs_to :item
+* belongs_to :user
