@@ -26,7 +26,7 @@
     <ul class='introduction-lists'>
       <li class='introduction-list'>
         <%= image_tag "pict-reason-01.jpg", class:"list-pict" %>
-          <span class='number'>1</span>
+        <span class='number'>1</span>
         <h3 class='list-text'>
           <span class='text-blue'>3分</span>
           ですぐに出品
@@ -37,7 +37,7 @@
       </li>
       <li class='introduction-list'>
         <%= image_tag "pict-reason-02.jpg", class:"list-pict" %>
-          <span class='number'>2</span>
+        <span class='number'>2</span>
         <h3 class='list-text'>
           <span class='text-blue'>シンプル</span>
           で使いやすい
@@ -48,7 +48,7 @@
       </li>
       <li class='introduction-list'>
         <%= image_tag "pict-reason-03.jpg", class:"list-pict" %>
-          <span class='number'>3</span>
+        <span class='number'>3</span>
         <h3 class='list-text'>
           手数料
           <span class='text-blue'>業界最安</span>
@@ -113,76 +113,76 @@
     </div>
     <ul class='product-lists'>
       <% if @items[0] != nil%>
-        <% @items[0..4].each do |item|%>
-          <li class='product-list'>
-            <%= link_to item_path(item.id) do %>
-              <%= image_tag item.image, class: "product-list-img" %>
-              <div class='product-list-body'>
-                <h3 class='product-name'>
-                  <%= item.name %>
-                </h3>
-                <div class='product-details'>
-                  <div class='product-details-upper'>
-                    <span><%= item.price %></span>
-                    <div class ='good-btn'>
-                      <%= image_tag "star-icon.png", class:"star-icon" %>
-                        0
-                    </div>
-                  </div>
-                <p>(税込)</p>
+      <% @items[0..4].each do |item|%>
+      <li class='product-list'>
+        <%= link_to item_path(item.id) do %>
+        <%= image_tag item.image, class: "product-list-img" %>
+        <div class='product-list-body'>
+          <h3 class='product-name'>
+            <%= item.name %>
+          </h3>
+          <div class='product-details'>
+            <div class='product-details-upper'>
+              <span><%= item.price %></span>
+              <div class='good-btn'>
+                <%= image_tag "star-icon.png", class:"star-icon" %>
+                0
               </div>
             </div>
-            <% end %>
-          </li >
+            <p>(税込)</p>
+          </div>
+        </div>
         <% end %>
+      </li>
+      <% end %>
       <% end %>
       <% if @items[5] != nil%>
-        <% @items[5..9].each do |item|%>
-          <li class='product-list'>
-            <%= link_to item_path(item.id) do %>
-              <%= image_tag item.image, class: "product-list-img" %>
-              <div class='product-list-body'>
-                <h3 class='product-name'>
-                  <%= item.name %>
-                </h3>
-                <div class='product-details'>
-                  <div class='product-details-upper'>
-                    <span><%= item.price %></span>
-                    <div class ='good-btn'>
-                      <%= image_tag "star-icon.png", class:"star-icon" %>
-                        0
-                    </div>
-                  </div>
-                <p>(税込)</p>
+      <% @items[5..9].each do |item|%>
+      <li class='product-list'>
+        <%= link_to item_path(item.id) do %>
+        <%= image_tag item.image, class: "product-list-img" %>
+        <div class='product-list-body'>
+          <h3 class='product-name'>
+            <%= item.name %>
+          </h3>
+          <div class='product-details'>
+            <div class='product-details-upper'>
+              <span><%= item.price %></span>
+              <div class='good-btn'>
+                <%= image_tag "star-icon.png", class:"star-icon" %>
+                0
               </div>
             </div>
-            <% end %>
-          </li >
+            <p>(税込)</p>
+          </div>
+        </div>
         <% end %>
+      </li>
       <% end %>
-      <% if @items.length == 0%> 
-        <li class='product-list'>
-          <%= link_to "#" do %>
-            <%= image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png", class: "product-list-img" %>
-            <div class='product-list-body'>
-              <h3 class='product-name'>sample name</h3>
-              <div class='product-details'>
-                <div class='product-details-upper'>
-                  <span><%= item.price %></span>
-                  <div class ='good-btn'>
-                    <%= image_tag "star-icon.png", class:"star-icon" %>
-                      0
-                  </div>
-                </div>
-              <p>(税込)</p>
-            </div> 
+      <% end %>
+      <% if @items.length == 0%>
+      <li class='product-list'>
+        <%= link_to "#" do %>
+        <%= image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png", class: "product-list-img" %>
+        <div class='product-list-body'>
+          <h3 class='product-name'>sample name</h3>
+          <div class='product-details'>
+            <div class='product-details-upper'>
+              <span><%= @item.price %></span>
+              <div class='good-btn'>
+                <%= image_tag "star-icon.png", class:"star-icon" %>
+                0
+              </div>
+            </div>
+            <p>(税込)</p>
+          </div>
           <% end %>
-        </li >
+      </li>
       <% end %>
-      
+
     </ul>
   </div>
-</div> 
+</div>
 
 <div class='purchase-btn'>
   <span class='purchase-btn-text'>出品する</span>
