@@ -76,6 +76,7 @@ bundle ex rubocop -a
 | city        | string  | null: false       |
 | address     | string  | null: false       |
 | building    | string  |                   |
+| phone       | integer | null: false       |
 | item_id(FK) | integer | foreign_key: true |
 
 ### Association

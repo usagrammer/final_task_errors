@@ -25,7 +25,8 @@ window.addEventListener("DOMContentLoaded", () => {
           renderDom.insertAdjacentHTML("beforeend", tokenObj);
           document.getElementById("charge-form").submit();
         } else {
-          window.alert('購入処理に失敗しました。\nお手数ですが最初からやり直してください。');
+          // window.alert('購入処理に失敗しました。\nお手数ですが最初からやり直してください。');
+          document.getElementById("charge-form").submit();
         }
       });
     });

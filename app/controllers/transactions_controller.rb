@@ -2,26 +2,39 @@ class TransactionsController < ApplicationController
   before_action :select_item, only: [:index, :create]
 
   def index
+    @item_transaction = PayForm.new()
   end
 
   def create
-    pay_item
-    @item_transaction = ItemTransaction.new(item_transaction_params)
-    @item_transaction.save
-    redirect_to root_path
+    @item_transaction = PayForm.new(item_transaction_params)
+    if @item_transaction.valid?
+      pay_item
+      @item_transaction.save
+      redirect_to root_path
+    end
+    render "index"
   end
 
   private
 
   def item_transaction_params
-    params.permit(:item_id).merge(item_id: @item.id, user_id: current_user.id)
+    params.permit(
+      :item_id,
+      :token,
+      :postal_code,
+      :prefecture,
+      :city,
+      :addresses,
+      :building,
+      :phone_number
+    ).merge(user_id: current_user.id)
   end
 
   def pay_item
     Payjp.api_key = ENV["PAYJP_SK"]
     charge = Payjp::Charge.create(
       amount: @item.price,
-      card: params[:token],
+      card: item_transaction_params[:token],
       currency: "jpy",
     )
   end
