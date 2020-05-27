@@ -12,7 +12,7 @@ class Item < ApplicationRecord
   end
 
   # 選択関係で「---」のままになっていないか検証
-  with_options numericality: { other_than: 1, message: "を選択してください" } do
+  with_options numericality: { other_than: 0, message: "を選択してください" } do
     validates :category_id
     validates :sales_status_id
     validates :shipping_fee_status_id
