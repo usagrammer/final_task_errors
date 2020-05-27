@@ -1,6 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :item_params, only: :create
-  before_action :set_item, only: [:show, :edit]
+  before_action :select_item, only: [:show, :edit, :update, :destroy]
 
   def index
     @items = Item.all.order(created_at: :desc)
@@ -12,12 +11,12 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-
+    # バリデーションで問題があれば、保存はされず「商品出品画面」を再描画
     if @item.valid?
       @item.save
       return redirect_to root_path
     end
-
+    # アクションのnewをコールすると、エラーメッセージが入った@itemが上書きされてしまうので注意
     render "new"
   end
 
@@ -28,14 +27,12 @@ class ItemsController < ApplicationController
   end
 
   def update
-    item = Item.find(params[:id])
-    item.update(item_params)
+    @item.update(item_params)
     redirect_to item_path
   end
 
   def destroy
-    item = Item.find(params[:id])
-    item.destroy
+    @item.destroy
     redirect_to root_path
   end
 
@@ -55,7 +52,7 @@ class ItemsController < ApplicationController
     ).merge(user_id: current_user.id)
   end
 
-  def set_item
+  def select_item
     @item = Item.find(params[:id])
   end
 end

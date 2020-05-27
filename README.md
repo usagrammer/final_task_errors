@@ -1,3 +1,36 @@
+## 環境変数
+
+### PAYJP
+
+bash_profileもしくはzshrcへ追記してください。
+記入後は`resources ~/.zshrc`or`resources ~/.bash_profile`で反映しましょう。
+もしくは、ターミナルの再起動を行ってください。
+
+```bash
+export PAYJP_SK="登録しているPAYJPのSK"
+export PAYJP_PK="登録しているPAYJPのPK"
+```
+
+### webpackerで環境変数を使用するには
+
+`furima/config/initializers/webpacker.rb`を作成し下記のように記述します。
+
+```ruby
+Webpacker::Compiler.env["PAYJP_SK"] = ENV["PAYJP_SK"]
+```
+
+あとはjsファイルで下記のように使用するだけです。
+
+```javascript
+  const PAYJP_SK = process.env.PAYJP_SK
+  Payjp.setPublicKey(PAYJP_SK);
+```
+
+こちらの記事を参考にしています。
+https://qiita.com/takeyuweb/items/61e6ba07fe0df3079041
+
+
+
 ## rubocop
 
 設定は`.rubocop.yml`を参照。
@@ -43,6 +76,7 @@ bundle ex rubocop -a
 | city        | string  | null: false       |
 | address     | string  | null: false       |
 | building    | string  |                   |
+| phone       | integer | null: false       |
 | item_id(FK) | integer | foreign_key: true |
 
 ### Association
