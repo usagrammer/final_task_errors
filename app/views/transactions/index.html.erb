@@ -1,4 +1,4 @@
-<%= render "layouts/sign-up-header"%>
+<%= render "shared/sign-up-header"%>
 
 <div class='transaction-main'>
   <div class='transaction-main-wrap'>
@@ -28,7 +28,7 @@
       </p>
     </div>
     <%= form_with url: item_transactions_path, id: 'charge-form', class: 'transaction-form-wrap',local: true do |f| %>
-    <%= render 'layouts/error_messages', model: @item_transaction %>
+    <%= render 'shared/error_messages', model: @item_transaction %>
     <div class='credit-card-form'>
       <h1 class='info-input-haedline'>
         クレジットカード情報入力
@@ -119,8 +119,4 @@
     <% end %>
   </div>
 </div>
-
-
-
-
-<%= render "layouts/sign-up-footer"%>
+<%= render "shared/sign-up-footer"%>

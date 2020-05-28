@@ -6,7 +6,7 @@
   <div class="main">
     <h2 class="items-info-title">商品の情報を入力</h2>
     <%= form_with model: @item , local: true do |f| %>
-    <%= render 'layouts/error_messages', model: f.object %>
+    <%= render 'shared/error_messages', model: f.object %>
     <div class="img-upload">
       <div class="text">
         出品画像

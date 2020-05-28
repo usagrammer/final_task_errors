@@ -1,4 +1,4 @@
-<%= render "layouts/sign-up-header"%>
+<%= render "shared/sign-up-header"%>
 
 <%= form_with model: @user, url: user_session_path, class: 'registration-main', local: true do |f| %>
 <div class='form-wrap'>
@@ -29,4 +29,4 @@
 </div>
 <% end %>
 
-<%= render "layouts/sign-up-footer"%>
+<%= render "shared/sign-up-footer"%>
