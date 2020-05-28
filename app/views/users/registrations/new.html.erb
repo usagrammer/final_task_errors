@@ -1,4 +1,4 @@
-<%= render "layouts/sign-up-header"%>
+<%= render "shared/sign-up-header"%>
 
 <%= form_with model: @user, url: user_registration_path, class: 'registration-main', local: true do |f| %>
 <div class='form-wrap'>
@@ -7,7 +7,7 @@
       会員情報入力
     </h1>
   </div>
-  <%= render 'layouts/error_messages', model: f.object %>
+  <%= render 'shared/error_messages', model: f.object %>
   <div class="form-group">
     <div class='form-text-wrap'>
       <label class="form-text">ニックネーム</label>
@@ -100,4 +100,4 @@
 </div>
 <% end %>
 
-<%= render "layouts/sign-up-footer"%>
+<%= render "shared/sign-up-footer"%>
