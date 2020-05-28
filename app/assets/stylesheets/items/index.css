@@ -245,7 +245,7 @@ a {
 
 .item-lists>.list {
   width: 20vw;
-  margin-right: 3vw;
+  padding: 1vw;
   background-color: #FFF;
 }
 
