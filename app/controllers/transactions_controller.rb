@@ -10,7 +10,7 @@ class TransactionsController < ApplicationController
     if @item_transaction.valid?
       pay_item
       @item_transaction.save
-      redirect_to root_path
+      return redirect_to root_path
     end
     render "index"
   end
