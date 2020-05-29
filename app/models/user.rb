@@ -4,8 +4,10 @@ class User < ApplicationRecord
   # <<バリデーション>>
   validates :nickname, presence: true, uniqueness: true
 
-  # パスワードの文字数制限:7〜50文字いないか検証
-  devise :validatable, password_length: 7..50
+  # パスワードの英数字混在を否定
+  PASSWORD_REGEX=/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i
+  validates_format_of :password, with: PASSWORD_REGEX, message: "には英字と数字の両方を含めて設定してください"
+
   # 全角のひらがなor漢字を使用していないか検証
   with_options presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/, message: "全角文字を使用してください" } do
     validates :first_name
