@@ -214,6 +214,7 @@ a {
 /* //FURIMAの特徴 */
 
 /* 商品一覧 */
+
 .item-contents {
   background-color: #FFF;
   display: flex;
@@ -244,15 +245,36 @@ a {
 }
 
 .item-lists>.list {
-  width: 20vw;
+  width: 22vw;
   padding: 1vw;
   background-color: #FFF;
+}
+
+
+.item-img-content {
+  position: relative;
 }
 
 .item-img {
   width: 20vw;
   height: 20vw;
 }
+
+.sold-out {
+  position: absolute;
+  top: 40%;
+  width: 100%;
+  text-align: center;
+  background-color: crimson;
+  transform: skewY(-10deg);
+}
+
+.sold-out>span {
+  color: #FFF;
+  font-size: 45px;
+  font: bold;
+}
+
 
 .item-info {
   background-color: #FFF;

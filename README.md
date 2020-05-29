@@ -64,7 +64,7 @@ bundle ex rubocop -a
 ### Association
 
 * has_many :items
-* has_many :transactions
+* has_many :item_transaction
 * has_many :card
 
 ## addresses table
