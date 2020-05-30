@@ -11,6 +11,9 @@ class Item < ApplicationRecord
     validates :price
   end
 
+  # 金額の範囲
+  validates_exclusion_of :price, in: 30..9999999, message: 'が設定可能範囲外です'
+
   # 選択関係で「---」のままになっていないか検証
   with_options numericality: { other_than: 0, message: "を選択してください" } do
     validates :category_id
