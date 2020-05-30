@@ -3,7 +3,7 @@ app/assets/stylesheets/items/new.css %>
 
 <div class="items-sell-contents">
   <header class="items-sell-header">
-    <a href="/"><img src="/assets/logo.png" width="185" height="50"></a>
+    <%= link_to image_tag('logo.png' , size: '185x50'), "/" %>
   </header>
   <div class="items-sell-main">
     <h2 class="items-sell-title">商品の情報を入力</h2>
@@ -145,7 +145,7 @@ app/assets/stylesheets/items/new.css %>
       <li><a href="#">フリマ利用規約</a></li>
       <li><a href="#">特定商取引に関する表記</a></li>
     </ul>
-    <a href="/"><img src="/assets/logo.png" width="185" height="50"></a>
+    <%= link_to image_tag('logo.png' , size: '185x50'), "/" %>
     <p class="inc">
       ©︎Furima,Inc.
     </p>
