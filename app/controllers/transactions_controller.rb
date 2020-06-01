@@ -21,7 +21,6 @@ class TransactionsController < ApplicationController
     params.permit(
       :token,
       :item_id,
-      :token,
       :postal_code,
       :prefecture,
       :city,
