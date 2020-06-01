@@ -28,9 +28,6 @@ Webpacker::Compiler.env["PAYJP_SK"] = ENV["PAYJP_SK"]
 
 こちらの記事を参考にしています。
 https://qiita.com/takeyuweb/items/61e6ba07fe0df3079041
-
-
-
 ## rubocop
 
 設定は`.rubocop.yml`を参照。
@@ -116,3 +113,23 @@ bundle ex rubocop -a
 
 * belongs_to :item
 * belongs_to :user
+
+
+
+## 備考
+
+### 背景色がproductionで動作しない場合
+
+#### 準備
+
+[1]`background-image: image-url('bg-main-visual-pict_pc.jpg');`のように`image-url`を使用する。
+
+[2]`background-image: image-url('bg-main-visual-pict_pc.jpg');`などの`image-url`を使用しているファイルの拡張子をcssからscssに変更。
+
+[3]`production.rb`の`config.assets.compile = false`をtrueへ。
+
+
+#### プリコンパイルの実行
+
+デプロイ前に、ローカルでprecompileのコマンド実行。
+`rake assets:precompile RAILS_ENV=production`
