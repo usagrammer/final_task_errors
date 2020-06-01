@@ -118,7 +118,9 @@ bundle ex rubocop -a
 
 ## 備考
 
-### 背景色がproductionで動作しない場合
+### 背景色がproductionで動作しない問題の対処
+
+実際に起きて作業したので、作業ログとして記載させてください。
 
 #### 準備
 
@@ -128,8 +130,22 @@ bundle ex rubocop -a
 
 [3]`production.rb`の`config.assets.compile = false`をtrueへ。
 
-
 #### プリコンパイルの実行
 
 デプロイ前に、ローカルでprecompileのコマンド実行。
 `rake assets:precompile RAILS_ENV=production`
+
+### herokuの環境変数設定
+
+参考：https://devcenter.heroku.com/articles/config-vars
+
+一覧表示
+`% heroku config`
+特定の変数を表示
+`% heroku config:get <変数名>`
+変数をセットする
+`% heroku config:set <変数名>=<値>`
+変数を削除する
+`% heroku config:unset <変数名>`
+Railsで使用するは変わらず下記で可能
+`ENV['<変数名>']`
