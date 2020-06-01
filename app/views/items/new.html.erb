@@ -64,7 +64,7 @@
       </div>
       <div class="form">
         <div class="weight-bold-text">
-          span配送料の負担
+          配送料の負担
           <span class="indispensable">必須</span>
         </div>
         <%= f.collection_select(:shipping_fee_status_id, ShippingFeeStatus.all, :id, :fee, {}, {class:"select-box"}) %>

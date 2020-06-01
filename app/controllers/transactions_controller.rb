@@ -19,8 +19,8 @@ class TransactionsController < ApplicationController
 
   def item_transaction_params
     params.permit(
-      :item_id,
       :token,
+      :item_id,
       :postal_code,
       :prefecture,
       :city,
