@@ -10,7 +10,8 @@ class PayForm
     validates :prefecture
     validates :city
     validates :addresses
-    validates :phone_number
+    validates :phone_number, length: { maximum: 11, message: "が長すぎます"}
+    # 電話番号は入力フォームで制限してますが、一応つけています。
     validates :user_id
   end
 

@@ -2,6 +2,7 @@ class TransactionsController < ApplicationController
   before_action :select_item, only: [:index, :create]
 
   def index
+    return redirect_to root_path unless user_signed_in?
     @item_transaction = PayForm.new()
   end
 

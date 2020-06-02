@@ -157,7 +157,8 @@
 
 .price-input {
   height: 30px;
-  padding-left: 10px;
+  text-align: right;
+  padding-right: 10px;
 }
 
 /* /販売価格 */
