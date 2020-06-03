@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :select_item, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:newm, :create, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @items = Item.all.order(created_at: :desc)
@@ -18,7 +18,7 @@ class ItemsController < ApplicationController
       return redirect_to root_path
     end
     # アクションのnewをコールすると、エラーメッセージが入った@itemが上書きされてしまうので注意
-    render 'new'
+    render "new"
   end
 
   def show
