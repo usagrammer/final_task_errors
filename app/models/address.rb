@@ -1,4 +1,4 @@
 class Address < ApplicationRecord
-  #<<アソシエーション>>
+  # <<アソシエーション>>
   belongs_to :item
 end

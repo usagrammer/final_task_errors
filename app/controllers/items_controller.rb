@@ -18,7 +18,7 @@ class ItemsController < ApplicationController
       return redirect_to root_path
     end
     # アクションのnewをコールすると、エラーメッセージが入った@itemが上書きされてしまうので注意
-    render "new"
+    render 'new'
   end
 
   def show

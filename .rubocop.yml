@@ -7,7 +7,6 @@ AllCops:
     - "node_modules/**/*"
     - "Gemfile"
 
-
 # 行が長すぎる
 Metrics/LineLength:
   Max: 120
@@ -68,4 +67,7 @@ Naming/MethodParameterName:
   MinNameLength: 1
 
 Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/SymbolArray:
   Enabled: false

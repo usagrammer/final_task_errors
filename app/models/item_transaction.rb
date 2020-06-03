@@ -1,6 +1,5 @@
 class ItemTransaction < ApplicationRecord
-
-  #<<アソシエーション>>
+  # <<アソシエーション>>
   belongs_to :user
   belongs_to :item
 end
