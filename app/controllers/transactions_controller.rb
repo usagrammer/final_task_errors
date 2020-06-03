@@ -3,7 +3,8 @@ class TransactionsController < ApplicationController
 
   def index
     return redirect_to root_path unless user_signed_in?
-    @item_transaction = PayForm.new()
+
+    @item_transaction = PayForm.new
   end
 
   def create
@@ -13,7 +14,7 @@ class TransactionsController < ApplicationController
       @item_transaction.save
       return redirect_to root_path
     end
-    render "index"
+    render 'index'
   end
 
   private
@@ -32,11 +33,11 @@ class TransactionsController < ApplicationController
   end
 
   def pay_item
-    Payjp.api_key = ENV["PAYJP_SK"]
-    charge = Payjp::Charge.create(
+    Payjp.api_key = ENV['PAYJP_SK']
+    Payjp::Charge.create(
       amount: @item.price,
       card: item_transaction_params[:token],
-      currency: "jpy",
+      currency: 'jpy'
     )
   end
 

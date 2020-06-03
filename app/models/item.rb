@@ -12,10 +12,10 @@ class Item < ApplicationRecord
   end
 
   # 金額の範囲
-  validates_inclusion_of :price, in: 300..9999999, message: 'が設定可能範囲外です'
+  validates_inclusion_of :price, in: 300..9_999_999, message: 'が設定可能範囲外です'
 
   # 選択関係で「---」のままになっていないか検証
-  with_options numericality: { other_than: 0, message: "を選択してください" } do
+  with_options numericality: { other_than: 0, message: 'を選択してください' } do
     validates :category_id
     validates :sales_status_id
     validates :shipping_fee_status_id
@@ -33,7 +33,7 @@ class Item < ApplicationRecord
   # <<アクティブストレージの設定関連>>
   has_one_attached :image
 
-  #<<アソシエーション>>
+  # <<アソシエーション>>
   belongs_to :user
   has_one :item_transaction
   has_one :address
