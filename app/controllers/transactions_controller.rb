@@ -1,9 +1,10 @@
 class TransactionsController < ApplicationController
   before_action :select_item, only: [:index, :create]
+  before_action :authenticate_user!, only: [:index]
 
   def index
-    return redirect_to root_path unless user_signed_in?
-
+    # 該当商品の出品者はトップページへリダイレクト
+    check_user
     @item_transaction = PayForm.new
   end
 
@@ -14,7 +15,7 @@ class TransactionsController < ApplicationController
       @item_transaction.save
       return redirect_to root_path
     end
-    render 'index'
+    render "index"
   end
 
   private
@@ -33,15 +34,22 @@ class TransactionsController < ApplicationController
   end
 
   def pay_item
-    Payjp.api_key = ENV['PAYJP_SK']
+    Payjp.api_key = ENV["PAYJP_SK"]
     Payjp::Charge.create(
       amount: @item.price,
       card: item_transaction_params[:token],
-      currency: 'jpy'
+      currency: "jpy",
     )
   end
 
   def select_item
     @item = Item.find(params[:item_id])
+  end
+
+  def check_user
+    if current_user.id == select_item.user_id
+      # 該当商品の出品者
+      redirect_to root_path
+    end
   end
 end
