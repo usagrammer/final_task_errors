@@ -30,7 +30,10 @@ class ItemsController < ApplicationController
 
   def update
     @item.update(item_params) if current_user.id == @item.user.id
-    redirect_to item_path
+    if @item.valid?
+      return redirect_to item_path
+    end
+    render "edit"
   end
 
   def destroy
