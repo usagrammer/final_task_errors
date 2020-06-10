@@ -3,6 +3,7 @@ class User < ApplicationRecord
 
   # <<バリデーション>>
   validates :nickname, presence: true, uniqueness: true
+  validates :birth_date, presence: true
 
   # パスワードの英数字混在を否定
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze
