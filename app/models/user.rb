@@ -15,7 +15,7 @@ class User < ApplicationRecord
   end
 
   # 全角のカタカナを使用していないか検証
-  with_options presence: true, format: { with: /\A[\p{katakana}　ー－&&[^ -~｡-ﾟ]]+\z/, message: "全角カタカナを使用してください" } do
+  with_options presence: true, format: { with: /\A[\p{katakana}　ー－&&[^ -~｡-ﾟ]]+\z/, message: '全角カタカナを使用してください' } do
     validates :first_name_kana
     validates :last_name_kana
   end
