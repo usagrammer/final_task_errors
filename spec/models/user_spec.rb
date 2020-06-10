@@ -92,7 +92,7 @@ RSpec.describe User, type: :model do
       it "first_name_kana:全角（カタカナ）" do
         @user.first_name_kana = "てすと"
         @user.valid?
-        expect(@user.errors.full_messages).to include("姓（カナ）全角文字を使用してください")
+        expect(@user.errors.full_messages).to include("姓（カナ）全角カタカナを使用してください")
       end
       it "last_name_kana:必須" do
         @user.last_name_kana = ""
@@ -102,7 +102,7 @@ RSpec.describe User, type: :model do
       it "last_name_kana:全角（カタカナ）" do
         @user.last_name_kana = "てすと"
         @user.valid?
-        expect(@user.errors.full_messages).to include("名（カナ）全角文字を使用してください")
+        expect(@user.errors.full_messages).to include("名（カナ）全角カタカナを使用してください")
       end
 
     end
