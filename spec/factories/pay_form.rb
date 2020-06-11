@@ -1,6 +1,6 @@
 FactoryBot.define do
-  factory :item_transaction do
-    # token
+  factory :pay_form do
+    token { "sampletokensampletoken" }
     postal_code { "123-4567" }
     prefecture { 1 }
     city { "東京都" }

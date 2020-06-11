@@ -2,7 +2,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
 
   # <<バリデーション>>
-  validates :nickname, presence: true, uniqueness: true
+  validates :nickname, presence: true, uniqueness: { case_sensitive: true }
+
   validates :birth_date, presence: true
 
   # パスワードの英数字混在を否定
