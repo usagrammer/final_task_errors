@@ -40,15 +40,12 @@ RSpec.describe User, type: :model do
       @user.valid?
       expect(@user.errors.full_messages).to include("Eメールを入力してください")
     end
-    # it "email:一意性" do
-    #   @second_user = FactoryBot.build(:user)
-    #   @user.email = "test@test.co.jp"
-    #   @second_user.email = "test@test.co.jp"
-    #   binding.pry
-    #   @user.valid?
-    #   @second_user.valid?
-    #   expect(@second_user.errors.full_messages).to include("メールアドレスを入力してください")
-    # end
+    it "email:一意性" do
+      first_user = FactoryBot.create(:user, email:"test@test.co.jp")
+      second_user = FactoryBot.build(:user, email:"test@test.co.jp")
+      second_user.valid?
+      expect(second_user.errors.full_messages).to include("Eメールはすでに存在します")
+    end
     it "email:@を含む形式" do
       @user.email = "test.co.jp"
       @user.valid?
