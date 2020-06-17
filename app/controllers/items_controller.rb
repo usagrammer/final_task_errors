@@ -18,7 +18,7 @@ class ItemsController < ApplicationController
       return redirect_to root_path
     end
     # アクションのnewをコールすると、エラーメッセージが入った@itemが上書きされてしまうので注意
-    render "new"
+    render 'new'
   end
 
   def show
@@ -30,7 +30,9 @@ class ItemsController < ApplicationController
 
   def update
     @item.update(item_params) if current_user.id == @item.user.id
-    redirect_to item_path
+    return redirect_to item_path if @item.valid?
+
+    render 'edit'
   end
 
   def destroy

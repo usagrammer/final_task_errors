@@ -1,8 +1,9 @@
 class TransactionsController < ApplicationController
   before_action :select_item, only: [:index, :create]
+  before_action :authenticate_user!, only: [:index]
 
   def index
-    return redirect_to root_path unless user_signed_in?
+    return redirect_to root_path if current_user.id == select_item.user_id
 
     @item_transaction = PayForm.new
   end
