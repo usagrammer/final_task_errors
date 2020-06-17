@@ -6,11 +6,11 @@ class PayForm
   with_options presence: true do
     validates :item_id
     validates :token, presence: { message: "can't be blank" }
-    validates :postal_code, format: { with: /\A\d{3}[-]\d{4}\z/, message: "Input correctly" }
-    validates :prefecture, numericality: { other_than: 0, message: "Select" }
+    validates :postal_code, format: { with: /\A\d{3}[-]\d{4}\z/, message: 'Input correctly' }
+    validates :prefecture, numericality: { other_than: 0, message: 'Select' }
     validates :city
     validates :addresses
-    validates :phone_number, length: { maximum: 11, message: "Too long" }
+    validates :phone_number, length: { maximum: 11, message: 'Too long' }
     # 電話番号は入力フォームで制限してますが、一応つけています。
     validates :user_id
   end
@@ -18,7 +18,7 @@ class PayForm
   def save
     ItemTransaction.create(
       item_id: item_id,
-      user_id: user_id,
+      user_id: user_id
     )
     Address.create(
       item_id: item_id,
@@ -27,7 +27,7 @@ class PayForm
       city: city,
       addresses: addresses,
       building: building,
-      phone_number: phone_number,
+      phone_number: phone_number
     )
   end
 end

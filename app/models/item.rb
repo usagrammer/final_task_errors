@@ -12,10 +12,10 @@ class Item < ApplicationRecord
   end
 
   # 金額の範囲
-  validates_inclusion_of :price, in: 300..9_999_999, message: "Out of setting range"
+  validates_inclusion_of :price, in: 300..9_999_999, message: 'Out of setting range'
 
   # 選択関係で「---」のままになっていないか検証
-  with_options numericality: { other_than: 0, message: "Select" } do
+  with_options numericality: { other_than: 0, message: 'Select' } do
     validates :category_id
     validates :sales_status_id
     validates :shipping_fee_status_id
