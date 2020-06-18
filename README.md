@@ -50,7 +50,7 @@ bundle ex rubocop -a
 ## users table
 
 | Column             | Type                | Options                 |
-| ------------------ | ------------------- | ----------------------- |
+|--------------------|---------------------|-------------------------|
 | id(PK)             | デフォルト          | null: false             |
 | nickname           | devise のデフォルト | null: false,index: true |
 | email              | devise のデフォルト | null: false             |
@@ -63,14 +63,14 @@ bundle ex rubocop -a
 
 ### Association
 
-- has_many :items
-- has_many :item_transaction
-- has_many :card
+* has_many :items
+* has_many :item_transactions
+* has_many :cards
 
 ## addresses table
 
 | Column       | Type    | Options           |
-| ------------ | ------- | ----------------- |
+|--------------|---------|-------------------|
 | postal_code  | integer | null: false       |
 | prefecture   | integer | null: false       |
 | city         | string  | null: false       |
@@ -81,12 +81,12 @@ bundle ex rubocop -a
 
 ### Association
 
-- belongs_to :items
+* belongs_to :item
 
 ## items table
 
 | Column                              | Type       | Options           |
-| ----------------------------------- | ---------- | ----------------- |
+|-------------------------------------|------------|-------------------|
 | id(PK)                              | デフォルト | null: false       |
 | name                                | string     | null: false       |
 | price                               | integer    | null: false       |
@@ -107,7 +107,7 @@ bundle ex rubocop -a
 ## item_transactions table
 
 | Column      | Type    | Options           |
-| ----------- | ------- | ----------------- |
+|-------------|---------|-------------------|
 | item_id(FK) | integer | foreign_key: true |
 | user_id(FK) | integer | foreign_key: true |
 
@@ -132,13 +132,17 @@ bundle ex rubocop -a
 
 参考：https://devcenter.heroku.com/articles/config-vars
 
-一覧表示
+**一覧表示**
 `% heroku config`
-特定の変数を表示
+
+**特定の変数を表示**
 `% heroku config:get <変数名>`
-変数をセットする
+
+**変数をセットする**
 `% heroku config:set <変数名>=<値>`
-変数を削除する
+
+**変数を削除する**
 `% heroku config:unset <変数名>`
-Rails で使用するは変わらず下記で可能
+
+**Railsで使用するは変わらず下記で可能**
 `ENV['<変数名>']`
