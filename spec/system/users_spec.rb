@@ -24,7 +24,7 @@ RSpec.describe 'ユーザー新規登録', type: :system do
       select "1930", from: "user[birth_date(1i)]"
       select "1", from: "user[birth_date(2i)]"
       select "1", from: "user[birth_date(3i)]"
-      # サインアップボタンを押すとユーザーモデルのカウントが1上がる
+      # 会員登録ボタンを押すとユーザーモデルのカウントが1上がる
       expect{
         find('input[name="commit"]').click
       }.to change { User.count }.by(1)
@@ -40,11 +40,31 @@ RSpec.describe 'ユーザー新規登録', type: :system do
   context 'ユーザー新規登録ができないとき' do
     it '誤った情報ではユーザー新規登録ができずに新規登録ページへ戻ってくる' do
       # トップページに移動する
+      visit root_path
       # トップページにサインアップページへ遷移するボタンがある
+      expect(page).to have_content('新規登録')
       # 新規登録ページへ移動する
-      # ユーザー情報を入力する
-      # サインアップボタンを押してもユーザーモデルのカウントは上がらない
+      click_on '新規登録'
+      # 間違ったユーザー情報を入力する
+      fill_in 'user[nickname]', with: ""
+      fill_in 'user[email]', with: ""
+      fill_in 'user[password]', with: ""
+      fill_in 'user[password_confirmation]', with: ""
+      fill_in 'user[first_name]', with: ""
+      fill_in 'user[last_name]', with: ""
+      fill_in 'user[first_name_kana]', with: ""
+      fill_in 'user[last_name_kana]', with: ""
+      # 会員登録ボタンを押してもユーザーモデルのカウントは上がらない
+      expect{
+        find('input[name="commit"]').click
+      }.to change { User.count }.by(0)
       # 新規登録ページへ戻される
+      expect(page).to have_content("会員情報入力") #renderしているため、current_pathが使えない？パス情報が変わる
+      expect(page).to have_css "div.error-alert" #_error_messages.html.erbは配布されているのか
+      # expect(page).to have_content("Email can't be blank") #不要？受講生によって異なっていてもOKなのか
+      # expect(page).to have_content("Password can't be blank")
+      # expect(page).to have_content("Password Include both letters and numbers")
+      # expect(page).to have_content("Nickname can't be blank")
     end
   end
 end
