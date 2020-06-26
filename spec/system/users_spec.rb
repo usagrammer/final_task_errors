@@ -5,7 +5,7 @@ RSpec.describe 'ユーザー新規登録', type: :system do
     @user = FactoryBot.build(:user)
   end
   context 'ユーザー新規登録ができるとき' do 
-    it '正しい情報を入力すればユーザー新規登録ができてトップページに移動する' do
+    it '有効な情報で新規登録を行うと、レコードが1つ増え、トップページへ遷移すること' do
       # トップページに移動する
       visit root_path
       # トップページにサインアップページへ遷移するボタンがある
@@ -30,15 +30,15 @@ RSpec.describe 'ユーザー新規登録', type: :system do
       }.to change { User.count }.by(1)
       # トップページへ遷移する
       expect(page).to have_current_path(root_path)
-      # 新規登録の文字が消えている ←不要？
+      # 新規登録の文字が消えている 不要？
       expect(page).to have_no_content('新規登録')
-      # 登録したニックネームが表示されている ←不要？
+      # 登録したニックネームが表示されている 不要？
       expect(page).to have_content(@user.nickname)
     end
   end
 
   context 'ユーザー新規登録ができないとき' do
-    it '誤った情報ではユーザー新規登録ができずに新規登録ページへ戻ってくる' do
+    it '無効な情報で新規登録を行うと、新規登録画面にて、エラーが表示されること' do
       # トップページに移動する
       visit root_path
       # トップページにサインアップページへ遷移するボタンがある
@@ -74,7 +74,7 @@ RSpec.describe 'ログイン', type: :system do
     @user = FactoryBot.create(:user)
   end
   context 'ログインができるとき' do 
-    it '正しい情報を入力すればログインができてトップページに移動する' do
+    it '有効な情報でログインを行うと、トップページへ遷移すること' do
       # トップページに移動する
       visit root_path
       # トップページにサインアップページへ遷移するボタンがある
@@ -100,7 +100,7 @@ RSpec.describe 'ログイン', type: :system do
   end
 
   context 'ログインができないとき' do 
-    it '誤った情報ではログインはできずにログインページへ戻ってくる' do
+    it '無効な情報でログインを行うと、ログインページにて、エラーメッセージ が表示されること' do
       # トップページに移動する
       visit root_path
       # トップページにサインアップページへ遷移するボタンがある
