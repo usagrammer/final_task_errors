@@ -98,4 +98,24 @@ RSpec.describe 'ログイン', type: :system do
       expect(page).to have_no_content('ログイン')
     end
   end
+
+  context 'ログインができないとき' do 
+    it '誤った情報ではログインはできずにログインページへ戻ってくる' do
+      # トップページに移動する
+      visit root_path
+      # トップページにサインアップページへ遷移するボタンがある
+      expect(page).to have_content('ログイン')
+      # 新規登録ページへ移動する
+      click_on 'ログイン'
+      # ユーザー情報を入力する
+      fill_in 'user[email]', with: ""
+      fill_in 'user[password]', with: ""
+      # ログインボタンを押す
+      find('input[name="commit"]').click
+      # トップページへ遷移する
+      expect(page).to have_content("会員情報入力")
+      # エラーメッセージが出現している 受講生によるカスタマイズは発生するのか
+      expect(page).to have_content("Invalid Email or password.")
+    end
+  end
 end
