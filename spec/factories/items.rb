@@ -9,5 +9,8 @@ FactoryBot.define do
     prefecture_id { 1 }
     scheduled_delivery_id { 1 }
     association :user
+    trait :image do
+      image { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/sample.png')) }
+    end
   end
 end
