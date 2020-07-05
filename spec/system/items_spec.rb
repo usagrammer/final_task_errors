@@ -35,4 +35,41 @@ RSpec.describe '商品出品', type: :system do
       expect(page).to have_current_path(root_path)
     end
   end
+  context '商品出品ができないとき' do 
+    it '無効な情報で商品出品を行うと、商品出品ページにて、エラーメッセージ が表示されること' do
+      # ログインする
+      visit new_user_session_path
+      fill_in 'user[email]', with: @user.email
+      fill_in 'user[password]', with: @user.password
+      find('input[name="commit"]').click
+      expect(current_path).to eq root_path
+      # 出品ページへのリンクがある
+      expect(page).to have_content('出品する')
+      # 出品ページへのリンクをクリックする
+      visit new_item_path
+      # フォームに情報を入力する
+      fill_in 'item[name]', with: ""
+      fill_in 'item[info]', with: ""
+      fill_in 'item[price]', with: ""
+      # 出品ボタンを押してもアイテムモデルのカウントは上がらない
+      expect{
+        find('input[name="commit"]').click
+      }.to change { Item.count }.by(0)
+      # 出品ページへ戻される
+      expect(page).to have_content("商品の情報を入力")
+      # エラーメッセージのクラスが出現する
+      expect(page).to have_css "div.error-alert" 
+    end
+    it 'ログインしていない状態で商品出品ページへアクセスすると、ログインページへ遷移すること' do
+      visit root_path
+      # 出品ページへのリンクがある
+      expect(page).to have_content('出品する')
+      # 出品ページへのリンクをクリックする
+      visit new_item_path
+      # ログイン画面へ遷移する
+      expect(page).to have_content("会員情報入力")
+      # エラーメッセージが出現している
+      expect(page).to have_content("You need to sign in or sign up before continuing.")
+    end
+  end
 end
