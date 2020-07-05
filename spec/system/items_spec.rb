@@ -73,3 +73,65 @@ RSpec.describe '商品出品', type: :system do
     end
   end
 end
+
+RSpec.describe '商品編集', type: :system do
+  before do
+    @item1 = FactoryBot.create(:item, :image)
+    # @item2 = FactoryBot.build(:item)
+  end
+  context '商品編集ができるとき' do
+    it '有効な情報で商品編集を行うと、レコードが更新され、商品詳細ページへ遷移し、商品出品時に入力した値が表示されていること' do
+      visit new_user_session_path
+      fill_in 'user[email]', with: @item1.user.email
+      fill_in 'user[password]', with: @item1.user.password
+      find('input[name="commit"]').click
+      expect(current_path).to eq root_path
+      # 表示されている商品をクリック
+      find(:xpath, "//a[@href='/items/#{@item1.id}']").click
+      # アイテム1に「商品の編集」ボタンがある
+      expect(page).to have_link '商品の編集', href: edit_item_path(@item1)
+      # 編集ページへ遷移する
+      visit edit_item_path(@item1)
+      # すでに投稿済みの内容がフォームに入っている(画像以外)
+      expect(
+        find('#item_name').value
+      ).to eq @item1.name
+      expect(
+        find('#item_info').value
+      ).to eq @item1.info
+      expect(
+        find('#item_category_id').value
+      ).to eq "#{@item1.category_id}"
+      expect(
+        find('#item_sales_status_id').value
+      ).to eq "#{@item1.sales_status_id}"
+      expect(
+        find('#item_shipping_fee_status_id').value
+      ).to eq "#{@item1.shipping_fee_status_id}"
+      expect(
+        find('#item_prefecture_id').value
+      ).to eq "#{@item1.prefecture_id}"
+      expect(
+        find('#item_scheduled_delivery_id').value
+      ).to eq "#{@item1.scheduled_delivery_id}"
+      expect(
+        find('#item_price').value
+      ).to eq "#{@item1.price}"
+      # 投稿内容を編集する
+      page.attach_file('item[image]',"#{Rails.root}/spec/fixtures/sample2.png")
+      fill_in 'item[name]', with: "#{@item1.name}+編集したテキスト"
+      # 編集してもItemモデルのカウントは変わらない
+      expect{
+        find('input[name="commit"]').click
+      }.to change { Item.count }.by(0)
+      # 「商品の編集」の文字がある
+      expect(page).to have_content('商品の編集')
+      # トップページに遷移する
+      visit root_path
+      # トップページには先ほど変更した内容のツイートが存在する（画像）
+      expect(page).to have_selector("img[src$='sample2.png']")
+      # トップページには先ほど変更した内容のツイートが存在する（テキスト）
+      expect(page).to have_content("#{@item1.name}+編集したテキスト")
+    end
+  end
+end
