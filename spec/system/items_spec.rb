@@ -283,4 +283,23 @@ RSpec.describe '商品詳細', type: :system do
       end
     end
   end
+  context 'ログインしてないとき' do
+    it 'ログインせずに商品詳細ページへアクセスした場合は、「購入」のリンクが存在すること' do
+      # トップページへ行く
+      visit root_path
+      # 商品のページへアクセスする
+      find(:xpath, "//a[@href='/items/#{@item2.id}']").click
+      # 商品詳細ページに「購入画面に進む」のボタンがある
+      expect(page).to have_link '購入画面に進む', href: item_transactions_path(@item2)
+    end
+    it 'ログインせずに商品詳細ページへアクセスした場合は、「編集」「削除」のリンクは存在しないこと' do
+      # トップページへ行く
+      visit root_path
+      # 商品のページへアクセスする
+      find(:xpath, "//a[@href='/items/#{@item2.id}']").click
+      # 「商品の編集」「削除」のリンクは存在しない
+      expect(page).to have_no_link '商品の編集', href: edit_item_path(@item2)
+      expect(page).to have_no_link '削除', href: item_path(@item2)
+    end
+  end
 end
