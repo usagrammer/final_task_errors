@@ -210,96 +210,96 @@ require 'rails_helper'
 #   end
 # end
 
-RSpec.describe '商品詳細', type: :system do
-  before do
-    @item1 = FactoryBot.create(:item, :image)
-    @item2 = FactoryBot.create(:item, :image)
-    @item3 = FactoryBot.create(:item, :image, :sold_out)
-  end
-  context 'ログインしているとき' do 
-    context '自分が出品した商品ページのとき' do 
-      it 'ログインした上で自分が出品した商品詳細ページへアクセスした場合は、「商品の編集」「削除」のリンクが存在すること' do
-        # ログインする
-        visit new_user_session_path
-        fill_in 'user[email]', with: @item1.user.email
-        fill_in 'user[password]', with: @item1.user.password
-        find('input[name="commit"]').click
-        expect(current_path).to eq root_path
-        # 自分の出品した商品ページへアクセスする
-        find(:xpath, "//a[@href='/items/#{@item1.id}']").click
-        # 商品詳細ページに「商品の編集」と「削除」のボタンがある
-        expect(page).to have_link '商品の編集', href: edit_item_path(@item1)
-        expect(page).to have_link '削除', href: item_path(@item1)
-      end
-      it 'ログインした上で自分が出品した商品詳細ページへアクセスした場合は、「購入画面に進む」のリンクが存在しないこと'do
-        # ログインする
-        visit new_user_session_path
-        fill_in 'user[email]', with: @item1.user.email
-        fill_in 'user[password]', with: @item1.user.password
-        find('input[name="commit"]').click
-        expect(current_path).to eq root_path
-        # 自分の出品した商品のページへアクセスする
-        find(:xpath, "//a[@href='/items/#{@item1.id}']").click
-        # 商品詳細ページに「購入画面に進む」のボタンは無い
-        expect(page).to have_no_link '購入画面に進む', href: item_transactions_path(@item1)
-      end
-    end
-    context '自分が出品した商品ページではないとき' do
-      it 'ログインした上で自分が出品していない商品詳細ページへアクセスした場合は、「購入画面に進む」のリンクが存在すること' do
-        visit new_user_session_path
-        fill_in 'user[email]', with: @item1.user.email
-        fill_in 'user[password]', with: @item1.user.password
-        find('input[name="commit"]').click
-        expect(current_path).to eq root_path
-        # 自分の出品した商品のページへアクセスする
-        find(:xpath, "//a[@href='/items/#{@item2.id}']").click
-        # 商品詳細ページに「購入画面に進む」のボタンがある
-        expect(page).to have_link '購入画面に進む', href: item_transactions_path(@item2)
-      end
-      it 'ログインした上で自分が出品していない、売却済みの商品詳細ページへアクセスした場合は、「SoldOut」が表示されること' do
-        # ログインする
-        visit new_user_session_path
-        fill_in 'user[email]', with: @item1.user.email
-        fill_in 'user[password]', with: @item1.user.password
-        find('input[name="commit"]').click
-        expect(current_path).to eq root_path
-        # 自分の出品した商品以外のページへアクセスする
-        find(:xpath, "//a[@href='/items/#{@item3.id}']").click
-        # SoldOutの文字が表示されている
-        expect(page).to have_content 'Sold Out!!' # 正規表現を使いたい
-      end
-      it 'ログインした上で自分が出品していない商品詳細ページへアクセスした場合は、「商品の編集」「削除」のリンクが存在しないこと' do
-        # ログインする
-        visit new_user_session_path
-        fill_in 'user[email]', with: @item1.user.email
-        fill_in 'user[password]', with: @item1.user.password
-        find('input[name="commit"]').click
-        expect(current_path).to eq root_path
-        # 自分の出品した商品以外のページへアクセスする
-        find(:xpath, "//a[@href='/items/#{@item3.id}']").click
-        # 「商品の編集」「削除」のリンクは存在しない
-        expect(page).to have_no_link '商品の編集', href: edit_item_path(@item3)
-        expect(page).to have_no_link '削除', href: item_path(@item3)
-      end
-    end
-  end
-  context 'ログインしてないとき' do
-    it 'ログインせずに商品詳細ページへアクセスした場合は、「購入」のリンクが存在すること' do
-      # トップページへ行く
-      visit root_path
-      # 商品のページへアクセスする
-      find(:xpath, "//a[@href='/items/#{@item2.id}']").click
-      # 商品詳細ページに「購入画面に進む」のボタンがある
-      expect(page).to have_link '購入画面に進む', href: item_transactions_path(@item2)
-    end
-    it 'ログインせずに商品詳細ページへアクセスした場合は、「編集」「削除」のリンクは存在しないこと' do
-      # トップページへ行く
-      visit root_path
-      # 商品のページへアクセスする
-      find(:xpath, "//a[@href='/items/#{@item2.id}']").click
-      # 「商品の編集」「削除」のリンクは存在しない
-      expect(page).to have_no_link '商品の編集', href: edit_item_path(@item2)
-      expect(page).to have_no_link '削除', href: item_path(@item2)
-    end
-  end
-end
+# RSpec.describe '商品詳細', type: :system do
+#   before do
+#     @item1 = FactoryBot.create(:item, :image)
+#     @item2 = FactoryBot.create(:item, :image)
+#     @item3 = FactoryBot.create(:item, :image, :sold_out)
+#   end
+#   context 'ログインしているとき' do 
+#     context '自分が出品した商品ページのとき' do 
+#       it 'ログインした上で自分が出品した商品詳細ページへアクセスした場合は、「商品の編集」「削除」のリンクが存在すること' do
+#         # ログインする
+#         visit new_user_session_path
+#         fill_in 'user[email]', with: @item1.user.email
+#         fill_in 'user[password]', with: @item1.user.password
+#         find('input[name="commit"]').click
+#         expect(current_path).to eq root_path
+#         # 自分の出品した商品ページへアクセスする
+#         find(:xpath, "//a[@href='/items/#{@item1.id}']").click
+#         # 商品詳細ページに「商品の編集」と「削除」のボタンがある
+#         expect(page).to have_link '商品の編集', href: edit_item_path(@item1)
+#         expect(page).to have_link '削除', href: item_path(@item1)
+#       end
+#       it 'ログインした上で自分が出品した商品詳細ページへアクセスした場合は、「購入画面に進む」のリンクが存在しないこと'do
+#         # ログインする
+#         visit new_user_session_path
+#         fill_in 'user[email]', with: @item1.user.email
+#         fill_in 'user[password]', with: @item1.user.password
+#         find('input[name="commit"]').click
+#         expect(current_path).to eq root_path
+#         # 自分の出品した商品のページへアクセスする
+#         find(:xpath, "//a[@href='/items/#{@item1.id}']").click
+#         # 商品詳細ページに「購入画面に進む」のボタンは無い
+#         expect(page).to have_no_link '購入画面に進む', href: item_transactions_path(@item1)
+#       end
+#     end
+#     context '自分が出品した商品ページではないとき' do
+#       it 'ログインした上で自分が出品していない商品詳細ページへアクセスした場合は、「購入画面に進む」のリンクが存在すること' do
+#         visit new_user_session_path
+#         fill_in 'user[email]', with: @item1.user.email
+#         fill_in 'user[password]', with: @item1.user.password
+#         find('input[name="commit"]').click
+#         expect(current_path).to eq root_path
+#         # 自分の出品した商品のページへアクセスする
+#         find(:xpath, "//a[@href='/items/#{@item2.id}']").click
+#         # 商品詳細ページに「購入画面に進む」のボタンがある
+#         expect(page).to have_link '購入画面に進む', href: item_transactions_path(@item2)
+#       end
+#       it 'ログインした上で自分が出品していない、売却済みの商品詳細ページへアクセスした場合は、「SoldOut」が表示されること' do
+#         # ログインする
+#         visit new_user_session_path
+#         fill_in 'user[email]', with: @item1.user.email
+#         fill_in 'user[password]', with: @item1.user.password
+#         find('input[name="commit"]').click
+#         expect(current_path).to eq root_path
+#         # 自分の出品した商品以外のページへアクセスする
+#         find(:xpath, "//a[@href='/items/#{@item3.id}']").click
+#         # SoldOutの文字が表示されている
+#         expect(page).to have_content 'Sold Out!!' # 正規表現を使いたい
+#       end
+#       it 'ログインした上で自分が出品していない商品詳細ページへアクセスした場合は、「商品の編集」「削除」のリンクが存在しないこと' do
+#         # ログインする
+#         visit new_user_session_path
+#         fill_in 'user[email]', with: @item1.user.email
+#         fill_in 'user[password]', with: @item1.user.password
+#         find('input[name="commit"]').click
+#         expect(current_path).to eq root_path
+#         # 自分の出品した商品以外のページへアクセスする
+#         find(:xpath, "//a[@href='/items/#{@item3.id}']").click
+#         # 「商品の編集」「削除」のリンクは存在しない
+#         expect(page).to have_no_link '商品の編集', href: edit_item_path(@item3)
+#         expect(page).to have_no_link '削除', href: item_path(@item3)
+#       end
+#     end
+#   end
+#   context 'ログインしてないとき' do
+#     it 'ログインせずに商品詳細ページへアクセスした場合は、「購入」のリンクが存在すること' do
+#       # トップページへ行く
+#       visit root_path
+#       # 商品のページへアクセスする
+#       find(:xpath, "//a[@href='/items/#{@item2.id}']").click
+#       # 商品詳細ページに「購入画面に進む」のボタンがある
+#       expect(page).to have_link '購入画面に進む', href: item_transactions_path(@item2)
+#     end
+#     it 'ログインせずに商品詳細ページへアクセスした場合は、「編集」「削除」のリンクは存在しないこと' do
+#       # トップページへ行く
+#       visit root_path
+#       # 商品のページへアクセスする
+#       find(:xpath, "//a[@href='/items/#{@item2.id}']").click
+#       # 「商品の編集」「削除」のリンクは存在しない
+#       expect(page).to have_no_link '商品の編集', href: edit_item_path(@item2)
+#       expect(page).to have_no_link '削除', href: item_path(@item2)
+#     end
+#   end
+# end
