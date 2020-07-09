@@ -4,7 +4,7 @@ RSpec.describe Item, type: :model do
   before do
     user = FactoryBot.create(:user)
     @item = FactoryBot.build(:item, user_id: user.id)
-    @item.image = fixture_file_upload('/smaple.jpeg', 'image/jpeg')
+    @item.image = fixture_file_upload('/sample.png', 'image/png')
   end
   describe '商品作成' do
     context '内容に問題ない場合' do

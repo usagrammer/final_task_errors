@@ -5,7 +5,7 @@ RSpec.describe PayForm, type: :model do
     buyer = FactoryBot.create(:user)
     seller = FactoryBot.create(:user)
     item = FactoryBot.build(:item, user_id: seller.id)
-    item.image = fixture_file_upload('/smaple.jpeg', 'image/jpeg')
+    item.image = fixture_file_upload('/sample.png', 'image/png')
     item.save
     @pay_form = FactoryBot.build(:pay_form, user_id: buyer.id, item_id: item.id)
   end
