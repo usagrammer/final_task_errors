@@ -67,7 +67,7 @@ require 'rails_helper'
 #       # 出品ページへのリンクをクリックする
 #       visit new_item_path
 #       # ログイン画面へ遷移する
-#       expect(page).to have_content("会員情報入力")
+#       expect(current_path).to eq new_user_session_path
 #       # エラーメッセージが出現している
 #       expect(page).to have_content("You need to sign in or sign up before continuing.")
 #     end
@@ -187,7 +187,7 @@ require 'rails_helper'
 #       # ログインせずにURLを直打ち
 #       visit edit_item_path(@item1)
 #       # ログイン画面へ遷移する
-#       expect(page).to have_content("会員情報入力")
+#       expect(current_path).to eq new_user_session_path
 #       # エラーメッセージが出現している
 #       expect(page).to have_content("You need to sign in or sign up before continuing.")
 #     end
@@ -330,135 +330,135 @@ require 'rails_helper'
 #   end
 # end
 
-RSpec.describe '商品購入', type: :system do
-  before do
-    @item1 = FactoryBot.create(:item, :image)
-    @item2 = FactoryBot.create(:item, :image)
-    @item3 = FactoryBot.create(:item, :image, :sold_out)
-  end
-  # context '商品購入ができるとき' do 
-  #   it 'ログインした上で自分が出品していない商品を購入すると、取引テーブルのレコードが1つ増え、トップページへ遷移し、一覧ページと詳細ページにて、「sold out」の文字が表示されていること' do
-  #     # ログインする
-  #     visit new_user_session_path
-  #     fill_in 'user[email]', with: @item1.user.email
-  #     fill_in 'user[password]', with: @item1.user.password
-  #     find('input[name="commit"]').click
-  #     expect(current_path).to eq root_path
-  #     # 自分の出品した以外の商品ページへアクセスする
-  #     find(:xpath, "//a[@href='/items/#{@item2.id}']").click
-  #     # 「購入画面に進む」のリンクが存在する
-  #     expect(page).to have_link '購入画面に進む', href: item_transactions_path(@item2)
-  #     # 「購入画面に進む」のリンクをクリック
-  #     find(:xpath, "//a[@href='/items/#{@item2.id}/transactions']").click
-  #     # 購入ページへ遷移
-  #     expect(page).to have_content '購入内容の確認'
-  #     # 項目を入力
-  #     fill_in 'number', with: "4242424242424242"
-  #     fill_in 'exp_month', with: "3"
-  #     fill_in 'exp_year', with: "30"
-  #     fill_in 'cvc', with: "123"
-  #     fill_in 'postal_code', with: "123-4567"
-  #     select "東京都", from: "prefecture"
-  #     fill_in 'city', with: "渋谷区"
-  #     fill_in 'addresses', with: "神南"
-  #     fill_in 'building', with: "hogeビル"
-  #     fill_in 'phone_number', with: "01234567890"
-  #     # 購入ボタンを押す
-  #     find('input[name="commit"]').click
-  #     # アイテムトランザクションモデルのカウントが1上がる
-  #     expect change{ ItemTransaction.count }.by(1)
-  #     # トップページへ遷移する
-  #     expect(page).to have_current_path(root_path)
-  #     # 購入したアイテム２の要素を変数に入れる
-  #     bought_item2 = find(:xpath, "//a[@href='/items/#{@item2.id}']")
-  #     # 変数の中にSold Out!!の文字が存在する
-  #     expect(bought_item2).to have_content 'Sold Out!!'
-  #     # アイテム2の商品をクリックする
-  #     bought_item2.click
-  #     # アイテム2の商品詳細ページでも、Sold Out!! の文字が出ている
-  #     expect(page).to have_content 'Sold Out!!'
-  #   end
-  # end
-  context '商品購入ができないとき' do 
-    it 'ログインした上で自分が出品していない商品を購入しようとした場合でも、無効な値が入力された場合は、商品購入ページにてエラーメッセージ が表示されること' do
-      # ログインする
-      visit new_user_session_path
-      fill_in 'user[email]', with: @item1.user.email
-      fill_in 'user[password]', with: @item1.user.password
-      find('input[name="commit"]').click
-      expect(current_path).to eq root_path
-      # 自分の出品した以外の商品ページへアクセスする
-      find(:xpath, "//a[@href='/items/#{@item2.id}']").click
-      # 「購入画面に進む」のリンクが存在する
-      expect(page).to have_link '購入画面に進む', href: item_transactions_path(@item2)
-      # 「購入画面に進む」のリンクをクリック
-      find(:xpath, "//a[@href='/items/#{@item2.id}/transactions']").click
-      # 購入ページへ遷移
-      expect(page).to have_content '購入内容の確認'
-      # 項目を入力
-      fill_in 'number', with: ""
-      fill_in 'exp_month', with: ""
-      fill_in 'exp_year', with: ""
-      fill_in 'cvc', with: ""
-      fill_in 'postal_code', with: ""
-      fill_in 'city', with: ""
-      fill_in 'addresses', with: ""
-      fill_in 'building', with: ""
-      fill_in 'phone_number', with: ""
-      # 購入ボタンを押す
-      find('input[name="commit"]').click
-      expect(page).to have_content("購入内容の確認")
-      # エラーメッセージのクラスが出現する
-      expect(page).to have_css "div.error-alert" 
-    end
-    it 'ログインした上でも、自分が出品した商品へは商品の購入ボタンが表示されないこと' do
-      # ログインする
-      visit new_user_session_path
-      fill_in 'user[email]', with: @item1.user.email
-      fill_in 'user[password]', with: @item1.user.password
-      find('input[name="commit"]').click
-      expect(current_path).to eq root_path
-      # 自分の出品した以外の商品ページへアクセスする
-      find(:xpath, "//a[@href='/items/#{@item1.id}']").click
-      # 「購入画面に進む」のリンクは存在しない
-      expect(page).to have_no_link '購入画面に進む', href: item_transactions_path(@item1)
-    end
-    it 'ログインした上で、自分が出品した商品の購入ページへ遷移しようとするとトップページにリダイレクトされること' do
-      # ログインする
-      visit new_user_session_path
-      fill_in 'user[email]', with: @item1.user.email
-      fill_in 'user[password]', with: @item1.user.password
-      find('input[name="commit"]').click
-      expect(current_path).to eq root_path
-      # 自分が出品した商品の購入ページへダイレクトに遷移
-      visit item_transactions_path(@item1)
-      # トップページへ戻される
-      expect(current_path).to eq root_path
-    end
-    it 'ログインした上で、売却済みの商品の購入ページへ遷移しようとするとトップページにリダイレクトされること' do
-      # ログインする
-      visit new_user_session_path
-      fill_in 'user[email]', with: @item1.user.email
-      fill_in 'user[password]', with: @item1.user.password
-      find('input[name="commit"]').click
-      expect(current_path).to eq root_path
-      # 購入済み商品の購入ページへダイレクトに遷移
-      visit item_transactions_path(@item3)
-      # トップページへ戻される
-      expect(current_path).to eq root_path
-    end
-    it 'ログインしていないユーザーは、商品の購入ボタンを押すと、ログインページへ遷移すること' do
-      # トップページへ遷移
-      visit root_path
-      # 商品ページへアクセスする
-      find(:xpath, "//a[@href='/items/#{@item1.id}']").click
-      # 「購入画面に進む」のリンクが存在する
-      expect(page).to have_link '購入画面に進む', href: item_transactions_path(@item1)
-      # 「購入画面に進む」のリンクをクリック
-      find(:xpath, "//a[@href='/items/#{@item1.id}/transactions']").click
-      # ログインページへ遷移させられる
-      expect(current_path).to eq new_user_session_path
-      expect(page).to have_content("You need to sign in or sign up before continuing.")
-    end
-  end
-end
+# RSpec.describe '商品購入', type: :system do
+#   before do
+#     @item1 = FactoryBot.create(:item, :image)
+#     @item2 = FactoryBot.create(:item, :image)
+#     @item3 = FactoryBot.create(:item, :image, :sold_out)
+#   end
+#   context '商品購入ができるとき' do 
+#     it 'ログインした上で自分が出品していない商品を購入すると、取引テーブルのレコードが1つ増え、トップページへ遷移し、一覧ページと詳細ページにて、「sold out」の文字が表示されていること' do
+#       # ログインする
+#       visit new_user_session_path
+#       fill_in 'user[email]', with: @item1.user.email
+#       fill_in 'user[password]', with: @item1.user.password
+#       find('input[name="commit"]').click
+#       expect(current_path).to eq root_path
+#       # 自分の出品した以外の商品ページへアクセスする
+#       find(:xpath, "//a[@href='/items/#{@item2.id}']").click
+#       # 「購入画面に進む」のリンクが存在する
+#       expect(page).to have_link '購入画面に進む', href: item_transactions_path(@item2)
+#       # 「購入画面に進む」のリンクをクリック
+#       find(:xpath, "//a[@href='/items/#{@item2.id}/transactions']").click
+#       # 購入ページへ遷移
+#       expect(page).to have_content '購入内容の確認'
+#       # 項目を入力
+#       fill_in 'number', with: "4242424242424242"
+#       fill_in 'exp_month', with: "3"
+#       fill_in 'exp_year', with: "30"
+#       fill_in 'cvc', with: "123"
+#       fill_in 'postal_code', with: "123-4567"
+#       select "東京都", from: "prefecture"
+#       fill_in 'city', with: "渋谷区"
+#       fill_in 'addresses', with: "神南"
+#       fill_in 'building', with: "hogeビル"
+#       fill_in 'phone_number', with: "01234567890"
+#       # 購入ボタンを押す
+#       find('input[name="commit"]').click
+#       # アイテムトランザクションモデルのカウントが1上がる
+#       expect change{ ItemTransaction.count }.by(1)
+#       # トップページへ遷移する
+#       expect(page).to have_current_path(root_path)
+#       # 購入したアイテム２の要素を変数に入れる
+#       bought_item2 = find(:xpath, "//a[@href='/items/#{@item2.id}']")
+#       # 変数の中にSold Out!!の文字が存在する
+#       expect(bought_item2).to have_content 'Sold Out!!'
+#       # アイテム2の商品をクリックする
+#       bought_item2.click
+#       # アイテム2の商品詳細ページでも、Sold Out!! の文字が出ている
+#       expect(page).to have_content 'Sold Out!!'
+#     end
+#   end
+#   context '商品購入ができないとき' do 
+#     it 'ログインした上で自分が出品していない商品を購入しようとした場合でも、無効な値が入力された場合は、商品購入ページにてエラーメッセージ が表示されること' do
+#       # ログインする
+#       visit new_user_session_path
+#       fill_in 'user[email]', with: @item1.user.email
+#       fill_in 'user[password]', with: @item1.user.password
+#       find('input[name="commit"]').click
+#       expect(current_path).to eq root_path
+#       # 自分の出品した以外の商品ページへアクセスする
+#       find(:xpath, "//a[@href='/items/#{@item2.id}']").click
+#       # 「購入画面に進む」のリンクが存在する
+#       expect(page).to have_link '購入画面に進む', href: item_transactions_path(@item2)
+#       # 「購入画面に進む」のリンクをクリック
+#       find(:xpath, "//a[@href='/items/#{@item2.id}/transactions']").click
+#       # 購入ページへ遷移
+#       expect(page).to have_content '購入内容の確認'
+#       # 項目を入力
+#       fill_in 'number', with: ""
+#       fill_in 'exp_month', with: ""
+#       fill_in 'exp_year', with: ""
+#       fill_in 'cvc', with: ""
+#       fill_in 'postal_code', with: ""
+#       fill_in 'city', with: ""
+#       fill_in 'addresses', with: ""
+#       fill_in 'building', with: ""
+#       fill_in 'phone_number', with: ""
+#       # 購入ボタンを押す
+#       find('input[name="commit"]').click
+#       expect(page).to have_content("購入内容の確認")
+#       # エラーメッセージのクラスが出現する
+#       expect(page).to have_css "div.error-alert" 
+#     end
+#     it 'ログインした上でも、自分が出品した商品へは商品の購入ボタンが表示されないこと' do
+#       # ログインする
+#       visit new_user_session_path
+#       fill_in 'user[email]', with: @item1.user.email
+#       fill_in 'user[password]', with: @item1.user.password
+#       find('input[name="commit"]').click
+#       expect(current_path).to eq root_path
+#       # 自分の出品した以外の商品ページへアクセスする
+#       find(:xpath, "//a[@href='/items/#{@item1.id}']").click
+#       # 「購入画面に進む」のリンクは存在しない
+#       expect(page).to have_no_link '購入画面に進む', href: item_transactions_path(@item1)
+#     end
+#     it 'ログインした上で、自分が出品した商品の購入ページへ遷移しようとするとトップページにリダイレクトされること' do
+#       # ログインする
+#       visit new_user_session_path
+#       fill_in 'user[email]', with: @item1.user.email
+#       fill_in 'user[password]', with: @item1.user.password
+#       find('input[name="commit"]').click
+#       expect(current_path).to eq root_path
+#       # 自分が出品した商品の購入ページへダイレクトに遷移
+#       visit item_transactions_path(@item1)
+#       # トップページへ戻される
+#       expect(current_path).to eq root_path
+#     end
+#     it 'ログインした上で、売却済みの商品の購入ページへ遷移しようとするとトップページにリダイレクトされること' do
+#       # ログインする
+#       visit new_user_session_path
+#       fill_in 'user[email]', with: @item1.user.email
+#       fill_in 'user[password]', with: @item1.user.password
+#       find('input[name="commit"]').click
+#       expect(current_path).to eq root_path
+#       # 購入済み商品の購入ページへダイレクトに遷移
+#       visit item_transactions_path(@item3)
+#       # トップページへ戻される
+#       expect(current_path).to eq root_path
+#     end
+#     it 'ログインしていないユーザーは、商品の購入ボタンを押すと、ログインページへ遷移すること' do
+#       # トップページへ遷移
+#       visit root_path
+#       # 商品ページへアクセスする
+#       find(:xpath, "//a[@href='/items/#{@item1.id}']").click
+#       # 「購入画面に進む」のリンクが存在する
+#       expect(page).to have_link '購入画面に進む', href: item_transactions_path(@item1)
+#       # 「購入画面に進む」のリンクをクリック
+#       find(:xpath, "//a[@href='/items/#{@item1.id}/transactions']").click
+#       # ログインページへ遷移させられる
+#       expect(current_path).to eq new_user_session_path
+#       expect(page).to have_content("You need to sign in or sign up before continuing.")
+#     end
+#   end
+# end
