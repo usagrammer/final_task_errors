@@ -303,3 +303,29 @@ require 'rails_helper'
 #     end
 #   end
 # end
+
+RSpec.describe '商品削除', type: :system do
+  before do
+    @item1 = FactoryBot.create(:item, :image)
+    @item2 = FactoryBot.create(:item, :image)
+  end
+  context '商品削除ができるとき' do 
+    it 'ログインした上で自分が出品した商品を削除をすると、商品のレコードが1つ減り、トップページへ遷移すること' do
+      # ログインする
+      visit new_user_session_path
+      fill_in 'user[email]', with: @item1.user.email
+      fill_in 'user[password]', with: @item1.user.password
+      find('input[name="commit"]').click
+      expect(current_path).to eq root_path
+      # 自分の出品した商品のページへアクセスする
+      find(:xpath, "//a[@href='/items/#{@item1.id}']").click
+      # 「削除」のリンクが存在する
+      expect(page).to have_link '削除', href: item_path(@item1)
+      # 「削除」のリンクをクリック
+      expect{
+        find(:xpath, "//a[@href='/items/#{@item1.id}']").click}.to change { Item.count }.by(-1)
+      # トップページへ遷移する
+      expect(page).to have_current_path(root_path)
+    end
+  end
+end
