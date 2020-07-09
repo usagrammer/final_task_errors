@@ -304,28 +304,78 @@ require 'rails_helper'
 #   end
 # end
 
-RSpec.describe '商品削除', type: :system do
+# RSpec.describe '商品削除', type: :system do
+#   before do
+#     @item1 = FactoryBot.create(:item, :image)
+#     @item2 = FactoryBot.create(:item, :image)
+#   end
+#   context '商品削除ができるとき' do 
+#     it 'ログインした上で自分が出品した商品を削除をすると、商品のレコードが1つ減り、トップページへ遷移すること' do
+#       # ログインする
+#       visit new_user_session_path
+#       fill_in 'user[email]', with: @item1.user.email
+#       fill_in 'user[password]', with: @item1.user.password
+#       find('input[name="commit"]').click
+#       expect(current_path).to eq root_path
+#       # 自分の出品した商品のページへアクセスする
+#       find(:xpath, "//a[@href='/items/#{@item1.id}']").click
+#       # 「削除」のリンクが存在する
+#       expect(page).to have_link '削除', href: item_path(@item1)
+#       # 「削除」のリンクをクリック
+#       expect{
+#         find(:xpath, "//a[@href='/items/#{@item1.id}']").click}.to change { Item.count }.by(-1)
+#       # トップページへ遷移する
+#       expect(page).to have_current_path(root_path)
+#     end
+#   end
+# end
+
+RSpec.describe '商品購入', type: :system do
   before do
     @item1 = FactoryBot.create(:item, :image)
     @item2 = FactoryBot.create(:item, :image)
   end
-  context '商品削除ができるとき' do 
-    it 'ログインした上で自分が出品した商品を削除をすると、商品のレコードが1つ減り、トップページへ遷移すること' do
+  context '商品購入ができるとき' do 
+    it 'ログインした上で自分が出品していない商品を購入すると、取引テーブルのレコードが1つ増え、トップページへ遷移し、一覧ページと詳細ページにて、「sold out」の文字が表示されていること' do
       # ログインする
       visit new_user_session_path
       fill_in 'user[email]', with: @item1.user.email
       fill_in 'user[password]', with: @item1.user.password
       find('input[name="commit"]').click
       expect(current_path).to eq root_path
-      # 自分の出品した商品のページへアクセスする
-      find(:xpath, "//a[@href='/items/#{@item1.id}']").click
-      # 「削除」のリンクが存在する
-      expect(page).to have_link '削除', href: item_path(@item1)
-      # 「削除」のリンクをクリック
-      expect{
-        find(:xpath, "//a[@href='/items/#{@item1.id}']").click}.to change { Item.count }.by(-1)
+      # 自分の出品した以外の商品ページへアクセスする
+      find(:xpath, "//a[@href='/items/#{@item2.id}']").click
+      # 「購入画面に進む」のリンクが存在する
+      expect(page).to have_link '購入画面に進む', href: item_transactions_path(@item2)
+      # 「購入画面に進む」のリンクをクリック
+      find(:xpath, "//a[@href='/items/#{@item2.id}/transactions']").click
+      # 購入ページへ遷移
+      expect(page).to have_content '購入内容の確認'
+      # 項目を入力
+      fill_in 'number', with: "4242424242424242"
+      fill_in 'exp_month', with: "3"
+      fill_in 'exp_year', with: "30"
+      fill_in 'cvc', with: "123"
+      fill_in 'postal_code', with: "123-4567"
+      select "東京都", from: "prefecture"
+      fill_in 'city', with: "渋谷区"
+      fill_in 'addresses', with: "神南"
+      fill_in 'building', with: "hogeビル"
+      fill_in 'phone_number', with: "01234567890"
+      # 購入ボタンを押す
+      find('input[name="commit"]').click
+      # アイテムトランザクションモデルのカウントが1上がる
+      expect change{ ItemTransaction.count }.by(1)
       # トップページへ遷移する
       expect(page).to have_current_path(root_path)
+      # 購入したアイテム２の要素を変数に入れる
+      bought_item2 = find(:xpath, "//a[@href='/items/#{@item2.id}']")
+      # 変数の中にSold Out!!の文字が存在する
+      expect(bought_item2).to have_content 'Sold Out!!'
+      # アイテム2の商品をクリックする
+      bought_item2.click
+      # アイテム2の商品詳細ページでも、Sold Out!! の文字が出ている
+      expect(page).to have_content 'Sold Out!!'
     end
   end
 end
