@@ -462,3 +462,40 @@ require 'rails_helper'
 #     end
 #   end
 # end
+
+RSpec.describe '商品一覧', type: :system do
+  before do
+    @user = FactoryBot.create(:user)
+    @item1 = FactoryBot.create(:item, :image)
+    @item2 = FactoryBot.create(:item, :image, :sold_out)
+  end
+  it 'ログインしているユーザーは、商品の一覧表示を確認でき、適切な内容が表示されていること' do
+    # ログインする
+    visit new_user_session_path
+    fill_in 'user[email]', with: @user.email
+    fill_in 'user[password]', with: @user.password
+    find('input[name="commit"]').click
+    expect(current_path).to eq root_path
+    # ヘッダー画像がある
+    expect(page).to have_content "人生を変えるフリマアプリ"
+    # 出品ページへのリンクがある
+    expect(page).to have_content('出品する')
+    # 出品中の商品が存在している
+    find(:xpath, "//a[@href='/items/#{@item1.id}']")    
+    # 売却済みの商品も存在している
+    find(:xpath, "//a[@href='/items/#{@item2.id}']")
+  end
+  it 'ログインしていないユーザーでも、商品の一覧表示を確認でき、適切な内容が表示されていること' do
+    # ログインする
+    visit root_path
+    expect(current_path).to eq root_path
+    # ヘッダー画像がある
+    expect(page).to have_content "人生を変えるフリマアプリ"
+    # 出品ページへのリンクがある
+    expect(page).to have_content('出品する')
+    # 出品中の商品が存在している
+    find(:xpath, "//a[@href='/items/#{@item1.id}']")
+    # 売却済みの商品も存在している
+    find(:xpath, "//a[@href='/items/#{@item2.id}']")
+  end
+end
