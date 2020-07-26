@@ -1,3 +1,5 @@
+# コチラは受講生提供用のコードではありません
+
 require 'rails_helper'
 
 RSpec.describe '商品出品', type: :system do
