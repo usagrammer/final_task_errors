@@ -1,3 +1,5 @@
+# コチラは受講生提供用のコードではありません
+
 require 'rails_helper'
 
 RSpec.describe 'ユーザー新規登録', type: :system do
