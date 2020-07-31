@@ -96,28 +96,28 @@ RSpec.describe '商品編集', type: :system do
       visit edit_item_path(@item1)
       # すでに投稿済みの内容がフォームに入っている(画像以外)
       expect(
-        find('#item_name').value
+        find('#item-name').value
       ).to eq @item1.name
       expect(
-        find('#item_info').value
+        find('#item-info').value
       ).to eq @item1.info
       expect(
-        find('#item_category_id').value
+        find('#item-category').value
       ).to eq "#{@item1.category_id}"
       expect(
-        find('#item_sales_status_id').value
+        find('#item-sales-status').value
       ).to eq "#{@item1.sales_status_id}"
       expect(
-        find('#item_shipping_fee_status_id').value
+        find('#item-shipping-fee-status').value
       ).to eq "#{@item1.shipping_fee_status_id}"
       expect(
-        find('#item_prefecture_id').value
+        find('#item-prefecture').value
       ).to eq "#{@item1.prefecture_id}"
       expect(
-        find('#item_scheduled_delivery_id').value
+        find('#item-scheduled-delivery').value
       ).to eq "#{@item1.scheduled_delivery_id}"
       expect(
-        find('#item_price').value
+        find('#item-price').value
       ).to eq "#{@item1.price}"
       # 投稿内容を編集する
       page.attach_file('item[image]',"#{Rails.root}/spec/fixtures/sample2.png")
@@ -151,28 +151,28 @@ RSpec.describe '商品編集', type: :system do
       visit edit_item_path(@item1)
       # すでに投稿済みの内容がフォームに入っている(画像以外)
       expect(
-        find('#item_name').value
+        find('#item-name').value
       ).to eq @item1.name
       expect(
-        find('#item_info').value
+        find('#item-info').value
       ).to eq @item1.info
       expect(
-        find('#item_category_id').value
+        find('#item-category').value
       ).to eq "#{@item1.category_id}"
       expect(
-        find('#item_sales_status_id').value
+        find('#item-sales-status').value
       ).to eq "#{@item1.sales_status_id}"
       expect(
-        find('#item_shipping_fee_status_id').value
+        find('#item-shipping-fee-status').value
       ).to eq "#{@item1.shipping_fee_status_id}"
       expect(
-        find('#item_prefecture_id').value
+        find('#item-prefecture').value
       ).to eq "#{@item1.prefecture_id}"
       expect(
-        find('#item_scheduled_delivery_id').value
+        find('#item-scheduled-delivery').value
       ).to eq "#{@item1.scheduled_delivery_id}"
       expect(
-        find('#item_price').value
+        find('#item-price').value
       ).to eq "#{@item1.price}"
       # 投稿内容を編集する
       fill_in 'item[name]', with: ""
