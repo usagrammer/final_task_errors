@@ -33,6 +33,11 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Price can't be blank")
       end
+      it 'price:半角数字' do
+        @item.price = '５００'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price Half-width number")
+      end
       it 'price:範囲指定' do
         @item.price = 200
         @item.valid?
