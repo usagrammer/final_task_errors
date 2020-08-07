@@ -14,8 +14,8 @@ window.addEventListener("DOMContentLoaded", () => {
         addTaxDom.innerHTML = Math.floor(inputValue * 0.1).toLocaleString();
         profitDom.innerHTML = Math.floor(inputValue * 0.9).toLocaleString();
       } else {
-        addTaxDom.innerHTML = '半角数字のみ入力可能'
-        profitDom.innerHTML = '半角数字のみ入力可能'
+        addTaxDom.innerHTML = ''
+        profitDom.innerHTML = ''
       }
     })
   }
