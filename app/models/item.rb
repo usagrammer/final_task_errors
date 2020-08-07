@@ -39,5 +39,4 @@ class Item < ApplicationRecord
   # <<アソシエーション>>
   belongs_to :user
   has_one :item_transaction
-  has_one :address
 end

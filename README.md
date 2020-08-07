@@ -65,7 +65,6 @@ bundle ex rubocop -a
 
 * has_many :items
 * has_many :item_transactions
-* has_many :cards
 
 ## addresses table
 
@@ -77,11 +76,11 @@ bundle ex rubocop -a
 | address      | string  | null: false       |
 | building     | string  |                   |
 | phone_number | string  | null: false       |
-| item_id(FK)  | integer | foreign_key: true |
+| item_transaction_id(FK)  | integer | foreign_key: true |
 
 ### Association
 
-* belongs_to :item
+* belongs_to :item_transaction
 
 ## items table
 
@@ -102,7 +101,6 @@ bundle ex rubocop -a
 
 - belongs_to :user
 - has_one :item_transaction
-- has_one :address
 
 ## item_transactions table
 
@@ -115,6 +113,7 @@ bundle ex rubocop -a
 
 - belongs_to :item
 - belongs_to :user
+- has_one :address
 
 ## 備考
 
