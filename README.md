@@ -65,7 +65,6 @@ bundle ex rubocop -a
 
 * has_many :items
 * has_many :item_transactions
-* has_many :cards
 
 ## addresses table
 
