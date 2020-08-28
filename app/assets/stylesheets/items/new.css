@@ -44,7 +44,6 @@
   font-weight: bold;
   min-width: 170px;
   margin-bottom: 10px;
-  height: 20px;
 }
 
 .select-box {
@@ -74,39 +73,20 @@
 /* /共通 */
 
 /* 出品画像 */
-
 .img-upload {
-  /* display: flex;
+  display: flex;
   justify-content: space-between;
-  flex-wrap: wrap; */
+  flex-wrap: wrap;
   padding: 2vh 0;
-}
-
-.item_images{
-  display: none;
 }
 
 .click-upload {
   margin: 15px 0;
   min-width: 250px;
-  z-index: 1;
-}
-
-#image-list{
-  min-width: 450px;
-  display: flex;
 }
 
 .click-upload>p {
   margin-bottom: 15px;
-}
-
-.images-edit{
-  width:50px;
-}
-
-.images-delete{
-  width:50px;
 }
 
 /* /出品画像 */

@@ -32,7 +32,6 @@ window.addEventListener("DOMContentLoaded", () => {
       };
 
       Payjp.createToken(card, (status, response) => {
-        debugger
         if (status === 200) {
           // response.idでtokenが取得できます。
           const token = response.id;

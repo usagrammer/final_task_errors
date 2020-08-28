@@ -67,4 +67,3 @@ gem "devise"
 gem "payjp"
 gem "pry-rails"
 # gem "rails-i18n"
-gem 'pry-nav' 

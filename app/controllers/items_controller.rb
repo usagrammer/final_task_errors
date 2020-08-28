@@ -18,9 +18,7 @@ class ItemsController < ApplicationController
       return redirect_to root_path
     end
     # アクションのnewをコールすると、エラーメッセージが入った@itemが上書きされてしまうので注意
-    # render 'new'
-    # 修正点、エラ〜メッセージが表示されない
-    redirect_to new_item_path, flash: {error: @item.errors.full_messages}
+    render 'new'
   end
 
   def show
@@ -28,10 +26,6 @@ class ItemsController < ApplicationController
 
   def edit
     return redirect_to root_path if current_user.id != @item.user.id
-    @item_images = @item.images
-    
-    binding.pry
-    
   end
 
   def update
@@ -50,6 +44,7 @@ class ItemsController < ApplicationController
 
   def item_params
     params.require(:item).permit(
+      :image,
       :name,
       :info,
       :category_id,
@@ -57,8 +52,7 @@ class ItemsController < ApplicationController
       :shipping_fee_status_id,
       :prefecture_id,
       :scheduled_delivery_id,
-      :price,
-      images: []
+      :price
     ).merge(user_id: current_user.id)
   end
 

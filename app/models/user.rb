@@ -2,9 +2,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
 
   # <<バリデーション>>
-  # 疑問：なぜユーザ名の大文字小文字を分けて登録できるようにするのか？一意性に関しては必須機能で言及されていない
-  # 想定される質問：「なぜmailアドレスのバリデーションは必要ないんですか？また、テストは書かなければいけないのですか？」
-  # 　　　　　　　　→デフォルトで実装されているが、変更することもできるため、変更されていないことを確認するためにテストは必要
   validates :nickname, presence: true, uniqueness: { case_sensitive: true }
 
   validates :birth_date, presence: true
