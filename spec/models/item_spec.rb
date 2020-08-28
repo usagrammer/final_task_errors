@@ -26,7 +26,7 @@ RSpec.describe Item, type: :model do
       it 'info:必須' do
         @item.info = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Info can't be blank")
+        expect(@item.errors.full_messages).to include("Infos can't be blank")
       end
       it 'price:必須' do
         @item.price = ''

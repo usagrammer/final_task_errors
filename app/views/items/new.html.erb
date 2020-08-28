@@ -6,6 +6,7 @@
   <div class="items-sell-main">
     <h2 class="items-sell-title">商品の情報を入力</h2>
     <%= form_with model: @item , local: true do |f| %>
+    <%# <%binding.pry%> 
     <%= render 'shared/error_messages', model: f.object %>
     <%# 出品画像 %>
     <div class="img-upload">
@@ -13,11 +14,12 @@
         出品画像
         <span class="indispensable">必須</span>
       </div>
+
       <div class="click-upload">
-        <p>
-          クリックしてファイルをアップロード
-        </p>
-        <%= f.file_field :image, id:"item-image" %>
+        <div id="image-list">
+        </div>
+        <div id="image-upload">クリックしてファイルをアップロード</div>
+        <%= f.file_field :images ,class: "item_images", name: 'item[images][]', data:{index:"0"}%>
       </div>
     </div>
     <%# /出品画像 %>
