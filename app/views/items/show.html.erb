@@ -22,14 +22,13 @@
         (税込) 送料込み
       </span>
     </div>
-    <% if user_signed_in? && current_user.id == @item.user_id %>
+    <% if user_signed_in? && current_user.id == @item.user_id && @item.item_transaction == nil %>
     <%= link_to '商品の編集', edit_item_path(@item.id), method: :get, class: "item-red-btn" %>
     <p class='or-text'>or</p>
     <%= link_to '削除', item_path(@item.id), method: :delete, class:'item-destroy' %>
-    <% else %>
-    <% if @item.item_transaction == nil %>
+    <% elsif user_signed_in? && @item.item_transaction == nil%>
     <%= link_to '購入画面に進む', item_transactions_path(item_id: @item.id) ,class:"item-red-btn"%>
-    <% end %>
+    <% else %>
     <% end %>
     <div class="item-explain-box">
       <span><%= @item.info %></span>
