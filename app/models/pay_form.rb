@@ -15,7 +15,7 @@ class PayForm
   end
 
   validates :phone_number, length: { maximum: 11, message: 'Too long' }
-  validates :phone_number, numericality: {message: 'is invalid. Input only number.'}
+  validates :phone_number, numericality: {message: 'Input only number'}
 
   def save
     item_transaction = ItemTransaction.create(
