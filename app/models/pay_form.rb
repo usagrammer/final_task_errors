@@ -10,10 +10,12 @@ class PayForm
     validates :prefecture, numericality: { other_than: 0, message: 'Select' }
     validates :city
     validates :addresses
-    validates :phone_number, numericality: { maximum: 11, message: 'Too long' }
-    # 電話番号は入力フォームで制限してますが、一応つけています。
+    validates :phone_number
     validates :user_id
   end
+
+  validates :phone_number, length: { maximum: 11, message: 'Too long' }
+  validates :phone_number, numericality: {message: 'is invalid. Input only number.'}
 
   def save
     item_transaction = ItemTransaction.create(
