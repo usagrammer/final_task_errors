@@ -13,7 +13,8 @@ window.addEventListener("DOMContentLoaded", () => {
     console.log('changed:', e.target);
     console.table(e.target.files);
     console.log('1つ目のfile:', e.target.files[0]);
-    
+
+    // 既にプレビューが表示されているときは古い方を削除する
     const previewArea = document.querySelector('.preview');
     if (previewArea){
       previewArea.remove();
@@ -43,4 +44,5 @@ window.addEventListener("DOMContentLoaded", () => {
     const previewsList = document.querySelector('#previews');
     previewsList.appendChild(previewWrapper);
   })
+
 });
