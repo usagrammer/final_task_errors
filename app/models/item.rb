@@ -5,7 +5,7 @@ class Item < ApplicationRecord
 
   # 値が入っているか検証
   with_options presence: true do
-    validates :image
+    validates :images
     validates :name
     validates :info
     validates :price
@@ -34,8 +34,8 @@ class Item < ApplicationRecord
   belongs_to_active_hash :scheduled_delivery
 
   # <<アクティブストレージの設定関連>>
-  has_one_attached :image
-
+  has_many_attached :images
+  validates :images, length: { minimum: 1, maximum: 5, message: "は1枚以上5枚以下にしてください" }
   # <<アソシエーション>>
   belongs_to :user
   has_many :comments
