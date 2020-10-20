@@ -33,7 +33,8 @@
         <p class='or-text'>or</p>
         <%= link_to '削除', item_path(@item.id), method: :delete, class:'item-destroy' %>
       <% else %>
-        <%= link_to '購入画面に進む', item_transactions_path(item_id: @item.id) ,class:"item-red-btn"%>
+        <%= link_to '購入画面に進む（新しくカードを登録する）', item_transactions_path(item_id: @item.id) ,class:"item-red-btn"%>
+        <%= link_to '購入画面に進む（カード登録済み）', purchase_confirm_item_path(item_id: @item.id) ,class:"item-red-btn"%>
       <% end %>
     <% end %>
     <div class="item-explain-box">
