@@ -25,4 +25,5 @@ class User < ApplicationRecord
   # <<アソシエーション>>
   has_many :items
   has_many :item_transactions
+  has_one :card, dependent: :destroy
 end
