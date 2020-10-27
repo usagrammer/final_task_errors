@@ -22,6 +22,19 @@ class ItemsController < ApplicationController
     render 'new'
   end
 
+  def search
+    if params[:q]&.dig(:name)  ## if params[:q] && params[:q][:name]と同じようなもの
+      ## squishメソッドで無駄なスペースを圧縮する
+      ## 例えば "hoge         fuga    foo  bar"は"hoge fuga foo bar"になる
+      squished_keywords = params[:q][:name].squish
+      ## 半角スペースを区切り文字として配列にしてparamsに入れる
+      ## 例えば文字列"hoge fuga foo bar"は配列[hoge, fuga, foo, bar]になる
+      params[:q][:name_cont_any] = squished_keywords.split(" ")
+    end
+    @q = Item.ransack(params[:q])
+    @items = @q.result
+  end
+  
   def purchase
     ## 購入履歴オブジェクトを定義
     item_transaction = ItemTransaction.new(item_id: @item.id, user_id: current_user.id)
