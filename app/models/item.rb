@@ -40,4 +40,6 @@ class Item < ApplicationRecord
   belongs_to :user
   has_many :comments
   has_one :item_transaction
+  has_many :item_tag_relations, dependent: :destroy
+  has_many :tags, through: :item_tag_relations
 end

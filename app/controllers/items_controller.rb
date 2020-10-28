@@ -3,19 +3,20 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy, :purchase_confirm, :purchase]
   before_action :sold_item, only: [:purchase_confirm, :purchase]
   before_action :current_user_has_not_card, only: [:purchase_confirm, :purchase]
+  before_action :set_item_form, only: [:edit, :update]
   def index
     @items = Item.all.order(created_at: :desc)
   end
 
   def new
-    @item = Item.new
+    @item_form = ItemForm.new
   end
-
+  
   def create
-    @item = Item.new(item_params)
+    @item_form = ItemForm.new(item_form_params)
     # バリデーションで問題があれば、保存はされず「商品出品画面」を再描画
-    if @item.valid?
-      @item.save
+    if @item_form.valid?
+      @item_form.save
       return redirect_to root_path
     end
     # アクションのnewをコールすると、エラーメッセージが入った@itemが上書きされてしまうので注意
@@ -59,10 +60,13 @@ class ItemsController < ApplicationController
   end
 
   def update
-    @item.update(item_params) if current_user.id == @item.user.id
-    return redirect_to item_path if @item.valid?
-
-    render 'edit'
+    render 'edit' unless current_user.id == @item.user.id
+    @item_form = ItemForm.new(item_form_params)
+    if @item_form.update(item_form_params, @item)
+      return redirect_to item_path(@item.id)
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -72,11 +76,13 @@ class ItemsController < ApplicationController
 
   private
 
-  def item_params
-    params.require(:item).permit(
+  def item_form_params
+    ## require(:item) → require(:item_form)
+    params.require(:item_form).permit(
       :name,
       :info,
       :category_id,
+      :tag_name,
       :sales_status_id,
       :shipping_fee_status_id,
       :prefecture_id,
@@ -101,6 +107,11 @@ class ItemsController < ApplicationController
     )
   end
 
+  def set_item_form
+    item_attributes = @item.attributes
+    @item_form = ItemForm.new(item_attributes)
+  end
+  
   def sold_item
     redirect_to item_path(@item), alert: "売り切れの商品です" if @item.item_transaction.present?
   end
