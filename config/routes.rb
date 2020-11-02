@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   end
 
   root to: "items#index"
+  resources :tags, only: [:index]
   resources :items do
     resources :transactions, only: [:index, :new, :create]
     resources :comments, only: :create 
