@@ -28,7 +28,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def create_address_preset
     ## sessionに入っているuserの情報を元に@userを定義しなおす
-    @user = User.new(session["devise.regist_data"]["user"])
+    @user = User.new(session["devise.regist_data"][:user])
     @address_preset = AddressPreset.new(address_preset_params)
     @sns = SnsCredential.new(session["devise.regist_data"]["sns"])
     ## @userに@address_presetを紐づける

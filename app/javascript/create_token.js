@@ -1,5 +1,5 @@
 window.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("charge-form");
+  const form = document.getElementById("card-form");
   // カード登録用フォームがないならここで終了する
   if (!form) return false;
 
@@ -24,10 +24,10 @@ window.addEventListener("DOMContentLoaded", () => {
     // カード情報の構成や、トークン生成はこちらのリファレンスを参照
     // https://pay.jp/docs/payjs-v1
     const card = {
-      number: formData.get("number"),
-      cvc: formData.get("cvc"),
-      exp_month: formData.get("exp_month"),
-      exp_year: `20${formData.get("exp_year")}`,
+      number: formData.get("card_number"),
+      cvc: formData.get("card_cvc"),
+      exp_month: formData.get("card_exp_month"),
+      exp_year: `20${formData.get("card_exp_year")}`,
     };
 
     Payjp.createToken(card, (status, response) => {

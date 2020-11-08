@@ -1,21 +1,8 @@
 class ItemForm
   include ActiveModel::Model
-  include ActiveModel::Attributes
   ## ItemFormクラスのオブジェクトがitemモデルの属性を扱えるようにする
-  attribute :name,  :string
-  attribute :info,  :string
-  attribute :category_id, :big_integer
-  attribute :sales_status_id, :big_integer
-  attribute :shipping_fee_status_id, :big_integer
-  attribute :prefecture_id, :big_integer
-  attribute :scheduled_delivery_id, :big_integer
-  attribute :price, :integer
-  attribute :images, :binary
-  attribute :user_id, :big_integer
-  attribute :tag_name, :string
-  attribute :id, :integer
-  attribute :created_at, :datetime
-  attribute :updated_at, :datetime
+  attr_accessor :name, :info, :category_id, :sales_status_id, :shipping_fee_status_id, :prefecture_id, :scheduled_delivery_id, :price, :images, :user_id, :tag_name
+
   # <<バリデーション（ほぼitem.rbの流用）>>
 
   # 値が入っているか検証
@@ -28,13 +15,13 @@ class ItemForm
   end
 
   # 金額が半角であるか検証
-  validates :price, numericality: { message: 'Half-width number' }
+  validates :price, numericality: { message: 'は半角数字で入力してください' }
 
   # 金額の範囲
-  validates_inclusion_of :price, in: 300..9_999_999, message: 'Out of setting range'
+  validates_inclusion_of :price, in: 300..9_999_999, message: 'は300円以上9999999円以下にしてください'
 
   # 選択関係で「---」のままになっていないか検証
-  with_options numericality: { other_than: 0, message: 'Select' } do
+  with_options numericality: { other_than: 0, message: 'を選択してください' } do
     validates :category_id
     validates :sales_status_id
     validates :shipping_fee_status_id

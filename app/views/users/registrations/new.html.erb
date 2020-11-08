@@ -23,7 +23,7 @@
     <%= f.email_field :email, class:"input-default", id:"email", placeholder:"PC・携帯どちらでも可", autofocus: true %>
   </div>
 
-  <% unless session["devise.regist_data"] && session["devise.regist_data"]["sns"] %>
+  <% unless session["devise.regist_data"]["sns"] %>
 
     <div class="form-group">
       <div class='form-text-wrap'>

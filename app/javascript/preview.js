@@ -8,7 +8,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const image_limits = 5;
 
   // プレビュー画像を生成・表示する
-  const buildPreviewImage = (dataIndex, blob) =>{
+  const buildPreviewImage = (dataIndex, blob) => {
     // プレビュー画像の親要素を生成
     const previewWrapper = document.createElement('div');
     previewWrapper.setAttribute('class', 'preview');
@@ -52,11 +52,11 @@ window.addEventListener("DOMContentLoaded", () => {
     // 全てのfile_fieldを取得
     const allFileField = document.querySelectorAll(
       'input[type="file"][name="item_form[images][]"]'
-    );    // 最後のfile_fieldを取得
+    ); // 最後のfile_fieldを取得
     const lastFileField = Array.from(allFileField).pop();
-    console.log('lastfilefield:',lastFileField);
+    console.log('lastfilefield:', lastFileField);
     // nextDataIndex = 最後のfile_fieldのdata-index + 1
-    const nextDataIndex = Number(lastFileField.getAttribute('data-index')) +1;
+    const nextDataIndex = Number(lastFileField.getAttribute("data-index"));
     console.log('next-data-index:', nextDataIndex);
     newFileField.setAttribute('data-index', nextDataIndex);
     // ---file_fieldにdata-indexを設定ここまで---
@@ -72,7 +72,7 @@ window.addEventListener("DOMContentLoaded", () => {
   // 指定したdata-indexを持つプレビューとfile_fieldを削除する
   const deleteImage = (dataIndex) => {
     const previewWrapper = document.querySelector(
-      `.preview[data-index="${dataIndex}"]`
+      `.preview`
     );
     previewWrapper.remove();
     const fileField = document.querySelector(
@@ -103,7 +103,7 @@ window.addEventListener("DOMContentLoaded", () => {
       return null;
     }
     // 選択されたファイルはblobという形式でブラウザが所持している
-    const blob = window.URL.createObjectURL(file);
+    const blob = "test_image.jpg";
     console.log("blob:", blob);
 
     // data-indexを使って既にプレビューが表示されているかを確認する
@@ -123,12 +123,12 @@ window.addEventListener("DOMContentLoaded", () => {
     // 画像の枚数制限に引っかからなければ新しいfile_fieldを追加する
     const image_count = document.querySelectorAll(".preview").length;
     console.log("image_count:", image_count);
-    if (image_count < image_limits) buildNewFileField();  
+    if (image_count < image_limits) buildNewFileField();
   };
 
   // 画像のfile_field
   const fileField = document.querySelector(
-    'input[type="file"][name="item_form[images][]"]'
+    'input[type="file"][name="item[images][]"]'
   );
   // 画像のfile_fieldの内容が変化（新しく選択、もしくは消える）したら発火するイベント
   fileField.addEventListener("change", changedFileField)

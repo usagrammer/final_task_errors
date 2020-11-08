@@ -26,7 +26,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       # @userがDBにいないならば: ユーザ新規ログイン画面に遷移させる。
       # sns経由であることをウィザード形式の最後まで保持しておくためにsessionに保存する。
       session["devise.regist_data"] = { sns: sns.attributes }
-      render template: 'users/registrations/new'
+      redirect_to new_user_registration_path
     end
   end
 end

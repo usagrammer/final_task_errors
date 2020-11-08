@@ -12,13 +12,13 @@
     <div class="search-field">
       <%= f.label :user_nickname_cont, '出品者名' %>
       <br>
-      <%= f.text_field :user_nickname_cont, placeholder: '出品者名' %>
+      <%= f.text_field :id_cont, placeholder: '出品者名' %>
     </div>
 
     <div class="search-field">
       <%= f.label :category_id_in, 'カテゴリ' %>
       <br>
-      <%= f.collection_check_boxes :category_id_in, Category.all, :id, :name, {include_blank: "---"} %>
+      <%= f.collection_select :category_id_in, Category.all, :id, :name, {include_blank: false} %>
     </div>
 
     <div class="search-field">
@@ -48,11 +48,11 @@
     <div class="search-field">
       <%= f.label :price_gteq, '価格'%>
       <br>
-      <%= f.number_field :price_gteq %>
+      <%= f.number_field :price_lteq %>
       <br>
       ～
       <br>
-      <%= f.number_field :price_lteq %>
+      <%= f.number_field :price_gteq %>
     </div>
     <%= f.submit '検索' %>
   <% end %>
