@@ -24,7 +24,7 @@ window.addEventListener("DOMContentLoaded", () => {
     // カード情報の構成や、トークン生成はこちらのリファレンスを参照
     // https://pay.jp/docs/payjs-v1
     const card = {
-      number: formData.get("card_number"),
+      card_number: formData.get("card_number"),
       cvc: formData.get("card_cvc"),
       exp_month: formData.get("card_exp_month"),
       exp_year: `20${formData.get("card_exp_year")}`,
@@ -45,7 +45,7 @@ window.addEventListener("DOMContentLoaded", () => {
         カード登録に失敗しました。
         エラー：${response.error.message}
         カード情報：
-        {number: ${card.number} cvc: ${card.cvc} month: ${card.exp_month} year: ${card.exp_year}}
+        {number: ${card.card_number} cvc: ${card.cvc} month: ${card.exp_month} year: ${card.exp_year}}
       `);
         sendWithoutCardInfo();
       }
