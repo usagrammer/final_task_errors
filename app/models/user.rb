@@ -25,8 +25,8 @@ class User < ApplicationRecord
   has_many :items
   has_many :item_transactions
   has_one :card, dependent: :destroy
-  has_one :address_preset
-  has_many :sns_credentials
+  has_one :address_preset, dependent: :destroy
+  has_many :sns_credentials, dependent: :destroy
 
   def self.from_sns_credential(sns, auth)
     # snsの情報が既にDBにあった場合は、2回目以降のログインなので紐づくuserを返す
