@@ -25,12 +25,12 @@ class User < ApplicationRecord
   has_many :items
   has_many :item_transactions
   has_one :card, dependent: :destroy
-  has_one :address_preset
-  has_many :sns_credentials
+  has_one :address_preset, dependent: :destroy
+  has_many :sns_credentials, dependent: :destroy
 
   def self.from_sns_credential(sns, auth)
     # snsの情報が既にDBにあった場合は、2回目以降のログインなので紐づくuserを返す
-    return sns.user if sns.persisted?
+    return User.new if sns.persisted?
     # snsの情報がDBにない場合
     # 既存ユーザへSNSサービス連携or新規ユーザ登録
     user = User.where(email: auth.info.email).first_or_initialize
