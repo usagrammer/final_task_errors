@@ -51,7 +51,7 @@ window.addEventListener("DOMContentLoaded", () => {
     // ---file_fieldにdata-indexを設定ここから---
     // 全てのfile_fieldを取得
     const allFileField = document.querySelectorAll(
-      'input[type="file"][name="item_form[images][]"]'
+      'input[type="file"]'
     );    // 最後のfile_fieldを取得
     const lastFileField = Array.from(allFileField).pop();
     console.log('lastfilefield:',lastFileField);
