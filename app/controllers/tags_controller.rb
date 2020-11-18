@@ -4,7 +4,7 @@ class TagsController < ApplicationController
     puts "タグ： #{params[:tag_name]}"
     puts "★★★★★★★★★★"
 
-    return render json: {tags: [] } if params[:name].empty?  ## ""で検索にかけると全てヒットしてしまうため""の場合はここで終了
+    return render json: {tags: [] } if params[:name].blank?  ## ""で検索にかけると全てヒットしてしまうため""の場合はここで終了
     tags = Tag.where(['name LIKE ?', "%#{params[:tag_name]}%"] )
     render json: {tags: tags}
   end
