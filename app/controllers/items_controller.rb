@@ -69,6 +69,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    @item_form.tag_name = @item.tags.first&.name
     return redirect_to root_path if current_user.id != @item.user.id
   end
 
