@@ -95,7 +95,7 @@
       <% end %>
     </div>
     <% if user_signed_in? %>
-      <%= form_with model: [@item, @comment] do |f| %>
+      <%= form_with model: [@item, @comment], id: 'comment-form' do |f| %>
         <%= f.text_area :content , class: "comment-text"%>
         <p class="comment-warn" >
           相手のことを考え丁寧なコメントを心がけましょう。
