@@ -30,7 +30,7 @@ class Item < ApplicationRecord
   # <<アソシエーション>>
   belongs_to :user
   has_many :comments
-  has_one :item_transaction
+  has_one :item_transaction, dependent: :destroy
   has_many :item_tag_relations, dependent: :destroy
   has_many :tags, through: :item_tag_relations
 end
