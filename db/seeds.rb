@@ -5,6 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Tag.create(name: "かわいい")
+Tag.create(name: "かっこいい")
+Tag.create(name: "おしゃれ")
+
 test_user_1 = FactoryBot.create(:user, nickname: "hoge太郎")
 test_user_2 = FactoryBot.create(:user, nickname: "fuga次郎")
 
