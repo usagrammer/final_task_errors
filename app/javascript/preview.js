@@ -1,25 +1,24 @@
 window.addEventListener("DOMContentLoaded", () => {
   // 商品出品・編集のフォームを取得
-  const itemForm = document.querySelector('.items-sell-main');
+  const itemForm = document.querySelector(".items-sell-main");
   // 商品出品・編集のフォームがないなら実行せずここで終了
   if (!itemForm) return null;
-  console.log('preview.js');
+  console.log("preview.js");
 
   const image_limits = 5;
 
   // プレビュー画像を生成・表示する
-  const buildPreviewImage = (dataIndex, blob) =>{
+  const buildPreviewImage = (dataIndex, blob) => {
     // プレビュー画像の親要素を生成
-    const previewWrapper = document.createElement('div');
-    previewWrapper.setAttribute('class', 'preview');
+    const previewWrapper = document.createElement("div");
+    previewWrapper.setAttribute("class", "preview");
 
     // プレビュー画像にdata-indexを設定
-    previewWrapper.setAttribute('data-index', dataIndex);
+    previewWrapper.setAttribute("data-index", dataIndex);
 
     // プレビュー画像のimg要素を生成
-    const previewImage = document.createElement('img');
-    previewImage.setAttribute('src', blob);
-    previewImage.setAttribute('class', 'preview-image');
+    const previewImage = document.createElement("img");
+    previewImage.setAttribute("class", "preview-image");
 
     // プレビュー画像の親要素に子要素としてimg要素を追加する
     previewWrapper.appendChild(previewImage);
@@ -35,50 +34,47 @@ window.addEventListener("DOMContentLoaded", () => {
     // プレビュー画像の親要素に子要素として削除ボタンを追加する
     previewWrapper.appendChild(deleteButton);
 
-    console.log('プレビューの親要素:', previewWrapper);
-    console.log('プレビューのimg要素:', previewImage);
+    console.log("プレビューの親要素:", previewWrapper);
+    console.log("プレビューのimg要素:", previewImage);
 
     // プレビュー画像一覧にプレビュー画像を挿入する
-    const previewsList = document.querySelector('#previews');
+    const previewsList = document.querySelector("#previews");
     previewsList.appendChild(previewWrapper);
-  }
+  };
 
   const buildNewFileField = () => {
     // 新しいfile_fieldを生成
-    const newFileField = document.createElement('input');
-    newFileField.setAttribute('type', 'file');
-    newFileField.setAttribute('name', 'item_form[images][]');
+    const newFileField = document.createElement("input");
+    newFileField.setAttribute("type", "file");
+    newFileField.setAttribute("name", "item[images][]");
     // ---file_fieldにdata-indexを設定ここから---
     // 全てのfile_fieldを取得
-    const allFileField = document.querySelectorAll(
-      'input[type="file"]'
-    );    // 最後のfile_fieldを取得
+    const allFileField = document.querySelectorAll('input[type="file"]'); // 最後のfile_fieldを取得
     const lastFileField = Array.from(allFileField).pop();
-    console.log('lastfilefield:',lastFileField);
+    console.log("lastfilefield:", lastFileField);
     // nextDataIndex = 最後のfile_fieldのdata-index + 1
-    const nextDataIndex = Number(lastFileField.getAttribute('data-index')) +1;
-    console.log('next-data-index:', nextDataIndex);
-    newFileField.setAttribute('data-index', nextDataIndex);
+    const nextDataIndex = Number(lastFileField.getAttribute("data-index")) + 1;
+    console.log("next-data-index:", nextDataIndex);
+    newFileField.setAttribute("data-index", nextDataIndex);
     // ---file_fieldにdata-indexを設定ここまで---
 
     // file_fieldにchangeイベントをセット
     newFileField.addEventListener("change", changedFileField);
 
     // file_fieldを追加
-    const fileFieldsArea = document.querySelector('.click-upload');
+    const fileFieldsArea = document.querySelector(".click-upload");
     fileFieldsArea.appendChild(newFileField);
-  }
+  };
 
   // 指定したdata-indexを持つプレビューとfile_fieldを削除する
   const deleteImage = (dataIndex) => {
     const previewWrapper = document.querySelector(
       `.preview[data-index="${dataIndex}"]`
     );
-    previewWrapper.remove();
     const fileField = document.querySelector(
       `input[type="file"][data-index="${dataIndex}"]`
     );
-    fileField.remove();
+    previewWrapper.remove();
 
     // 画像の枚数が最大のときに削除ボタンを押したらfile_fieldを1つ追加しておく
     const image_count = document.querySelectorAll(".preview").length;
@@ -108,7 +104,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     // data-indexを使って既にプレビューが表示されているかを確認する
     const oldPreviewWrapper = document.querySelector(
-      `.preview[data-index="${dataIndex}"]`
+      `#previews[data-index="${dataIndex}"]`
     );
     if (oldPreviewWrapper) {
       // 既にプレビューが表示されているので画像の差し替えのみを行い終了する
@@ -123,7 +119,7 @@ window.addEventListener("DOMContentLoaded", () => {
     // 画像の枚数制限に引っかからなければ新しいfile_fieldを追加する
     const image_count = document.querySelectorAll(".preview").length;
     console.log("image_count:", image_count);
-    if (image_count < image_limits) buildNewFileField();  
+    if (image_count < image_limits) buildNewFileField();
   };
 
   // 画像のfile_field
@@ -131,6 +127,5 @@ window.addEventListener("DOMContentLoaded", () => {
     'input[type="file"][name="item_form[images][]"]'
   );
   // 画像のfile_fieldの内容が変化（新しく選択、もしくは消える）したら発火するイベント
-  fileField.addEventListener("change", changedFileField)
-
+  fileField.addEventListener("change", changedFileField);
 });

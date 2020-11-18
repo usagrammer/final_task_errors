@@ -16,9 +16,9 @@
     </div>
 
     <div class="search-field">
-      <%= f.label :category_id_in, 'カテゴリ' %>
+      <%= f.label :category_id, 'カテゴリ' %>
       <br>
-      <%= f.collection_check_boxes :category_id_in, Category.all, :id, :name, {include_blank: "---"} %>
+      <%= f.collection_check_boxes :category_id, Category.all, :id, :name, {include_blank: "---"} %>
     </div>
 
     <div class="search-field">

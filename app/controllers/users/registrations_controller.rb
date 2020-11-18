@@ -22,11 +22,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     session["devise.regist_data"][:user]["password"] = params[:user][:password]
     ## newaddress_presetのビューで使用する@addressを定義（@userに紐づけておく）
     @address_preset = @user.build_address_preset
-    redirect_to users_new_address_preset_path
-  end
-
-  def new_address_preset
-    @address_preset = AddressPreset.new
   end
 
   def create_address_preset

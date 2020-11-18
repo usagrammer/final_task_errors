@@ -75,8 +75,6 @@ class ItemForm
       tag.save if tag_name.present?
       ## updateに!をつけると失敗したらrescueへ
       item.update!(params)
-      ## itemから一旦タグを外す。
-      item.item_tag_relations.destroy_all
       ## tag_nameがある場合はタグを付け直す。tag_nameがない場合はタグが0個になる
       ## ※タグがバリデーションに引っかかるとここでrescueへ行く
       item.tags << tag if tag_name.present?

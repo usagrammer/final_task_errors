@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
     @item = Item.find(params[:item_id])
     @comment = Comment.new(comments_params)
     if @comment.save
-      CommentsChannel.broadcast_to @item, { comment: @comment, user: @comment.user }
+      ActionCable.server.broadcast "item_comment", { comment: @comment, user: @comment.user }
     end
   end
 
